@@ -171,23 +171,23 @@ module gpio #(
     wire gpio_config_sel;
 
     // Cast parameter to a wire array for diagnostic purposes.
-    wire [11:0] defaults;
-    assign defaults = GPIO_DEFAULTS;
+    // wire [11:0] defaults;
+    // assign defaults = GPIO_DEFAULTS;
 
     assign gpio_config_sel = (iomem_addr[7:0] == (BASE_ADR[7:0] + GPIO_CONFIG));
 
     always @(posedge clk or negedge resetn) begin
 	if (!resetn) begin
-	    gpio_out_value	 <= defaults[11];
-	    gpio_oeb_value	 <= defaults[10];
-	    gpio_ieb_value	 <= defaults[9];
-	    gpio_out_override	 <= defaults[8];
-	    gpio_oeb_override	 <= defaults[7];
-	    gpio_ieb_override	 <= defaults[6];
-	    pad_gpio_slow_sel    <= defaults[5];
-	    pad_gpio_vtrip_sel   <= defaults[4];
-	    pad_gpio_ib_mode_sel <= defaults[3];
-	    pad_gpio_dm          <= defaults[2:0];
+	    gpio_out_value	 <= GPIO_DEFAULTS[11];
+	    gpio_oeb_value	 <= GPIO_DEFAULTS[10];
+	    gpio_ieb_value	 <= GPIO_DEFAULTS[9];
+	    gpio_out_override	 <= GPIO_DEFAULTS[8];
+	    gpio_oeb_override	 <= GPIO_DEFAULTS[7];
+	    gpio_ieb_override	 <= GPIO_DEFAULTS[6];
+	    pad_gpio_slow_sel    <= GPIO_DEFAULTS[5];
+	    pad_gpio_vtrip_sel   <= GPIO_DEFAULTS[4];
+	    pad_gpio_ib_mode_sel <= GPIO_DEFAULTS[3];
+	    pad_gpio_dm          <= GPIO_DEFAULTS[2:0];
 
 	end else begin
 	    iomem_ready <= 0;

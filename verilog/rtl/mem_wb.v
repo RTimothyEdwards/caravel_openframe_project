@@ -13,6 +13,10 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
+`ifndef MEM_WORDS
+`define MEM_WORDS 1024
+`endif
+
 `default_nettype none
 module mem_wb (
 `ifdef USE_POWER_PINS

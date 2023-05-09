@@ -124,9 +124,9 @@ module clock_routing (
 
     always @(posedge core_clk or negedge resetb) begin
         if (resetb == 1'b0) begin
-        reset_delay <= 3'b111;
+            reset_delay <= 3'b111;
         end else begin
-        reset_delay <= {1'b0, reset_delay[2:1]};
+            reset_delay <= {1'b0, reset_delay[2:1]};
         end
     end
 

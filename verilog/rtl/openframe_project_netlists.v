@@ -24,8 +24,10 @@
 /*                                                          	*/
 /*--------------------------------------------------------------*/
 
-`include "defines.v"
+`ifdef SIM
 `define USE_POWER_PINS
+`endif
+`define OPENFRAME_IO_PADS 44
 
 `ifdef GL
     `default_nettype wire

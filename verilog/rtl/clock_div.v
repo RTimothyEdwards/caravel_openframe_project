@@ -44,8 +44,8 @@ module clock_div #(
     // Divider value synchronization (double-synchronized to avoid metastability)
     always @(posedge out or negedge resetb) begin
 	if (resetb == 1'b0) begin
-	    syncN <= `CLK_DIV;	// Default to divide-by-2 on system reset
-	    syncNp <= `CLK_DIV;	// Default to divide-by-2 on system reset
+	    syncN <=  3'd4;	// Default divider value
+	    syncNp <= 3'd4;	// Default divider value
 	end else begin
 	    syncNp <= N;
 	    syncN <= syncNp;
@@ -104,11 +104,11 @@ module odd #(
     // positive edge counter/divider
     always @(posedge clk or negedge resetb) begin
 	if (resetb == 1'b0) begin
-	    counter <= `CLK_DIV;
-	    out_counter <= 1;
+	    counter <= 3'd4;
+	    out_counter <= 1'b1;
 	end else if (rst_pulse) begin
 	    counter <= N;
-	    out_counter <= 1;
+	    out_counter <= 1'b1;
 	end else if (enable) begin
 	    if (counter == 1) begin
 		counter <= N;
@@ -123,14 +123,14 @@ module odd #(
     wire [SIZE:0] interm_3;		// from the positive edge counter in order to
     assign interm_3 = {1'b0, N} + 2'b11;	// guarantee 50% duty cycle.
 
-    localparam [SIZE:0] interm_init = {1'b0,`CLK_DIV} + 2'b11;
+    localparam [SIZE:0] interm_init = {1'b0,3'd4} + 2'b11;
 
     // Counter driven by negative edge of clock.
 
     always @(negedge clk or negedge resetb) begin
 	if (resetb == 1'b0) begin
 	    // reset the counter at system reset
-	    counter2 <= `CLK_DIV;
+	    counter2 <= 3'd4;
 	    initial_begin <= interm_init[SIZE:1];
 	    out_counter2 <= 1;
 	end else if (rst_pulse) begin

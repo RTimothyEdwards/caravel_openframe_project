@@ -20,7 +20,8 @@ PDK ?= sky130A
 PDK_PATH = $(PDK_ROOT)/$(PDK)
 
 ## Caravel Pointers
-CARAVEL_ROOT ?= /home/tim/gits/caravel_redesign_2
+# CARAVEL_ROOT ?= /home/tim/gits/caravel_redesign_2
+CARAVEL_ROOT ?= /home/tim/gits/caravel
 CARAVEL_PATH ?= $(CARAVEL_ROOT)
 CARAVEL_VERILOG_PATH  = $(CARAVEL_PATH)/verilog
 CARAVEL_RTL_PATH = $(CARAVEL_VERILOG_PATH)/rtl
