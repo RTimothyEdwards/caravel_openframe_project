@@ -43,8 +43,9 @@
 // SPI master.
 //
 //-----------------------------------------------------------
-
+`ifndef COCOTB_SIM
 `include "housekeeping_spi.v"
+`endif // ! COCOTB_SIM
 
 //------------------------------------------------------------
 // Caravel defined registers:

@@ -16,6 +16,21 @@
 `default_nettype none
 
 `ifndef __USER_DEFINES_H
+`define GPIO_MODE_MGMT_STD_INPUT_NOPULL    13'h0403
+`define GPIO_MODE_MGMT_STD_INPUT_PULLDOWN  13'h0c01
+`define GPIO_MODE_MGMT_STD_INPUT_PULLUP    13'h0801
+`define GPIO_MODE_MGMT_STD_OUTPUT          13'h1809
+`define GPIO_MODE_MGMT_STD_BIDIRECTIONAL   13'h1801
+`define GPIO_MODE_MGMT_STD_ANALOG          13'h000b
+
+`define GPIO_MODE_USER_STD_INPUT_NOPULL    13'h0402
+`define GPIO_MODE_USER_STD_INPUT_PULLDOWN  13'h0c00
+`define GPIO_MODE_USER_STD_INPUT_PULLUP    13'h0800
+`define GPIO_MODE_USER_STD_OUTPUT          13'h1808
+`define GPIO_MODE_USER_STD_BIDIRECTIONAL   13'h1800
+`define GPIO_MODE_USER_STD_OUT_MONITORED   13'h1802
+`define GPIO_MODE_USER_STD_ANALOG          13'h000a
+
 // User I/O definition (not implemented---retained for backwards compatibility)
 `define __USER_DEFINES_H
 
