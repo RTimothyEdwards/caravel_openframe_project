@@ -97,7 +97,7 @@ void GPIO_Configure(int gpio_num,enum gpio_mode config){
 void GPIO_Set(long data){reg_gpio_vector_data = data;}
 unsigned int GPIO_Get(){return reg_gpio_vector_data;}
 
-void GPIO_WaitData(unsigned int data){while (GPIO_Get()  != data);}
+void GPIO_WaitData(unsigned int data){while (GPIO_Get()  != data && 0x3fffffff);}
 
 
 // debug regs
