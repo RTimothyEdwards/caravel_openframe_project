@@ -650,7 +650,7 @@ module picosoc (
 	.gpio_vector_in({cpu_gpio_in[40:39], cpu_gpio_in[15:13],
 		cpu_gpio_in[11], cpu_gpio_in[8], cpu_gpio_in[9],
 		cpu_gpio_in[6], cpu_gpio_in[1],
-		cpu_gpio_out[43], cpu_gpio_out[0],
+		cpu_gpio_in[43], cpu_gpio_in[0],
 		cpu_gpio_in[35:16]}),
 	.gpio_vector_out({nc1, nc2, cpu_gpio_out[38], cpu_gpio_out[12],
 		cpu_gpio_out[7], cpu_gpio_out[10], cpu_gpio_out[3],
