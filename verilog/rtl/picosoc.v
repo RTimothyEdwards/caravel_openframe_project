@@ -144,13 +144,15 @@ module picosoc (
     parameter SPI_MASTER_BASE_ADR = 32'h2400_0000;
     parameter GPIO_VECTOR_BASE_ADR  = 32'h2500_0000;
     parameter FLASH_CTRL_CFG  = 32'h2D00_0000;
+    parameter DEBUG_REGS_CFG  = 32'h4100_0000;
     
     // Wishbone Interconnect 
     localparam ADR_WIDTH = 32;
     localparam DAT_WIDTH = 32;
-    localparam NUM_IFACE = 9;
+    localparam NUM_IFACE = 10;
 
     parameter [NUM_IFACE*ADR_WIDTH-1: 0] ADR_MASK = {
+        {8'hFF, {ADR_WIDTH-8{1'b0}}},
         {8'hFF, {ADR_WIDTH-8{1'b0}}},
         {8'hFF, {ADR_WIDTH-8{1'b0}}},
         {8'hFF, {ADR_WIDTH-8{1'b0}}},
@@ -163,6 +165,7 @@ module picosoc (
     };
 
     parameter [NUM_IFACE*ADR_WIDTH-1: 0] IFACE_ADR = {
+        {DEBUG_REGS_CFG},
         {FLASH_CTRL_CFG},
 	{SPI_MASTER_BASE_ADR},
 	{COUNTER_TIMER1_BASE_ADR},
@@ -730,7 +733,7 @@ module picosoc (
     intercon_wb #(
         .AW(ADR_WIDTH),
         .DW(DAT_WIDTH),
-        .NI(NUM_IFACE `ifdef COCOTB_SIM + 1 `endif),
+        .NI(NUM_IFACE),
         .ADR_MASK(ADR_MASK),
         .IFACE_ADR(IFACE_ADR)
     ) intercon (

@@ -33,9 +33,6 @@ module intercon_wb #(
     output [NI-1:0] wbs_stb_o
 );
     parameter [NI*AW-1:0] ADR_MASK = {      // Page & Sub-page bits
-        `ifdef COCOTB_SIM
-        {8'hFF, {24{1'b0}} },
-        `endif // COCOTB_SIM
         {8'hFF, {24{1'b0}} },
         {8'hFF, {24{1'b0}} },
         {8'hFF, {24{1'b0}} },
@@ -45,9 +42,6 @@ module intercon_wb #(
         
     };
     parameter [NI*AW-1:0] IFACE_ADR = {
-        `ifdef COCOTB_SIM
-        { 32'h4100_0000 },    // DEBUG registers 
-        `endif // COCOTB_SIM
         { 32'h2800_0000 },    // Flash Configuration Register
         { 32'h2200_0000 },    // System Control
         { 32'h2100_0000 },    // GPIOs
