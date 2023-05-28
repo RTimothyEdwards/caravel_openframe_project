@@ -1,6 +1,5 @@
 # Caravel user project includes
 -v $(USER_PROJECT_VERILOG)/dv/firmware/spiflash.v
--v $(USER_PROJECT_VERILOG)/rtl/user_defines.v	     
 -v $(USER_PROJECT_VERILOG)/rtl/openframe_project_wrapper.v	     
 -v $(USER_PROJECT_VERILOG)/rtl/picosoc.v
 -v $(USER_PROJECT_VERILOG)/rtl/picorv32.v
