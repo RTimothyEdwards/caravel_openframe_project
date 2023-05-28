@@ -1,0 +1,6 @@
+Tests: 
+    - {name: vector_all_o, sim: RTL}
+    - {name: vector_all_i, sim: RTL}
+    - {name: vector_all_i_pu, sim: RTL}
+    - {name: vector_all_i_pd, sim: RTL}
+    - {name: vector_all_i_0_1, sim: RTL}
