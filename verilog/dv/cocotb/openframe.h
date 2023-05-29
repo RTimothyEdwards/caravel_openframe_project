@@ -107,3 +107,41 @@ unsigned int get_debug_reg1(){return (*(volatile uint32_t*)0x41000000);}
 unsigned int get_debug_reg2(){return (*(volatile uint32_t*)0x41000004);}
 void wait_debug_reg1(unsigned int data){while (get_debug_reg1() != data);}
 void wait_debug_reg2(unsigned int data){while (get_debug_reg2() != data);}
+
+// uart 
+void uart_enable(bool is_enable){
+    if (is_enable){
+        reg_uart_enable = 1;
+    }else{       
+        reg_uart_enable = 0;
+    }
+
+} 
+
+char uart_getc(){
+    return reg_uart_data;
+}
+
+void uart_putc(char c){
+	reg_uart_data = c;
+}
+
+char* uart_get_line(){
+    char* received_array =0;
+    char received_char;
+    int count = 0;
+    while ((received_char = uart_getc()) != '\n'){
+        received_array[count++] = received_char;
+    }
+    received_array[count++] = received_char;
+    return received_array;
+}
+
+void print(const char *p){
+	while (*p)
+		uart_putc(*(p++));
+}
+
+void uart_clkdiv(int clk_div){
+    reg_uart_clkdiv = clk_div;
+}

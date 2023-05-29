@@ -1,8 +1,8 @@
 import cocotb
 import re
 from cocotb.clock import Clock
-from cocotb.triggers import FallingEdge, ClockCycles
-
+from cocotb.triggers import ClockCycles, Timer
+from cocotb_includes import UART
 
 class OpenFrame:
     def __init__(self, caravelEnv):
@@ -40,3 +40,19 @@ class OpenFrame:
 
     def write_debug_reg2_backdoor(self, data):
         self.debug_hdl.debug_reg_2.value = data
+
+
+class OpenFrameUART(UART):
+    
+    def __init__(self, openFrame: OpenFrame,clk_div=1, uart_pins={"tx": 6, "rx": 5}) -> None:
+        super().__init__(openFrame.caravelEnv,uart_pins=uart_pins)
+        self.openFrame = openFrame
+        self.bit_time_ns = round(self.period *(2 + clk_div))  
+        cocotb.log.info(f"[OpenFrameUART] configure UART bit_time_ns = {self.bit_time_ns}ns")
+        self.uart_pins = uart_pins
+
+    def change_clk_div(self, new_clk_div):
+        self.bit_time_ns = round(self.period *(2 + new_clk_div))  
+        cocotb.log.info(f"[OpenFrameUART] configure UART with new clk div {new_clk_div} bit_time_ns = {self.bit_time_ns}ns")
+
+    
