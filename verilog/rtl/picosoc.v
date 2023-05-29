@@ -713,22 +713,20 @@ module picosoc (
         .wb_dat_o(mem_dat_o)
     );
     
-    `ifdef COCOTB_SIM 
-        wire debug_stb_i;
-        wire debug_ack_o;
-        wire [31:0] debug_dat_o;
-        debug_regs debug_regs (
-            .wb_clk_i(wb_clk_i),
-            .wb_rst_i(wb_rst_i),
-            .wbs_stb_i(debug_stb_i),
-            .wbs_cyc_i(cpu_cyc_o),
-            .wbs_we_i(cpu_we_o),
-            .wbs_sel_i(cpu_sel_o),
-            .wbs_dat_i(cpu_dat_o),
-            .wbs_adr_i(cpu_adr_o),
-            .wbs_ack_o(debug_ack_o), 
-            .wbs_dat_o(debug_dat_o));
-    `endif
+    wire debug_stb_i;
+    wire debug_ack_o;
+    wire [31:0] debug_dat_o;
+    debug_regs debug_regs (
+        .wb_clk_i(wb_clk_i),
+        .wb_rst_i(wb_rst_i),
+        .wbs_stb_i(debug_stb_i),
+        .wbs_cyc_i(cpu_cyc_o),
+        .wbs_we_i(cpu_we_o),
+        .wbs_sel_i(cpu_sel_o),
+        .wbs_dat_i(cpu_dat_o),
+        .wbs_adr_i(cpu_adr_o),
+        .wbs_ack_o(debug_ack_o), 
+        .wbs_dat_o(debug_dat_o));
     // Wishbone interconnection logic
     intercon_wb #(
         .AW(ADR_WIDTH),
@@ -743,9 +741,7 @@ module picosoc (
         .wbm_ack_o(cpu_ack_i),
 
         .wbs_stb_o({
-        `ifdef COCOTB_SIM 
         debug_stb_i, 
-        `endif // COCOTB_SIM
 		spimemio_cfg_stb_i,
 		spi_master_stb_i,
 		counter_timer1_stb_i,
@@ -756,9 +752,7 @@ module picosoc (
 		spimemio_flash_stb_i,
 		mem_stb_i }), 
         .wbs_dat_i({
-        `ifdef COCOTB_SIM
         debug_dat_o,
-        `endif // COCOTB_SIM
 		spimemio_cfg_dat_o,
 		spi_master_dat_o,
 		counter_timer1_dat_o,
@@ -769,9 +763,7 @@ module picosoc (
 		spimemio_flash_dat_o,
 		mem_dat_o }),
         .wbs_ack_i({
-        `ifdef COCOTB_SIM
         debug_ack_o,
-        `endif // COCOTB_SIM
 		spimemio_cfg_ack_o,
 		spi_master_ack_o,
 		counter_timer1_ack_o,
