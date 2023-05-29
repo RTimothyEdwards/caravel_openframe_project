@@ -43,7 +43,7 @@
 /* NOTE:  MEM_WORDS must be consistent with the selection of SRAM	*/
 /* macro instances in mem_wb.v.	 1024 words = 4kB (2 2kB SRAM modules)	*/
 `define MEM_WORDS 1024
-
+`ifndef COCOTB_SIM
 `include "picorv32.v"
 `include "spimemio.v"
 `include "simpleuart.v"
@@ -57,11 +57,11 @@
 `include "mem_wb.v"
 `include "gpio_wb.v"
 `include "gpio_vector_wb.v"
-
 /* From the Sky130 PDK */
 `ifdef SIM
 `include "libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v"
 `endif
+`endif // COCOTB_SIM
 
 /*--------------------------------------------------------------*/
 /* picosoc:  Assembly of the picoRV32 core and various modules	*/
@@ -144,13 +144,15 @@ module picosoc (
     parameter SPI_MASTER_BASE_ADR = 32'h2400_0000;
     parameter GPIO_VECTOR_BASE_ADR  = 32'h2500_0000;
     parameter FLASH_CTRL_CFG  = 32'h2D00_0000;
+    parameter DEBUG_REGS_CFG  = 32'h4100_0000;
     
     // Wishbone Interconnect 
     localparam ADR_WIDTH = 32;
     localparam DAT_WIDTH = 32;
-    localparam NUM_IFACE = 9;
+    localparam NUM_IFACE = 10;
 
     parameter [NUM_IFACE*ADR_WIDTH-1: 0] ADR_MASK = {
+        {8'hFF, {ADR_WIDTH-8{1'b0}}},
         {8'hFF, {ADR_WIDTH-8{1'b0}}},
         {8'hFF, {ADR_WIDTH-8{1'b0}}},
         {8'hFF, {ADR_WIDTH-8{1'b0}}},
@@ -163,6 +165,7 @@ module picosoc (
     };
 
     parameter [NUM_IFACE*ADR_WIDTH-1: 0] IFACE_ADR = {
+        {DEBUG_REGS_CFG},
         {FLASH_CTRL_CFG},
 	{SPI_MASTER_BASE_ADR},
 	{COUNTER_TIMER1_BASE_ADR},
@@ -192,6 +195,25 @@ module picosoc (
     wire [`OPENFRAME_IO_PADS-1:0] cpu_gpio_out;
     wire [`OPENFRAME_IO_PADS-1:0] cpu_gpio_oeb;
     wire [`OPENFRAME_IO_PADS-1:0] cpu_gpio_ieb;
+
+    wire irq_spi;
+    wire core_clk;
+    wire trap;
+    wire pass_thru;
+    wire pass_thru_csb;
+    wire pass_thru_sck;
+    wire pass_thru_sdi;
+    wire pass_thru_sdo;
+    wire hk_connect;
+    wire aux_clk;
+    wire mon_clk;
+    wire ext_clk_sel;
+    wire dll_clk;
+    wire dll_clk90;
+    wire ext_reset;
+    wire core_rstn;
+    wire spi_dll_ena;
+    wire spi_dll_dco_ena;
 
     /* Interrupt channel assignments */
 
@@ -690,7 +712,21 @@ module picosoc (
         .wb_ack_o(mem_ack_o), 
         .wb_dat_o(mem_dat_o)
     );
-
+    
+    wire debug_stb_i;
+    wire debug_ack_o;
+    wire [31:0] debug_dat_o;
+    debug_regs debug_regs (
+        .wb_clk_i(wb_clk_i),
+        .wb_rst_i(wb_rst_i),
+        .wbs_stb_i(debug_stb_i),
+        .wbs_cyc_i(cpu_cyc_o),
+        .wbs_we_i(cpu_we_o),
+        .wbs_sel_i(cpu_sel_o),
+        .wbs_dat_i(cpu_dat_o),
+        .wbs_adr_i(cpu_adr_o),
+        .wbs_ack_o(debug_ack_o), 
+        .wbs_dat_o(debug_dat_o));
     // Wishbone interconnection logic
     intercon_wb #(
         .AW(ADR_WIDTH),
@@ -705,6 +741,7 @@ module picosoc (
         .wbm_ack_o(cpu_ack_i),
 
         .wbs_stb_o({
+        debug_stb_i, 
 		spimemio_cfg_stb_i,
 		spi_master_stb_i,
 		counter_timer1_stb_i,
@@ -715,6 +752,7 @@ module picosoc (
 		spimemio_flash_stb_i,
 		mem_stb_i }), 
         .wbs_dat_i({
+        debug_dat_o,
 		spimemio_cfg_dat_o,
 		spi_master_dat_o,
 		counter_timer1_dat_o,
@@ -725,6 +763,7 @@ module picosoc (
 		spimemio_flash_dat_o,
 		mem_dat_o }),
         .wbs_ack_i({
+        debug_ack_o,
 		spimemio_cfg_ack_o,
 		spi_master_ack_o,
 		counter_timer1_ack_o,

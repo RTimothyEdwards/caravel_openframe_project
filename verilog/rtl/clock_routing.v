@@ -15,8 +15,9 @@
 
 `default_nettype none
 // This routine synchronizes the 
-
+`ifndef COCOTB_SIM
 `include "clock_div.v"
+`endif // COCOTB_SIM
 
 module clock_routing (
 `ifdef USE_POWER_PINS
