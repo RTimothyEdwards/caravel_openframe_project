@@ -1,7 +1,7 @@
 #include <defs.h>
 
 // gpio functions 
-void GPIO_Configure(int gpio_num,enum gpio_mode config){
+void GPIO_Configure(int gpio_num,int config){
     switch(gpio_num){
         case 0 :
             reg_gpio_0_config   = config; break;

@@ -151,22 +151,15 @@ extern uint32_t flashio_worker_end;
 #define DIGITAL_MODE_PULLDOWN 0x003
 
 // Useful GPIO mode values
-// #define GPIO_MODE_VECTOR_OUTPUT		0x2c6
-// #define GPIO_MODE_VECTOR_INPUT		0x4c1
-// #define GPIO_MODE_VECTOR_INPUT_PULLUP	0x9c2
-// #define GPIO_MODE_VECTOR_INPUT_PULLDOWN	0x1c3
-// #define GPIO_MODE_BIDIRECTIONAL		0x006
-// #define GPIO_MODE_ZERO_OUT		0x386
-// #define GPIO_MODE_ONE_OUT		0xb86
-enum gpio_mode {
-                GPIO_MODE_VECTOR_OUTPUT = 0x2c6,
-                GPIO_MODE_VECTOR_INPUT =0x4c1,
-                GPIO_MODE_VECTOR_INPUT_PULLUP=0x9c2,
-                GPIO_MODE_VECTOR_INPUT_PULLDOWN=0x1c3,
-                GPIO_MODE_BIDIRECTIONAL=0x006,
-                GPIO_MODE_ZERO_OUT=0x386,
-                GPIO_MODE_ONE_OUT=0xb86};
-#define CPU_TYPE VexRISC
+#define GPIO_MODE_VECTOR_OUTPUT		0x2c6
+#define GPIO_MODE_VECTOR_INPUT		0x4c1
+#define GPIO_MODE_VECTOR_INPUT_PULLUP	0x9c2
+#define GPIO_MODE_VECTOR_INPUT_PULLDOWN	0x1c3
+#define GPIO_MODE_BIDIRECTIONAL		0x006
+#define GPIO_MODE_ZERO_OUT		0x386
+#define GPIO_MODE_ONE_OUT		0xb86
+
+#define CPU_TYPE RV32imc
 
 // --------------------------------------------------------
 #endif	/* _DEFS_H_ */
