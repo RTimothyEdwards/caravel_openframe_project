@@ -7,3 +7,6 @@ from vector_all_i_pd.vector_all_i_pd import vector_all_i_pd
 from vector_all_i_0_1.vector_all_i_0_1 import vector_all_i_0_1
 from uart.uart import uart
 from wr_rd_gpio_config.wr_rd_gpio_config import wr_rd_gpio_config
+from timer0.timer0 import timer0
+from timer1.timer1 import timer1
+from timer_chain.timer_chain import timer_chain

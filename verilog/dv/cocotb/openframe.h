@@ -239,3 +239,119 @@ void print(const char *p){
 void uart_clkdiv(int clk_div){
     reg_uart_clkdiv = clk_div;
 }
+
+// timer0 
+void timer0_enable(bool is_enable){
+    if (is_enable){
+        reg_timer0_config |= 0x1;
+    }else{
+        reg_timer0_config &= 0xFFFFFFFE;
+    }
+}
+void timer0_oneshot(bool is_oneshot){
+    if (is_oneshot){
+        reg_timer0_config |= 0x2;
+    }
+    else{
+        reg_timer0_config &= 0xFFFFFFFD;
+    }
+}
+void timer0_upcount(bool is_upcount){
+    if (is_upcount){
+        reg_timer0_config |= 0x4;
+    }else{
+        reg_timer0_config &= 0xFFFFFFFB;
+    }
+}
+void timer0_data(int data){
+    reg_timer0_data = data;
+}
+int timer0_get_data(){
+    return reg_timer0_data;
+}
+
+void timer0_periodic_val(int data){
+    reg_timer0_value = data;
+}
+
+void timer0_chain(bool is_chained){
+    if (is_chained){
+        reg_timer0_config |= 0x8;
+    }else{
+        reg_timer0_config &= 0xFFFFFFF7;
+    }
+}
+void timer0_oneshot_config(bool is_upcount, int data){
+    timer0_enable(0);
+    timer0_oneshot(1);
+    timer0_upcount(is_upcount);
+    timer0_enable(1);
+    if (is_upcount){
+        timer0_periodic_val(data);
+    }else{
+        timer0_data(data);
+    }
+}
+void timer0_periodic_config(bool is_upcount, int data){
+    timer0_enable(0);
+    timer0_oneshot(0);
+    timer0_upcount(is_upcount);
+    timer0_periodic_val(data);
+    timer0_enable(1);
+}       
+
+// timer1 
+void timer1_enable(bool is_enable){
+    if (is_enable){
+        reg_timer1_config |= 0x1;
+    }else{
+        reg_timer1_config &= 0xFFFFFFFE;
+    }
+}
+void timer1_oneshot(bool is_oneshot){
+    if (is_oneshot){
+        reg_timer1_config |= 0x2;
+    }
+    else{
+        reg_timer1_config &= 0xFFFFFFFD;
+    }
+}
+void timer1_upcount(bool is_upcount){
+    if (is_upcount){
+        reg_timer1_config |= 0x4;
+    }else{
+        reg_timer1_config &= 0xFFFFFFFB;
+    }
+}
+void timer1_data(int data){
+    reg_timer1_data = data;
+}
+int timer1_get_val(){
+    return reg_timer1_value;
+}
+
+void timer1_oneshot_config(bool is_upcount, int data){
+    timer1_enable(0);
+    timer1_oneshot(1);
+    timer1_upcount(is_upcount);
+    timer1_enable(1);
+    if (is_upcount){
+        timer0_periodic_val(data);
+    }else{
+        timer0_data(data);
+    }
+}
+void timer1_periodic_config(bool is_upcount, int data){
+    timer1_enable(0);
+    timer1_oneshot(0);
+    timer1_upcount(is_upcount);
+    timer1_data(data);
+    timer1_enable(1);
+}
+void timer1_chain(bool is_chained){
+    if (is_chained){
+        reg_timer1_config |= 0x8;
+    }else{
+        reg_timer1_config &= 0xFFFFFFF7;
+    }
+}

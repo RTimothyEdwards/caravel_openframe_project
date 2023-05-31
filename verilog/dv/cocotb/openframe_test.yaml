@@ -4,3 +4,6 @@ Tests:
     - {name: vector_all_i_pu, sim: RTL}
     - {name: vector_all_i_pd, sim: RTL}
     - {name: vector_all_i_0_1, sim: RTL}
+    - {name: uart, sim: RTL}
+    - {name: wr_rd_gpio_config, sim: RTL}
+    - {name: timer, sim: RTL}
