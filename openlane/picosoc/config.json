@@ -16,7 +16,8 @@
         "dir::../../verilog/rtl/counter_timer_low.v",
         "dir::../../verilog/rtl/mem_wb.v",
         "dir::../../verilog/rtl/gpio_wb.v",
-        "dir::../../verilog/rtl/gpio_vector_wb.v"
+        "dir::../../verilog/rtl/gpio_vector_wb.v",
+        "dir::../../verilog/rtl/debug_regs.v"
     ],
     "QUIT_ON_VERILATOR_ERRORS": false,
     "QUIT_ON_SYNTH_CHECKS": false,
@@ -75,5 +76,6 @@
     "SYNTH_BUFFERING": 0,
     "RCX_SDC_FILE": "dir::signoff.sdc",
     "RUN_MAGIC_DRC": 0,
-    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg"
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "SYNTH_DEFINES": "PnR"
 }

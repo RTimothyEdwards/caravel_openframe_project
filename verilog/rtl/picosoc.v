@@ -146,14 +146,8 @@ module picosoc (
     parameter SPI_MASTER_BASE_ADR = 32'h2400_0000;
     parameter GPIO_VECTOR_BASE_ADR  = 32'h2500_0000;
     parameter FLASH_CTRL_CFG  = 32'h2D00_0000;
-<<<<<<< HEAD
-
-    // Wishbone Interconnect
-=======
     parameter DEBUG_REGS_CFG  = 32'h4100_0000;
-    
     // Wishbone Interconnect 
->>>>>>> main
     localparam ADR_WIDTH = 32;
     localparam DAT_WIDTH = 32;
     localparam NUM_IFACE = 10;
