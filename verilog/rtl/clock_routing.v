@@ -16,7 +16,6 @@
 `default_nettype none
 // This routine synchronizes the 
 
-`include "clock_div.v"
 
 module clock_routing (
 `ifdef USE_POWER_PINS
