@@ -17,8 +17,10 @@
 // Digital Locked Loop (ring oscillator + controller)
 // NOTE:  This is a frequency locked loop, not a phase locked loop.
 
+`ifndef COCOTB_SIM
 `include "dll_controller.v"
 `include "ring_osc2x13.v"
+`endif // ! COCOTB_SIM
 
 module digital_locked_loop (
 `ifdef USE_POWER_PINS

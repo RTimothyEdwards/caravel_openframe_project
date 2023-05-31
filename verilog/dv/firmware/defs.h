@@ -159,5 +159,7 @@ extern uint32_t flashio_worker_end;
 #define GPIO_MODE_ZERO_OUT		0x386
 #define GPIO_MODE_ONE_OUT		0xb86
 
+#define CPU_TYPE RV32imc
+
 // --------------------------------------------------------
 #endif	/* _DEFS_H_ */
