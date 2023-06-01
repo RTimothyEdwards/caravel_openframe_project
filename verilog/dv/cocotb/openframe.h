@@ -94,6 +94,100 @@ void GPIO_Configure(int gpio_num,int config){
     }
 }
 
+int GPIO_getConfig(int gpio_num){
+    switch(gpio_num){
+        case 0 :
+            return reg_gpio_0_config;
+        case 1 :
+            return reg_gpio_1_config;
+        case 2 :
+            return reg_gpio_2_config;
+        case 3 :
+            return reg_gpio_3_config;
+        case 4 :
+            return reg_gpio_4_config;
+        case 5 :
+            return reg_gpio_5_config;
+        case 6 :  
+            return reg_gpio_6_config;
+        case 7 :
+            return reg_gpio_7_config;
+        case 8 :
+            return reg_gpio_8_config;
+        case 9 :    
+            return reg_gpio_9_config;
+        case 10 :
+            return reg_gpio_10_config;
+        case 11 :
+            return reg_gpio_11_config;
+        case 12 :
+            return reg_gpio_12_config;
+        case 13 :
+            return reg_gpio_13_config;
+        case 14 :
+            return reg_gpio_14_config;
+        case 15 :
+            return reg_gpio_15_config;
+        case 16 :
+            return reg_gpio_16_config;
+        case 17 :
+            return reg_gpio_17_config;
+        case 18 :
+            return reg_gpio_18_config;
+        case 19 :
+            return reg_gpio_19_config;
+        case 20 :
+            return reg_gpio_20_config;
+        case 21 :
+            return reg_gpio_21_config;
+        case 22 :   
+            return reg_gpio_22_config;
+        case 23 :
+            return reg_gpio_23_config;
+        case 24 :   
+            return reg_gpio_24_config;
+        case 25 :
+            return reg_gpio_25_config;
+        case 26 :
+            return reg_gpio_26_config;
+        case 27 :
+            return reg_gpio_27_config;
+        case 28 :
+            return reg_gpio_28_config;
+        case 29 :   
+            return reg_gpio_29_config;
+        case 30 :   
+            return reg_gpio_30_config;
+        case 31 :   
+            return reg_gpio_31_config;
+        case 32 :
+            return reg_gpio_32_config;
+        case 33 :
+            return reg_gpio_33_config;
+        case 34 :
+            return reg_gpio_34_config;
+        case 35 :
+            return reg_gpio_35_config;
+        case 36 :
+            return reg_gpio_36_config;
+        case 37 :
+            return reg_gpio_37_config;
+        case 38 :
+            return reg_gpio_38_config;
+        case 39 :
+            return reg_gpio_39_config;
+        case 40 :
+            return reg_gpio_40_config;
+        case 41 :
+            return reg_gpio_41_config;
+        case 42 :
+            return reg_gpio_42_config;
+        case 43 :
+            return reg_gpio_43_config;
+    }
+    return 0;   
+}
+
 void GPIO_Set(long data){reg_gpio_vector_data = data;}
 unsigned int GPIO_Get(){return reg_gpio_vector_data;}
 
