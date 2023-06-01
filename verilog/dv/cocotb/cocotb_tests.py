@@ -10,3 +10,4 @@ from wr_rd_gpio_config.wr_rd_gpio_config import wr_rd_gpio_config
 from timer0.timer0 import timer0
 from timer1.timer1 import timer1
 from timer_chain.timer_chain import timer_chain
+from spi_master.spi_master import spi_master

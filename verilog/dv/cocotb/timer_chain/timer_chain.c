@@ -18,15 +18,19 @@
  */
 
 void main(){
-    timer0_chain(1);
+    // chain
     timer1_chain(1);
-    timer0_enable(0);
+    timer0_chain(1);
+    // count down
+    timer1_upcount(0);
     timer0_upcount(0);
-    // timer1_enable(0);
+    // one shot
+    timer1_oneshot(1);
     timer0_oneshot(1);
-    // timer1_oneshot(1);
+    // enable
+    timer1_enable(1);
     timer0_enable(1);
-    // timer1_enable(1);
-    timer0_data(0xFFFFFFFF);
-    // timer1_data(0xFF);
+    // setting data
+    timer1_data(0x1);
+    timer0_data(0xF);
 }

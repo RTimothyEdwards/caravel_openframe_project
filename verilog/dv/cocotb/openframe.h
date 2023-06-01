@@ -1,5 +1,6 @@
 #include <defs.h>
 
+#define SEED 0x1578015 // changing this seed would change the output of the random number generator of some thets 
 // gpio functions 
 void GPIO_Configure(int gpio_num,int config){
     switch(gpio_num){
@@ -355,3 +356,58 @@ void timer1_chain(bool is_chained){
         reg_timer1_config &= 0xFFFFFFF7;
     }
 }
+
+// spi master 
+void spi_enable(bool is_enable){
+    if (is_enable){
+        reg_spimaster_config |= 0x2000; //bit 1
+    }else{
+        reg_spimaster_config &=  0xFFFFDFFF; //bit 1
+    }    
+}
+
+
+void spi_write(char c){
+    reg_spimaster_data =  c;
+}
+char spi_read(){
+    spi_write(0);
+    return reg_spimaster_data;
+}
+
+void spi_stream(bool is_stream){
+    if (is_stream){
+        reg_spimaster_config |= 0x1000;
+    }
+    else{
+        reg_spimaster_config &= 0xFFFFEFFF;
+    }
+}
+
+void spi_mlb(bool is_mlb){
+    if (is_mlb){
+        reg_spimaster_config |= 0x0100;
+    }
+    else{
+        reg_spimaster_config &= 0xFFFFFFEF;
+    }
+}
+
+void spi_invCSB(bool is_invCSB){
+    if (is_invCSB){
+        reg_spimaster_config |= 0x0200;
+    }
+    else{
+        reg_spimaster_config &= 0xFFFFFFDF;
+    }
+}
+
+void spi_mode(bool is_mode){
+    if (is_mode){
+        reg_spimaster_config |= 0x0800;
+    }
+    else{
+        reg_spimaster_config &= 0xFFFFFFBF;
+    }
+}
+
