@@ -6,3 +6,4 @@ from vector_all_i_pu.vector_all_i_pu import vector_all_i_pu
 from vector_all_i_pd.vector_all_i_pd import vector_all_i_pd
 from vector_all_i_0_1.vector_all_i_0_1 import vector_all_i_0_1
 from uart.uart import uart
+from wr_rd_gpio_config.wr_rd_gpio_config import wr_rd_gpio_config

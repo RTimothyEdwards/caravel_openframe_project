@@ -473,7 +473,7 @@ module picosoc (
     wire [31:0] gpio_dat_o [`OPENFRAME_IO_PADS-1:0];
 
     wire gpio_all_ack_o;		// Combined output
-    wire [31:0] gpio_all_dat_o;		// Combined output
+    reg [31:0] gpio_all_dat_o;		// Combined output
 
     // GPIO default configurations for each pad
     // bit 11	fixed output value
@@ -584,9 +584,16 @@ module picosoc (
 	/* Combine bits from all GPIO wishbone data outputs so that they
 	 * can be handled in one wishbone interface.
 	 */
-	for (i = 0; i < 32; i = i + 1) begin
-	    assign gpio_all_dat_o[i] = |(gpio_dat_o[i][`OPENFRAME_IO_PADS-1:0]);
-	end
+	integer k, j;
+
+    always @(*) begin
+        for (k = 0; k < 32; k = k + 1) begin
+            gpio_all_dat_o[k] = 1'b0;
+            for (j = 0; j < `OPENFRAME_IO_PADS; j = j + 1) begin
+                gpio_all_dat_o[k] = gpio_all_dat_o[k] | gpio_dat_o[j][k];
+            end
+        end
+    end
 	assign gpio_all_ack_o = |(gpio_ack_o[`OPENFRAME_IO_PADS-1:0]);
 
 	/* GPIOs with dedicated functions that have no output
