@@ -3,6 +3,7 @@ import re
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles, Edge
 from cocotb_includes import UART
+from cocotb_includes import SPI
 
 class OpenFrame:
     def __init__(self, caravelEnv):
@@ -67,4 +68,7 @@ class OpenFrameUART(UART):
         self.bit_time_ns = round(self.period *(2 + new_clk_div))  
         cocotb.log.info(f"[OpenFrameUART] configure UART with new clk div {new_clk_div} bit_time_ns = {self.bit_time_ns}ns")
 
-    
+class OpenFrameSPI(SPI):
+    def __init__(self, caravelEnv, clk_period=None, spi_pins={"CSB": 3, "SCK": 4, "SDO": 2, "SDI": 1}) -> None:
+        super().__init__(caravelEnv, clk_period=clk_period,spi_pins=spi_pins)
+        

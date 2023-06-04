@@ -11,3 +11,5 @@ from timer0.timer0 import timer0
 from timer1.timer1 import timer1
 from timer_chain.timer_chain import timer_chain
 from spi_master.spi_master import spi_master
+from housekeeping.hk_reset_val.hk_reset_val import hk_reset_val
+from housekeeping.hk_wr_regs.hk_wr_regs import hk_wr_regs
