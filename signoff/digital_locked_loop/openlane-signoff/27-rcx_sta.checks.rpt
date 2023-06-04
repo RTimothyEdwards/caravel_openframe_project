@@ -1,0 +1,504 @@
+
+===========================================================================
+report_checks -unconstrained
+===========================================================================
+======================= Typical Corner ===================================
+
+Startpoint: _395_ (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: _403_ (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock dll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.12    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    48    0.10                           dll_control.clock (net)
+                  0.12    0.01    0.01 ^ _395_/CLK (sky130_fd_sc_hd__dfrtp_4)
+                  0.09    0.57    0.57 v _395_/Q (sky130_fd_sc_hd__dfrtp_4)
+     6    0.03                           dll_control.count0[1] (net)
+                  0.09    0.00    0.58 v _208_/A (sky130_fd_sc_hd__xor2_2)
+                  0.08    0.22    0.79 v _208_/X (sky130_fd_sc_hd__xor2_2)
+     3    0.01                           _064_ (net)
+                  0.08    0.00    0.79 v _210_/A2 (sky130_fd_sc_hd__a211o_1)
+                  0.08    0.35    1.14 v _210_/X (sky130_fd_sc_hd__a211o_1)
+     3    0.01                           _066_ (net)
+                  0.08    0.00    1.14 v _218_/B (sky130_fd_sc_hd__and3_1)
+                  0.05    0.20    1.35 v _218_/X (sky130_fd_sc_hd__and3_1)
+     2    0.01                           _074_ (net)
+                  0.05    0.00    1.35 v _221_/A2 (sky130_fd_sc_hd__o32a_1)
+                  0.08    0.37    1.72 v _221_/X (sky130_fd_sc_hd__o32a_1)
+     3    0.01                           _077_ (net)
+                  0.08    0.00    1.72 v _231_/B1 (sky130_fd_sc_hd__o2111a_1)
+                  0.05    0.16    1.88 v _231_/X (sky130_fd_sc_hd__o2111a_1)
+     1    0.00                           _087_ (net)
+                  0.05    0.00    1.88 v _234_/A1 (sky130_fd_sc_hd__o31a_1)
+                  0.09    0.36    2.24 v _234_/X (sky130_fd_sc_hd__o31a_1)
+     2    0.01                           _090_ (net)
+                  0.09    0.00    2.24 v fanout2/A (sky130_fd_sc_hd__buf_2)
+                  0.08    0.20    2.44 v fanout2/X (sky130_fd_sc_hd__buf_2)
+     7    0.03                           net2 (net)
+                  0.08    0.00    2.44 v _244_/A (sky130_fd_sc_hd__and3_1)
+                  0.03    0.16    2.60 v _244_/X (sky130_fd_sc_hd__and3_1)
+     1    0.00                           _100_ (net)
+                  0.03    0.00    2.60 v _249_/A_N (sky130_fd_sc_hd__and3b_1)
+                  0.11    0.26    2.86 ^ _249_/X (sky130_fd_sc_hd__and3b_1)
+     3    0.01                           _105_ (net)
+                  0.11    0.00    2.86 ^ _254_/B1 (sky130_fd_sc_hd__o31a_1)
+                  0.11    0.20    3.06 ^ _254_/X (sky130_fd_sc_hd__o31a_1)
+     2    0.01                           _110_ (net)
+                  0.11    0.00    3.06 ^ fanout1/A (sky130_fd_sc_hd__clkbuf_2)
+                  0.16    0.22    3.28 ^ fanout1/X (sky130_fd_sc_hd__clkbuf_2)
+     7    0.03                           net1 (net)
+                  0.16    0.00    3.28 ^ _272_/S (sky130_fd_sc_hd__mux2_1)
+                  0.06    0.36    3.64 v _272_/X (sky130_fd_sc_hd__mux2_1)
+     1    0.00                           _035_ (net)
+                  0.06    0.00    3.64 v _403_/D (sky130_fd_sc_hd__dfrtp_1)
+                                  3.64   data arrival time
+
+                          6.67    6.67   clock dll_control_clock (rise edge)
+                          0.00    6.67   clock source latency
+                  0.12    0.00    6.67 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    48    0.10                           dll_control.clock (net)
+                  0.12    0.00    6.67 ^ _403_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                         -0.10    6.57   clock uncertainty
+                          0.00    6.57   clock reconvergence pessimism
+                         -0.10    6.47   library setup time
+                                  6.47   data required time
+-----------------------------------------------------------------------------
+                                  6.47   data required time
+                                 -3.64   data arrival time
+-----------------------------------------------------------------------------
+                                  2.83   slack (MET)
+
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+======================= Typical Corner ===================================
+
+No paths found.
+
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+======================= Typical Corner ===================================
+
+max fanout
+
+Pin                                   Limit Fanout  Slack
+---------------------------------------------------------
+ringosc.ibufp01/Y                        15     48    -33 (VIOLATED)
+
+
+
+===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 1 unannotated drivers.
+ ringosc.iss.const1/LO
+Found 0 partially unannotated drivers.
+
+===========================================================================
+max slew violation count 0
+max fanout violation count 1
+max cap violation count 0
+============================================================================
+
+===========================================================================
+check_setup -verbose -unconstrained_endpoints -multiple_clock -no_clock -no_input_delay -loops -generated_clocks
+===========================================================================
+Warning: There are 3 unconstrained endpoints.
+  clockp[0]
+  clockp[1]
+  _406_/D
+Warning: There are 3 combinational loops in the design.
+  ringosc.dstage[1].id.delayen1/Z
+  ringosc.dstage[1].id.delayint0/A
+  ringosc.dstage[1].id.delayint0/Y
+  ringosc.dstage[1].id.delayen0/A
+  ringosc.dstage[1].id.delayen0/Z
+  ringosc.dstage[2].id.delaybuf0/A
+  ringosc.dstage[2].id.delaybuf0/X
+  ringosc.dstage[2].id.delaybuf1/A
+  ringosc.dstage[2].id.delaybuf1/X
+  ringosc.dstage[2].id.delayen1/A
+  ringosc.dstage[2].id.delayen1/Z
+  ringosc.dstage[2].id.delayint0/A
+  ringosc.dstage[2].id.delayint0/Y
+  ringosc.dstage[2].id.delayen0/A
+  ringosc.dstage[2].id.delayen0/Z
+  ringosc.dstage[3].id.delaybuf0/A
+  ringosc.dstage[3].id.delaybuf0/X
+  ringosc.dstage[3].id.delaybuf1/A
+  ringosc.dstage[3].id.delaybuf1/X
+  ringosc.dstage[3].id.delayen1/A
+  ringosc.dstage[3].id.delayen1/Z
+  ringosc.dstage[3].id.delayint0/A
+  ringosc.dstage[3].id.delayint0/Y
+  ringosc.dstage[3].id.delayen0/A
+  ringosc.dstage[3].id.delayen0/Z
+  ringosc.dstage[4].id.delaybuf0/A
+  ringosc.dstage[4].id.delaybuf0/X
+  ringosc.dstage[4].id.delaybuf1/A
+  ringosc.dstage[4].id.delaybuf1/X
+  ringosc.dstage[4].id.delayen1/A
+  ringosc.dstage[4].id.delayen1/Z
+  ringosc.dstage[4].id.delayint0/A
+  ringosc.dstage[4].id.delayint0/Y
+  ringosc.dstage[4].id.delayen0/A
+  ringosc.dstage[4].id.delayen0/Z
+  ringosc.dstage[5].id.delaybuf0/A
+  ringosc.dstage[5].id.delaybuf0/X
+  ringosc.dstage[5].id.delaybuf1/A
+  ringosc.dstage[5].id.delaybuf1/X
+  ringosc.dstage[5].id.delayen1/A
+  ringosc.dstage[5].id.delayen1/Z
+  ringosc.dstage[5].id.delayint0/A
+  ringosc.dstage[5].id.delayint0/Y
+  ringosc.dstage[5].id.delayen0/A
+  ringosc.dstage[5].id.delayen0/Z
+  ringosc.dstage[6].id.delaybuf0/A
+  ringosc.dstage[6].id.delaybuf0/X
+  ringosc.dstage[6].id.delaybuf1/A
+  ringosc.dstage[6].id.delaybuf1/X
+  ringosc.dstage[6].id.delayen1/A
+  ringosc.dstage[6].id.delayen1/Z
+  ringosc.dstage[6].id.delayint0/A
+  ringosc.dstage[6].id.delayint0/Y
+  ringosc.dstage[6].id.delayen0/A
+  ringosc.dstage[6].id.delayen0/Z
+  ringosc.dstage[7].id.delaybuf0/A
+  ringosc.dstage[7].id.delaybuf0/X
+  ringosc.dstage[7].id.delaybuf1/A
+  ringosc.dstage[7].id.delaybuf1/X
+  ringosc.dstage[7].id.delayen1/A
+  ringosc.dstage[7].id.delayen1/Z
+  ringosc.dstage[7].id.delayint0/A
+  ringosc.dstage[7].id.delayint0/Y
+  ringosc.dstage[7].id.delayen0/A
+  ringosc.dstage[7].id.delayen0/Z
+  ringosc.dstage[8].id.delaybuf0/A
+  ringosc.dstage[8].id.delaybuf0/X
+  ringosc.dstage[8].id.delaybuf1/A
+  ringosc.dstage[8].id.delaybuf1/X
+  ringosc.dstage[8].id.delayen1/A
+  ringosc.dstage[8].id.delayen1/Z
+  ringosc.dstage[8].id.delayint0/A
+  ringosc.dstage[8].id.delayint0/Y
+  ringosc.dstage[8].id.delayen0/A
+  ringosc.dstage[8].id.delayen0/Z
+  ringosc.dstage[9].id.delaybuf0/A
+  ringosc.dstage[9].id.delaybuf0/X
+  ringosc.dstage[9].id.delaybuf1/A
+  ringosc.dstage[9].id.delaybuf1/X
+  ringosc.dstage[9].id.delayen1/A
+  ringosc.dstage[9].id.delayen1/Z
+  ringosc.dstage[9].id.delayint0/A
+  ringosc.dstage[9].id.delayint0/Y
+  ringosc.dstage[9].id.delayen0/A
+  ringosc.dstage[9].id.delayen0/Z
+  ringosc.dstage[10].id.delaybuf0/A
+  ringosc.dstage[10].id.delaybuf0/X
+  ringosc.dstage[10].id.delaybuf1/A
+  ringosc.dstage[10].id.delaybuf1/X
+  ringosc.dstage[10].id.delayen1/A
+  ringosc.dstage[10].id.delayen1/Z
+  ringosc.dstage[10].id.delayint0/A
+  ringosc.dstage[10].id.delayint0/Y
+  ringosc.dstage[10].id.delayen0/A
+  ringosc.dstage[10].id.delayen0/Z
+  ringosc.dstage[11].id.delaybuf0/A
+  ringosc.dstage[11].id.delaybuf0/X
+  ringosc.dstage[11].id.delaybuf1/A
+  ringosc.dstage[11].id.delaybuf1/X
+  ringosc.dstage[11].id.delayen1/A
+  ringosc.dstage[11].id.delayen1/Z
+  ringosc.dstage[11].id.delayint0/A
+  ringosc.dstage[11].id.delayint0/Y
+  ringosc.dstage[11].id.delayen0/A
+  ringosc.dstage[11].id.delayen0/Z
+  ringosc.iss.delaybuf0/A
+  ringosc.iss.delaybuf0/X
+  ringosc.iss.delayen1/A
+  ringosc.iss.delayen1/Z
+  ringosc.iss.delayint0/A
+  ringosc.iss.delayint0/Y
+  ringosc.iss.delayen0/A
+  ringosc.iss.delayen0/Z
+  ringosc.dstage[0].id.delaybuf0/A
+  ringosc.dstage[0].id.delaybuf0/X
+  ringosc.dstage[0].id.delaybuf1/A
+  ringosc.dstage[0].id.delaybuf1/X
+  ringosc.dstage[0].id.delayen1/A
+  ringosc.dstage[0].id.delayen1/Z
+  ringosc.dstage[0].id.delayint0/A
+  ringosc.dstage[0].id.delayint0/Y
+  ringosc.dstage[0].id.delayen0/A
+  ringosc.dstage[0].id.delayen0/Z
+  ringosc.dstage[1].id.delaybuf0/A
+  ringosc.dstage[1].id.delaybuf0/X
+  ringosc.dstage[1].id.delaybuf1/A
+  ringosc.dstage[1].id.delaybuf1/X
+  ringosc.dstage[1].id.delayen1/A
+  | loop cut point
+  ringosc.dstage[1].id.delayen1/Z
+  --------------------------------
+  ringosc.dstage[2].id.delaybuf0/A
+  ringosc.dstage[2].id.delaybuf0/X
+  ringosc.dstage[2].id.delaybuf1/A
+  ringosc.dstage[2].id.delaybuf1/X
+  ringosc.dstage[2].id.delayen1/A
+  ringosc.dstage[2].id.delayen1/Z
+  ringosc.dstage[2].id.delayint0/A
+  ringosc.dstage[2].id.delayint0/Y
+  ringosc.dstage[2].id.delayen0/A
+  ringosc.dstage[2].id.delayen0/Z
+  ringosc.dstage[3].id.delaybuf0/A
+  ringosc.dstage[3].id.delaybuf0/X
+  ringosc.dstage[3].id.delaybuf1/A
+  ringosc.dstage[3].id.delaybuf1/X
+  ringosc.dstage[3].id.delayen1/A
+  ringosc.dstage[3].id.delayen1/Z
+  ringosc.dstage[3].id.delayint0/A
+  ringosc.dstage[3].id.delayint0/Y
+  ringosc.dstage[3].id.delayen0/A
+  ringosc.dstage[3].id.delayen0/Z
+  ringosc.dstage[4].id.delaybuf0/A
+  ringosc.dstage[4].id.delaybuf0/X
+  ringosc.dstage[4].id.delaybuf1/A
+  ringosc.dstage[4].id.delaybuf1/X
+  ringosc.dstage[4].id.delayen1/A
+  ringosc.dstage[4].id.delayen1/Z
+  ringosc.dstage[4].id.delayint0/A
+  ringosc.dstage[4].id.delayint0/Y
+  ringosc.dstage[4].id.delayen0/A
+  ringosc.dstage[4].id.delayen0/Z
+  ringosc.dstage[5].id.delaybuf0/A
+  ringosc.dstage[5].id.delaybuf0/X
+  ringosc.dstage[5].id.delaybuf1/A
+  ringosc.dstage[5].id.delaybuf1/X
+  ringosc.dstage[5].id.delayen1/A
+  ringosc.dstage[5].id.delayen1/Z
+  ringosc.dstage[5].id.delayint0/A
+  ringosc.dstage[5].id.delayint0/Y
+  ringosc.dstage[5].id.delayen0/A
+  ringosc.dstage[5].id.delayen0/Z
+  ringosc.dstage[6].id.delaybuf0/A
+  ringosc.dstage[6].id.delaybuf0/X
+  ringosc.dstage[6].id.delaybuf1/A
+  ringosc.dstage[6].id.delaybuf1/X
+  ringosc.dstage[6].id.delayen1/A
+  ringosc.dstage[6].id.delayen1/Z
+  ringosc.dstage[6].id.delayint0/A
+  ringosc.dstage[6].id.delayint0/Y
+  ringosc.dstage[6].id.delayen0/A
+  ringosc.dstage[6].id.delayen0/Z
+  ringosc.dstage[7].id.delaybuf0/A
+  ringosc.dstage[7].id.delaybuf0/X
+  ringosc.dstage[7].id.delaybuf1/A
+  ringosc.dstage[7].id.delaybuf1/X
+  ringosc.dstage[7].id.delayen1/A
+  ringosc.dstage[7].id.delayen1/Z
+  ringosc.dstage[7].id.delayint0/A
+  ringosc.dstage[7].id.delayint0/Y
+  ringosc.dstage[7].id.delayen0/A
+  ringosc.dstage[7].id.delayen0/Z
+  ringosc.dstage[8].id.delaybuf0/A
+  ringosc.dstage[8].id.delaybuf0/X
+  ringosc.dstage[8].id.delaybuf1/A
+  ringosc.dstage[8].id.delaybuf1/X
+  ringosc.dstage[8].id.delayen1/A
+  ringosc.dstage[8].id.delayen1/Z
+  ringosc.dstage[8].id.delayint0/A
+  ringosc.dstage[8].id.delayint0/Y
+  ringosc.dstage[8].id.delayen0/A
+  ringosc.dstage[8].id.delayen0/Z
+  ringosc.dstage[9].id.delaybuf0/A
+  ringosc.dstage[9].id.delaybuf0/X
+  ringosc.dstage[9].id.delaybuf1/A
+  ringosc.dstage[9].id.delaybuf1/X
+  ringosc.dstage[9].id.delayen1/A
+  ringosc.dstage[9].id.delayen1/Z
+  ringosc.dstage[9].id.delayint0/A
+  ringosc.dstage[9].id.delayint0/Y
+  ringosc.dstage[9].id.delayen0/A
+  ringosc.dstage[9].id.delayen0/Z
+  ringosc.dstage[10].id.delaybuf0/A
+  ringosc.dstage[10].id.delaybuf0/X
+  ringosc.dstage[10].id.delaybuf1/A
+  ringosc.dstage[10].id.delaybuf1/X
+  ringosc.dstage[10].id.delayen1/A
+  ringosc.dstage[10].id.delayen1/Z
+  ringosc.dstage[10].id.delayint0/A
+  ringosc.dstage[10].id.delayint0/Y
+  ringosc.dstage[10].id.delayen0/A
+  ringosc.dstage[10].id.delayen0/Z
+  ringosc.dstage[11].id.delaybuf0/A
+  ringosc.dstage[11].id.delaybuf0/X
+  ringosc.dstage[11].id.delaybuf1/A
+  ringosc.dstage[11].id.delaybuf1/X
+  ringosc.dstage[11].id.delayen1/A
+  ringosc.dstage[11].id.delayen1/Z
+  ringosc.dstage[11].id.delayint0/A
+  ringosc.dstage[11].id.delayint0/Y
+  ringosc.dstage[11].id.delayen0/A
+  ringosc.dstage[11].id.delayen0/Z
+  ringosc.iss.delaybuf0/A
+  ringosc.iss.delaybuf0/X
+  ringosc.iss.delayen1/A
+  ringosc.iss.delayen1/Z
+  ringosc.iss.delayint0/A
+  ringosc.iss.delayint0/Y
+  ringosc.iss.delayen0/A
+  ringosc.iss.delayen0/Z
+  ringosc.dstage[0].id.delaybuf0/A
+  ringosc.dstage[0].id.delaybuf0/X
+  ringosc.dstage[0].id.delaybuf1/A
+  ringosc.dstage[0].id.delaybuf1/X
+  ringosc.dstage[0].id.delayen1/A
+  ringosc.dstage[0].id.delayen1/Z
+  ringosc.dstage[0].id.delayint0/A
+  ringosc.dstage[0].id.delayint0/Y
+  ringosc.dstage[0].id.delayen0/A
+  ringosc.dstage[0].id.delayen0/Z
+  ringosc.dstage[1].id.delaybuf0/A
+  ringosc.dstage[1].id.delaybuf0/X
+  ringosc.dstage[1].id.delayenb0/A
+  ringosc.dstage[1].id.delayenb0/Z
+  | loop cut point
+  ringosc.dstage[2].id.delaybuf0/A
+  --------------------------------
+  ringosc.dstage[1].id.delayint0/A
+  ringosc.dstage[1].id.delayint0/Y
+  ringosc.dstage[1].id.delayen0/A
+  ringosc.dstage[1].id.delayen0/Z
+  ringosc.dstage[2].id.delaybuf0/A
+  ringosc.dstage[2].id.delaybuf0/X
+  ringosc.dstage[2].id.delaybuf1/A
+  ringosc.dstage[2].id.delaybuf1/X
+  ringosc.dstage[2].id.delayen1/A
+  ringosc.dstage[2].id.delayen1/Z
+  ringosc.dstage[2].id.delayint0/A
+  ringosc.dstage[2].id.delayint0/Y
+  ringosc.dstage[2].id.delayen0/A
+  ringosc.dstage[2].id.delayen0/Z
+  ringosc.dstage[3].id.delaybuf0/A
+  ringosc.dstage[3].id.delaybuf0/X
+  ringosc.dstage[3].id.delaybuf1/A
+  ringosc.dstage[3].id.delaybuf1/X
+  ringosc.dstage[3].id.delayen1/A
+  ringosc.dstage[3].id.delayen1/Z
+  ringosc.dstage[3].id.delayint0/A
+  ringosc.dstage[3].id.delayint0/Y
+  ringosc.dstage[3].id.delayen0/A
+  ringosc.dstage[3].id.delayen0/Z
+  ringosc.dstage[4].id.delaybuf0/A
+  ringosc.dstage[4].id.delaybuf0/X
+  ringosc.dstage[4].id.delaybuf1/A
+  ringosc.dstage[4].id.delaybuf1/X
+  ringosc.dstage[4].id.delayen1/A
+  ringosc.dstage[4].id.delayen1/Z
+  ringosc.dstage[4].id.delayint0/A
+  ringosc.dstage[4].id.delayint0/Y
+  ringosc.dstage[4].id.delayen0/A
+  ringosc.dstage[4].id.delayen0/Z
+  ringosc.dstage[5].id.delaybuf0/A
+  ringosc.dstage[5].id.delaybuf0/X
+  ringosc.dstage[5].id.delaybuf1/A
+  ringosc.dstage[5].id.delaybuf1/X
+  ringosc.dstage[5].id.delayen1/A
+  ringosc.dstage[5].id.delayen1/Z
+  ringosc.dstage[5].id.delayint0/A
+  ringosc.dstage[5].id.delayint0/Y
+  ringosc.dstage[5].id.delayen0/A
+  ringosc.dstage[5].id.delayen0/Z
+  ringosc.dstage[6].id.delaybuf0/A
+  ringosc.dstage[6].id.delaybuf0/X
+  ringosc.dstage[6].id.delaybuf1/A
+  ringosc.dstage[6].id.delaybuf1/X
+  ringosc.dstage[6].id.delayen1/A
+  ringosc.dstage[6].id.delayen1/Z
+  ringosc.dstage[6].id.delayint0/A
+  ringosc.dstage[6].id.delayint0/Y
+  ringosc.dstage[6].id.delayen0/A
+  ringosc.dstage[6].id.delayen0/Z
+  ringosc.dstage[7].id.delaybuf0/A
+  ringosc.dstage[7].id.delaybuf0/X
+  ringosc.dstage[7].id.delaybuf1/A
+  ringosc.dstage[7].id.delaybuf1/X
+  ringosc.dstage[7].id.delayen1/A
+  ringosc.dstage[7].id.delayen1/Z
+  ringosc.dstage[7].id.delayint0/A
+  ringosc.dstage[7].id.delayint0/Y
+  ringosc.dstage[7].id.delayen0/A
+  ringosc.dstage[7].id.delayen0/Z
+  ringosc.dstage[8].id.delaybuf0/A
+  ringosc.dstage[8].id.delaybuf0/X
+  ringosc.dstage[8].id.delaybuf1/A
+  ringosc.dstage[8].id.delaybuf1/X
+  ringosc.dstage[8].id.delayen1/A
+  ringosc.dstage[8].id.delayen1/Z
+  ringosc.dstage[8].id.delayint0/A
+  ringosc.dstage[8].id.delayint0/Y
+  ringosc.dstage[8].id.delayen0/A
+  ringosc.dstage[8].id.delayen0/Z
+  ringosc.dstage[9].id.delaybuf0/A
+  ringosc.dstage[9].id.delaybuf0/X
+  ringosc.dstage[9].id.delaybuf1/A
+  ringosc.dstage[9].id.delaybuf1/X
+  ringosc.dstage[9].id.delayen1/A
+  ringosc.dstage[9].id.delayen1/Z
+  ringosc.dstage[9].id.delayint0/A
+  ringosc.dstage[9].id.delayint0/Y
+  ringosc.dstage[9].id.delayen0/A
+  ringosc.dstage[9].id.delayen0/Z
+  ringosc.dstage[10].id.delaybuf0/A
+  ringosc.dstage[10].id.delaybuf0/X
+  ringosc.dstage[10].id.delaybuf1/A
+  ringosc.dstage[10].id.delaybuf1/X
+  ringosc.dstage[10].id.delayen1/A
+  ringosc.dstage[10].id.delayen1/Z
+  ringosc.dstage[10].id.delayint0/A
+  ringosc.dstage[10].id.delayint0/Y
+  ringosc.dstage[10].id.delayen0/A
+  ringosc.dstage[10].id.delayen0/Z
+  ringosc.dstage[11].id.delaybuf0/A
+  ringosc.dstage[11].id.delaybuf0/X
+  ringosc.dstage[11].id.delaybuf1/A
+  ringosc.dstage[11].id.delaybuf1/X
+  ringosc.dstage[11].id.delayen1/A
+  ringosc.dstage[11].id.delayen1/Z
+  ringosc.dstage[11].id.delayint0/A
+  ringosc.dstage[11].id.delayint0/Y
+  ringosc.dstage[11].id.delayen0/A
+  ringosc.dstage[11].id.delayen0/Z
+  ringosc.iss.delaybuf0/A
+  ringosc.iss.delaybuf0/X
+  ringosc.iss.delayen1/A
+  ringosc.iss.delayen1/Z
+  ringosc.iss.delayint0/A
+  ringosc.iss.delayint0/Y
+  ringosc.iss.delayen0/A
+  ringosc.iss.delayen0/Z
+  ringosc.dstage[0].id.delaybuf0/A
+  ringosc.dstage[0].id.delaybuf0/X
+  ringosc.dstage[0].id.delaybuf1/A
+  ringosc.dstage[0].id.delaybuf1/X
+  ringosc.dstage[0].id.delayen1/A
+  ringosc.dstage[0].id.delayen1/Z
+  ringosc.dstage[0].id.delayint0/A
+  ringosc.dstage[0].id.delayint0/Y
+  ringosc.dstage[0].id.delayen0/A
+  ringosc.dstage[0].id.delayen0/Z
+  ringosc.dstage[1].id.delaybuf0/A
+  ringosc.dstage[1].id.delaybuf0/X
+  ringosc.dstage[1].id.delayenb1/A
+  ringosc.dstage[1].id.delayenb1/Z
+  | loop cut point
+  ringosc.dstage[1].id.delayint0/A
+  --------------------------------
