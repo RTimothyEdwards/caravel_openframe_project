@@ -2,9 +2,11 @@ create_clock -name clk -period $::env(CLOCK_PERIOD) [get_ports {gpio_in[38]}]
 create_clock -name clk_hkspi_sck -period $::env(CLOCK_PERIOD) [get_ports {gpio_in[4]}]
 create_generated_clock -name spi_master -source [get_ports {gpio_in[38]}] -divide_by 2 [get_pins -of_objects {simple_spi_master_inst.spi_master.hsck} -filter lib_pin_name==Q]
 
-### Caravel Signoff SDC
-### Rev 3
-### Date: 28/10/2022
+set_clock_groups \
+   -name clock_group \
+   -logically_exclusive \
+   -group [get_clocks {clk}]\
+   -group [get_clocks {clk_hkspi_sck}]
 
 set_clock_uncertainty 0.4 [all_clocks]
 set_propagated_clock [all_clocks]
