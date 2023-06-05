@@ -11,3 +11,4 @@ Tests:
     - {name: spi_master, sim: RTL}
     - {name: hk_reset_val, sim: RTL}
     - {name: hk_wr_regs, sim: RTL}
+    - {name: cpu_reset, sim: RTL}

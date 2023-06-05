@@ -19,9 +19,9 @@ class HousekeepingRegs(RALModel):
         # writable registers
         self.add_register(name="DLL enable", address=0x08, writable_mask=0x03, size=2, reset_val=0x2)
         self.add_register(name="Dll bypass", address=0x09, writable_mask=0x01, size=1, reset_val=0x1)
-        self.add_register(name="irq", address=0x0a, writable_mask=0x01, size=1, reset_val=0x0)
-        self.add_register(name="reset", address=0x0b, writable_mask=0x01, size=1, reset_val=0x0)
-        self.add_register(name="trap", address=0x0c, writable_mask=0x00, size=1, reset_val=0x0)
+        self.add_register(name="SPI irq", address=0x0a, writable_mask=0x01, size=1, reset_val=0x0)
+        self.add_register(name="CPU reset", address=0x0b, writable_mask=0x01, size=1, reset_val=0x0)
+        self.add_register(name="CPU trap", address=0x0c, writable_mask=0x00, size=1, reset_val=0x0)
         self.add_register(name="DLL trim reg0", address=0x0d, writable_mask=0xFF, size=8, reset_val=0xFF)
         self.add_register(name="DLL trim reg1", address=0x0e, writable_mask=0xFF, size=8, reset_val=0xEF)
         self.add_register(name="DLL trim reg2", address=0x0f, writable_mask=0xFF, size=8, reset_val=0xFF)
