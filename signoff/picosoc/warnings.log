@@ -4,7 +4,7 @@
 [WARNING]: Module sky130_fd_sc_hd__fill_1 blackboxed during sta
 [WARNING]: Module sky130_ef_sc_hd__decap_12 blackboxed during sta
 [WARNING]: Module sky130_fd_sc_hd__fill_2 blackboxed during sta
-[WARNING]: There are max slew violations in the design at the typical corner. Please refer to '../caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna/reports/signoff/34-rcx_sta.checks.rpt'.
-[WARNING]: There are max fanout violations in the design at the typical corner. Please refer to '../caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna/reports/signoff/34-rcx_sta.checks.rpt'.
-[WARNING]: There are max capacitance violations in the design at the typical corner. Please refer to '../caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna/reports/signoff/34-rcx_sta.checks.rpt'.
-[WARNING]: There are hold violations in the design at the typical corner. Please refer to '../caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna/reports/signoff/34-rcx_sta.min.rpt'.
+[WARNING]: There are max slew violations in the design at the typical corner. Please refer to '../caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna-min-adju/reports/signoff/34-rcx_sta.checks.rpt'.
+[WARNING]: There are max fanout violations in the design at the typical corner. Please refer to '../caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna-min-adju/reports/signoff/34-rcx_sta.checks.rpt'.
+[WARNING]: There are max capacitance violations in the design at the typical corner. Please refer to '../caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna-min-adju/reports/signoff/34-rcx_sta.checks.rpt'.
+[WARNING]: There are hold violations in the design at the typical corner. Please refer to '../caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna-min-adju/reports/signoff/34-rcx_sta.min.rpt'.

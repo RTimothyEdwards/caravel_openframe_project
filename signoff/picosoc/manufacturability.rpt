@@ -1,15 +1,15 @@
 Design Name: picosoc
-Run Directory: /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna
+Run Directory: /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna-min-adju
 Source not found.
 ----------------------------------------
 
 LVS Summary:
-Source: /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna/logs/signoff/41-picosoc.lef.lvs.log
-Number of nets: 37382                      |Number of nets: 37382                      
+Source: /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna-min-adju/logs/signoff/41-picosoc.lef.lvs.log
+Number of nets: 37004                      |Number of nets: 37004                      
 Design is LVS clean.
 ----------------------------------------
 
 Antenna Summary:
-Source: /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna/logs/signoff/42-antenna.log
-Pin violations: 53
-Net violations: 51
+Source: /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna-min-adju/logs/signoff/42-antenna.log
+Pin violations: 44
+Net violations: 44
