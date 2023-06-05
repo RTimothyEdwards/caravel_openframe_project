@@ -237,7 +237,8 @@ module picosoc (
     end
 
     assign wb_clk_i = core_clk;
-    assign wb_rst_i = ~resetb;
+    // assign wb_rst_i = ~resetb;
+    assign wb_rst_i = ~core_rstn;
 
     // Wishbone Master
     wire [31:0] cpu_adr_o;
