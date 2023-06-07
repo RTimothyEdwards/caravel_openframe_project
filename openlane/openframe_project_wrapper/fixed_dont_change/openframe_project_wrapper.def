@@ -1314,10 +1314,7 @@ END VIAS
 COMPONENTS 0 ;
 END COMPONENTS
 
-PINS 939 ;
-   - gpio_loopback_one[24] + NET gpio_loopback_one[24]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 4533370 ) N ;
+PINS 913 ;
    - gpio_vtrip_sel[43] + NET gpio_vtrip_sel[43]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2429490 -920 ) N ;
@@ -1405,12 +1402,6 @@ PINS 939 ;
    - gpio_in[16] + NET gpio_in[16]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2485540 4767550 ) N ;
-   - gpio_loopback_one[15] + NET gpio_loopback_one[15]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2988560 4767550 ) N ;
-   - gpio_loopback_one[16] + NET gpio_loopback_one[16]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2479560 4767550 ) N ;
    - gpio_dm1[17] + NET gpio_dm1[17]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2210140 4767550 ) N ;
@@ -1495,12 +1486,6 @@ PINS 939 ;
    - gpio_dm0[17] + NET gpio_dm0[17]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2200940 4767550 ) N ;
-   - gpio_loopback_one[17] + NET gpio_loopback_one[17]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2222560 4767550 ) N ;
-   - gpio_loopback_one[18] + NET gpio_loopback_one[18]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1777560 4767550 ) N ;
    - gpio_slow_sel[19] + NET gpio_slow_sel[19]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1265340 4767550 ) N ;
@@ -1585,12 +1570,6 @@ PINS 939 ;
    - gpio_out[19] + NET gpio_out[19]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1219340 4767550 ) N ;
-   - gpio_loopback_one[19] + NET gpio_loopback_one[19]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1268560 4767550 ) N ;
-   - gpio_loopback_one[20] + NET gpio_loopback_one[20]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1010560 4767550 ) N ;
    - gpio_in[21] + NET gpio_in[21]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 759540 4767550 ) N ;
@@ -1717,21 +1696,9 @@ PINS 939 ;
    - gpio_vtrip_sel[21] + NET gpio_vtrip_sel[21]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 695140 4767550 ) N ;
-   - gpio_loopback_one[21] + NET gpio_loopback_one[21]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 753560 4767550 ) N ;
-   - gpio_loopback_one[22] + NET gpio_loopback_one[22]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 496560 4767550 ) N ;
-   - gpio_loopback_one[23] + NET gpio_loopback_one[23]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 239560 4767550 ) N ;
    - gpio_in[38] + NET gpio_in[38]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 726090 -920 ) N ;
-   - gpio_loopback_one[38] + NET gpio_loopback_one[38]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 732070 -920 ) N ;
    - gpio_slow_sel[38] + NET gpio_slow_sel[38]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 735290 -920 ) N ;
@@ -1774,9 +1741,6 @@ PINS 939 ;
    - gpio_in[39] + NET gpio_in[39]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1269090 -920 ) N ;
-   - gpio_loopback_one[39] + NET gpio_loopback_one[39]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1275070 -920 ) N ;
    - gpio_slow_sel[39] + NET gpio_slow_sel[39]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1278290 -920 ) N ;
@@ -1819,9 +1783,6 @@ PINS 939 ;
    - gpio_in[40] + NET gpio_in[40]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1543090 -920 ) N ;
-   - gpio_loopback_one[40] + NET gpio_loopback_one[40]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1549070 -920 ) N ;
    - gpio_slow_sel[40] + NET gpio_slow_sel[40]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1552290 -920 ) N ;
@@ -1864,9 +1825,6 @@ PINS 939 ;
    - gpio_in[41] + NET gpio_in[41]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1817090 -920 ) N ;
-   - gpio_loopback_one[41] + NET gpio_loopback_one[41]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1823070 -920 ) N ;
    - gpio_slow_sel[41] + NET gpio_slow_sel[41]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 1826290 -920 ) N ;
@@ -1909,9 +1867,6 @@ PINS 939 ;
    - gpio_in[42] + NET gpio_in[42]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2091090 -920 ) N ;
-   - gpio_loopback_one[42] + NET gpio_loopback_one[42]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2097070 -920 ) N ;
    - gpio_slow_sel[42] + NET gpio_slow_sel[42]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2100290 -920 ) N ;
@@ -1954,9 +1909,6 @@ PINS 939 ;
    - gpio_in[43] + NET gpio_in[43]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2365090 -920 ) N ;
-   - gpio_loopback_one[43] + NET gpio_loopback_one[43]
-     + PORT
-        + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2371070 -920 ) N ;
    - gpio_slow_sel[43] + NET gpio_slow_sel[43]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2374290 -920 ) N ;
@@ -2128,147 +2080,9 @@ PINS 939 ;
    - analog_noesd_io[43] + NET analog_noesd_io[43]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 2386710 -920 ) N ;
-   - gpio_loopback_one[43] + NET gpio_loopback_one[43]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 2442030 -510 ) N ;
-   - gpio_loopback_zero[43] + NET gpio_loopback_zero[43]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 2463305 -510 ) N ;
-   - gpio_loopback_one[42] + NET gpio_loopback_one[42]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 2168030 -510 ) N ;
-   - gpio_loopback_zero[42] + NET gpio_loopback_zero[42]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 2189020 -510 ) N ;
-   - gpio_loopback_one[41] + NET gpio_loopback_one[41]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1894030 -510 ) N ;
-   - gpio_loopback_zero[41] + NET gpio_loopback_zero[41]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1915020 -510 ) N ;
-   - gpio_loopback_one[40] + NET gpio_loopback_one[40]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1620030 -510 ) N ;
-   - gpio_loopback_zero[40] + NET gpio_loopback_zero[40]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1640955 -620 ) N ;
-   - gpio_loopback_one[39] + NET gpio_loopback_one[39]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1346030 -510 ) N ;
-   - gpio_loopback_zero[39] + NET gpio_loopback_zero[39]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1366930 -510 ) N ;
-   - gpio_loopback_one[38] + NET gpio_loopback_one[38]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 803030 -510 ) N ;
-   - gpio_loopback_zero[38] + NET gpio_loopback_zero[38]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 819085 -505 ) N ;
-   - resetb_l + NET resetb_l
-     + PORT
-        + LAYER met2 ( -140 -430 ) ( 140 430 )        + PLACED ( 550960 -150 ) N ;
-   - resetb_h + NET resetb_h
-     + PORT
-        + LAYER met2 ( -165 -365 ) ( 165 365 )        + PLACED ( 498020 -85 ) N ;
-   - mask_rev[0] + NET mask_rev[0]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3025540 -510 ) N ;
-   - mask_rev[4] + NET mask_rev[4]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3030020 -510 ) N ;
-   - mask_rev[5] + NET mask_rev[5]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3031140 -510 ) N ;
-   - mask_rev[6] + NET mask_rev[6]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3032260 -510 ) N ;
-   - mask_rev[7] + NET mask_rev[7]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3033380 -510 ) N ;
-   - mask_rev[8] + NET mask_rev[8]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3034500 -510 ) N ;
-   - mask_rev[9] + NET mask_rev[9]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3035620 -510 ) N ;
-   - mask_rev[10] + NET mask_rev[10]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3036740 -510 ) N ;
-   - mask_rev[11] + NET mask_rev[11]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3037860 -510 ) N ;
-   - mask_rev[12] + NET mask_rev[12]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3038980 -510 ) N ;
-   - mask_rev[13] + NET mask_rev[13]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3040100 -510 ) N ;
-   - mask_rev[14] + NET mask_rev[14]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3041220 -510 ) N ;
-   - mask_rev[15] + NET mask_rev[15]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3042340 -510 ) N ;
-   - mask_rev[16] + NET mask_rev[16]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3043460 -510 ) N ;
-   - mask_rev[17] + NET mask_rev[17]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3044580 -510 ) N ;
-   - mask_rev[18] + NET mask_rev[18]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3045700 -510 ) N ;
-   - mask_rev[19] + NET mask_rev[19]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3046820 -510 ) N ;
-   - mask_rev[20] + NET mask_rev[20]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3047940 -510 ) N ;
-   - mask_rev[21] + NET mask_rev[21]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3049060 -510 ) N ;
-   - mask_rev[22] + NET mask_rev[22]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3050180 -510 ) N ;
-   - mask_rev[23] + NET mask_rev[23]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3051300 -510 ) N ;
-   - mask_rev[24] + NET mask_rev[24]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3052420 -510 ) N ;
-   - mask_rev[25] + NET mask_rev[25]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3053540 -510 ) N ;
-   - mask_rev[26] + NET mask_rev[26]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3054660 -510 ) N ;
-   - mask_rev[27] + NET mask_rev[27]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3055780 -510 ) N ;
-   - mask_rev[28] + NET mask_rev[28]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3056900 -510 ) N ;
-   - mask_rev[29] + NET mask_rev[29]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3058020 -510 ) N ;
-   - mask_rev[30] + NET mask_rev[30]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3059140 -510 ) N ;
-   - mask_rev[31] + NET mask_rev[31]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3060260 -510 ) N ;
-   - mask_rev[3] + NET mask_rev[3]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3028900 -510 ) N ;
-   - mask_rev[2] + NET mask_rev[2]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3027780 -510 ) N ;
-   - mask_rev[1] + NET mask_rev[1]
-     + PORT
-        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3026660 -510 ) N ;
    - gpio_vtrip_sel[37] + NET gpio_vtrip_sel[37]
      + PORT
-        + LAYER met2 ( -1200 -140 ) ( 1200 140 )        + PLACED ( -920 708140 ) N ;
+        + LAYER met3 ( -1200 -180 ) ( 1200 180 )        + PLACED ( -920 708140 ) N ;
    - vccd1 + NET vccd1
      + PORT
         + LAYER met3 ( -1250 -11630 ) ( 1250 11630 )        + PLACED ( 3167600 2125690 ) N ;
@@ -2389,177 +2203,6 @@ PINS 939 ;
    - vdda + NET vdda
      + PORT
         + LAYER met3 ( -11950 -1250 ) ( 11950 1250 )        + PLACED ( 2965870 -970 ) N ;
-   - gpio_loopback_one[0] + NET gpio_loopback_one[0]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 380180 ) N ;
-   - gpio_loopback_one[1] + NET gpio_loopback_one[1]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 605180 ) N ;
-   - gpio_loopback_one[2] + NET gpio_loopback_one[2]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 830180 ) N ;
-   - gpio_loopback_one[3] + NET gpio_loopback_one[3]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1055180 ) N ;
-   - gpio_loopback_one[4] + NET gpio_loopback_one[4]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1280180 ) N ;
-   - gpio_loopback_one[5] + NET gpio_loopback_one[5]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1505180 ) N ;
-   - gpio_loopback_one[6] + NET gpio_loopback_one[6]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1730180 ) N ;
-   - gpio_loopback_one[7] + NET gpio_loopback_one[7]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 2615180 ) N ;
-   - gpio_loopback_one[8] + NET gpio_loopback_one[8]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 2840180 ) N ;
-   - gpio_loopback_one[9] + NET gpio_loopback_one[9]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3065180 ) N ;
-   - gpio_loopback_one[10] + NET gpio_loopback_one[10]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3290180 ) N ;
-   - gpio_loopback_one[11] + NET gpio_loopback_one[11]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3515180 ) N ;
-   - gpio_loopback_one[12] + NET gpio_loopback_one[12]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3740180 ) N ;
-   - gpio_loopback_one[13] + NET gpio_loopback_one[13]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 4185180 ) N ;
-   - gpio_loopback_one[14] + NET gpio_loopback_one[14]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 4635180 ) N ;
-   - gpio_loopback_one[37] + NET gpio_loopback_one[37]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 673370 ) N ;
-   - gpio_loopback_one[36] + NET gpio_loopback_one[36]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 888370 ) N ;
-   - gpio_loopback_one[35] + NET gpio_loopback_one[35]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1103370 ) N ;
-   - gpio_loopback_one[34] + NET gpio_loopback_one[34]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1318370 ) N ;
-   - gpio_loopback_one[33] + NET gpio_loopback_one[33]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1533370 ) N ;
-   - gpio_loopback_one[32] + NET gpio_loopback_one[32]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1748370 ) N ;
-   - gpio_loopback_one[31] + NET gpio_loopback_one[31]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2393370 ) N ;
-   - gpio_loopback_one[30] + NET gpio_loopback_one[30]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2608370 ) N ;
-   - gpio_loopback_one[29] + NET gpio_loopback_one[29]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2823370 ) N ;
-   - gpio_loopback_one[28] + NET gpio_loopback_one[28]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3038370 ) N ;
-   - gpio_loopback_one[27] + NET gpio_loopback_one[27]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3253370 ) N ;
-   - gpio_loopback_one[26] + NET gpio_loopback_one[26]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3468370 ) N ;
-   - gpio_loopback_one[25] + NET gpio_loopback_one[25]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3683370 ) N ;
-   - gpio_loopback_zero[34] + NET gpio_loopback_zero[34]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1308370 ) N ;
-   - gpio_loopback_zero[35] + NET gpio_loopback_zero[35]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1093370 ) N ;
-   - gpio_loopback_zero[36] + NET gpio_loopback_zero[36]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 878370 ) N ;
-   - gpio_loopback_zero[37] + NET gpio_loopback_zero[37]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 663370 ) N ;
-   - gpio_loopback_zero[33] + NET gpio_loopback_zero[33]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1523370 ) N ;
-   - gpio_loopback_zero[32] + NET gpio_loopback_zero[32]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1738370 ) N ;
-   - gpio_loopback_zero[31] + NET gpio_loopback_zero[31]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2383370 ) N ;
-   - gpio_loopback_zero[30] + NET gpio_loopback_zero[30]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2598370 ) N ;
-   - gpio_loopback_zero[29] + NET gpio_loopback_zero[29]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2813370 ) N ;
-   - gpio_loopback_zero[28] + NET gpio_loopback_zero[28]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3028370 ) N ;
-   - gpio_loopback_zero[27] + NET gpio_loopback_zero[27]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3243370 ) N ;
-   - gpio_loopback_zero[26] + NET gpio_loopback_zero[26]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3458370 ) N ;
-   - gpio_loopback_zero[25] + NET gpio_loopback_zero[25]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3673370 ) N ;
-   - gpio_loopback_zero[24] + NET gpio_loopback_zero[24]
-     + PORT
-        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 4523370 ) N ;
-   - gpio_loopback_zero[14] + NET gpio_loopback_zero[14]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 4645190 ) N ;
-   - gpio_loopback_zero[13] + NET gpio_loopback_zero[13]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 4195190 ) N ;
-   - gpio_loopback_zero[12] + NET gpio_loopback_zero[12]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3750190 ) N ;
-   - gpio_loopback_zero[11] + NET gpio_loopback_zero[11]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3525190 ) N ;
-   - gpio_loopback_zero[10] + NET gpio_loopback_zero[10]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3300190 ) N ;
-   - gpio_loopback_zero[9] + NET gpio_loopback_zero[9]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3075190 ) N ;
-   - gpio_loopback_zero[8] + NET gpio_loopback_zero[8]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 2850190 ) N ;
-   - gpio_loopback_zero[7] + NET gpio_loopback_zero[7]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 2625190 ) N ;
-   - gpio_loopback_zero[6] + NET gpio_loopback_zero[6]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1740190 ) N ;
-   - gpio_loopback_zero[5] + NET gpio_loopback_zero[5]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1515190 ) N ;
-   - gpio_loopback_zero[4] + NET gpio_loopback_zero[4]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1290190 ) N ;
-   - gpio_loopback_zero[3] + NET gpio_loopback_zero[3]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1065190 ) N ;
-   - gpio_loopback_zero[2] + NET gpio_loopback_zero[2]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 840190 ) N ;
-   - gpio_loopback_zero[1] + NET gpio_loopback_zero[1]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 615190 ) N ;
-   - gpio_loopback_zero[0] + NET gpio_loopback_zero[0]
-     + PORT
-        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 390190 ) N ;
    - gpio_analog_en[12] + NET gpio_analog_en[12]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 3684470 ) N ;
@@ -2686,15 +2329,6 @@ PINS 939 ;
    - gpio_in[14] + NET gpio_in[14]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 4552090 ) N ;
-   - gpio_loopback_one[12] + NET gpio_loopback_one[12]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 3666070 ) N ;
-   - gpio_loopback_one[13] + NET gpio_loopback_one[13]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 4112070 ) N ;
-   - gpio_loopback_one[14] + NET gpio_loopback_one[14]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 4558070 ) N ;
    - gpio_holdover[11] + NET gpio_holdover[11]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 3487530 ) N ;
@@ -2887,21 +2521,6 @@ PINS 939 ;
    - gpio_in[9] + NET gpio_in[9]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 2984090 ) N ;
-   - gpio_loopback_one[7] + NET gpio_loopback_one[7]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 2539070 ) N ;
-   - gpio_loopback_one[8] + NET gpio_loopback_one[8]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 2765070 ) N ;
-   - gpio_loopback_one[9] + NET gpio_loopback_one[9]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 2990070 ) N ;
-   - gpio_loopback_one[10] + NET gpio_loopback_one[10]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 3216070 ) N ;
-   - gpio_loopback_one[11] + NET gpio_loopback_one[11]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 3441070 ) N ;
    - gpio_analog_en[11] + NET gpio_analog_en[11]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 3459470 ) N ;
@@ -3007,15 +2626,6 @@ PINS 939 ;
    - gpio_analog_en[6] + NET gpio_analog_en[6]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 1671470 ) N ;
-   - gpio_loopback_one[4] + NET gpio_loopback_one[4]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 1202070 ) N ;
-   - gpio_loopback_one[5] + NET gpio_loopback_one[5]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 1427070 ) N ;
-   - gpio_loopback_one[6] + NET gpio_loopback_one[6]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 1653070 ) N ;
    - gpio_analog_pol[6] + NET gpio_analog_pol[6]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 1677910 ) N ;
@@ -3130,18 +2740,6 @@ PINS 939 ;
    - gpio_out[2] + NET gpio_out[2]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 800290 ) N ;
-   - gpio_loopback_one[0] + NET gpio_loopback_one[0]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 300070 ) N ;
-   - gpio_loopback_one[1] + NET gpio_loopback_one[1]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 526070 ) N ;
-   - gpio_loopback_one[2] + NET gpio_loopback_one[2]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 751070 ) N ;
-   - gpio_loopback_one[3] + NET gpio_loopback_one[3]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 977070 ) N ;
    - gpio_slow_sel[2] + NET gpio_slow_sel[2]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 754290 ) N ;
@@ -3370,9 +2968,6 @@ PINS 939 ;
    - analog_noesd_io[14] + NET analog_noesd_io[14]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( 3167550 4573710 ) N ;
-   - gpio_loopback_one[24] + NET gpio_loopback_one[24]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 4629560 ) N ;
    - gpio_analog_en[24] + NET gpio_analog_en[24]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 4611160 ) N ;
@@ -3424,15 +3019,6 @@ PINS 939 ;
    - analog_noesd_io[24] + NET analog_noesd_io[24]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 4613920 ) N ;
-   - por_l + NET por_l
-     + PORT
-        + LAYER met3 ( -850 -175 ) ( 850 175 )        + PLACED ( -570 267035 ) N ;
-   - porb_l + NET porb_l
-     + PORT
-        + LAYER met3 ( -850 -175 ) ( 850 175 )        + PLACED ( -570 268150 ) N ;
-   - porb_h + NET porb_h
-     + PORT
-        + LAYER met3 ( -850 -175 ) ( 850 175 )        + PLACED ( -570 265910 ) N ;
    - gpio_analog_en[25] + NET gpio_analog_en[25]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 3762160 ) N ;
@@ -3472,9 +3058,6 @@ PINS 939 ;
    - gpio_in[25] + NET gpio_in[25]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 3786540 ) N ;
-   - gpio_loopback_one[25] + NET gpio_loopback_one[25]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 3780560 ) N ;
    - gpio_dm0[30] + NET gpio_dm0[30]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 2678940 ) N ;
@@ -3727,24 +3310,6 @@ PINS 939 ;
    - gpio_analog_sel[30] + NET gpio_analog_sel[30]
      + PORT
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 2660540 ) N ;
-   - gpio_loopback_one[26] + NET gpio_loopback_one[26]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 3564560 ) N ;
-   - gpio_loopback_one[27] + NET gpio_loopback_one[27]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 3348560 ) N ;
-   - gpio_loopback_one[28] + NET gpio_loopback_one[28]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 3132560 ) N ;
-   - gpio_loopback_one[29] + NET gpio_loopback_one[29]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 2916560 ) N ;
-   - gpio_loopback_one[30] + NET gpio_loopback_one[30]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 2700560 ) N ;
-   - gpio_loopback_one[31] + NET gpio_loopback_one[31]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 2484560 ) N ;
    - gpio_dm1[36] + NET gpio_dm1[36]
      + PORT
         + LAYER met3 ( -1200 -180 ) ( 1200 180 )        + PLACED ( -920 970140 ) N ;
@@ -3988,24 +3553,6 @@ PINS 939 ;
    - gpio_dm0[36] + NET gpio_dm0[36]
      + PORT
         + LAYER met3 ( -1200 -180 ) ( 1200 180 )        + PLACED ( -920 960940 ) N ;
-   - gpio_loopback_one[32] + NET gpio_loopback_one[32]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 1846560 ) N ;
-   - gpio_loopback_one[33] + NET gpio_loopback_one[33]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 1630560 ) N ;
-   - gpio_loopback_one[34] + NET gpio_loopback_one[34]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 1414560 ) N ;
-   - gpio_loopback_one[35] + NET gpio_loopback_one[35]
-     + PORT
-        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 1198560 ) N ;
-   - gpio_loopback_one[36] + NET gpio_loopback_one[36]
-     + PORT
-        + LAYER met3 ( -1200 -180 ) ( 1200 180 )        + PLACED ( -920 982560 ) N ;
-   - gpio_loopback_one[37] + NET gpio_loopback_one[37]
-     + PORT
-        + LAYER met3 ( -1200 -180 ) ( 1200 180 )        + PLACED ( -920 766560 ) N ;
    - gpio_inp_dis[37] + NET gpio_inp_dis[37]
      + PORT
         + LAYER met3 ( -1200 -180 ) ( 1200 180 )        + PLACED ( -920 738960 ) N ;
@@ -4131,7 +3678,382 @@ PINS 939 ;
         + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 3722140 ) N ;
    - gpio_analog_pol[33] + NET gpio_analog_pol[33]
      + PORT
-        + LAYER met3 ( -1200 -140 ) ( 1200 140 )        + PLACED ( -920 1605720 ) N ;
+        + LAYER met3 ( -1200 -175 ) ( 1200 175 )        + PLACED ( -920 1605720 ) N ;
+   - gpio_loopback_one[24] + NET gpio_loopback_one[24]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 4533370 ) N ;
+   - gpio_loopback_one[25] + NET gpio_loopback_one[25]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3683370 ) N ;
+   - gpio_loopback_one[26] + NET gpio_loopback_one[26]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3468370 ) N ;
+   - gpio_loopback_one[27] + NET gpio_loopback_one[27]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3253370 ) N ;
+   - gpio_loopback_one[28] + NET gpio_loopback_one[28]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3038370 ) N ;
+   - gpio_loopback_one[29] + NET gpio_loopback_one[29]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2823370 ) N ;
+   - gpio_loopback_one[30] + NET gpio_loopback_one[30]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2608370 ) N ;
+   - gpio_loopback_one[31] + NET gpio_loopback_one[31]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2393370 ) N ;
+   - gpio_loopback_one[32] + NET gpio_loopback_one[32]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1748370 ) N ;
+   - gpio_loopback_one[33] + NET gpio_loopback_one[33]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1533370 ) N ;
+   - gpio_loopback_one[34] + NET gpio_loopback_one[34]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1318370 ) N ;
+   - gpio_loopback_one[35] + NET gpio_loopback_one[35]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1103370 ) N ;
+   - gpio_loopback_one[36] + NET gpio_loopback_one[36]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 888370 ) N ;
+   - gpio_loopback_one[37] + NET gpio_loopback_one[37]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 673370 ) N ;
+   - gpio_loopback_one[43] + NET gpio_loopback_one[43]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 2442030 -510 ) N ;
+   - gpio_loopback_zero[43] + NET gpio_loopback_zero[43]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 2463305 -510 ) N ;
+   - gpio_loopback_one[42] + NET gpio_loopback_one[42]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 2168030 -510 ) N ;
+   - gpio_loopback_zero[42] + NET gpio_loopback_zero[42]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 2189020 -510 ) N ;
+   - gpio_loopback_one[41] + NET gpio_loopback_one[41]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1894030 -510 ) N ;
+   - gpio_loopback_zero[41] + NET gpio_loopback_zero[41]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1915020 -510 ) N ;
+   - gpio_loopback_one[40] + NET gpio_loopback_one[40]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1620030 -510 ) N ;
+   - gpio_loopback_zero[40] + NET gpio_loopback_zero[40]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1640955 -620 ) N ;
+   - gpio_loopback_one[39] + NET gpio_loopback_one[39]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1346030 -510 ) N ;
+   - gpio_loopback_zero[39] + NET gpio_loopback_zero[39]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 1366930 -510 ) N ;
+   - gpio_loopback_one[38] + NET gpio_loopback_one[38]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 803030 -510 ) N ;
+   - gpio_loopback_zero[38] + NET gpio_loopback_zero[38]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 819085 -505 ) N ;
+   - resetb_l + NET resetb_l
+     + PORT
+        + LAYER met2 ( -140 -430 ) ( 140 430 )        + PLACED ( 550960 -150 ) N ;
+   - resetb_h + NET resetb_h
+     + PORT
+        + LAYER met2 ( -165 -365 ) ( 165 365 )        + PLACED ( 498020 -85 ) N ;
+   - por_l + NET por_l
+     + PORT
+        + LAYER met3 ( -850 -175 ) ( 850 175 )        + PLACED ( -570 267035 ) N ;
+   - porb_l + NET porb_l
+     + PORT
+        + LAYER met3 ( -850 -175 ) ( 850 175 )        + PLACED ( -570 268150 ) N ;
+   - mask_rev[0] + NET mask_rev[0]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3025540 -510 ) N ;
+   - porb_h + NET porb_h
+     + PORT
+        + LAYER met3 ( -850 -175 ) ( 850 175 )        + PLACED ( -570 265910 ) N ;
+   - gpio_loopback_one[15] + NET gpio_loopback_one[15]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 2891640 4767150 ) N ;
+   - gpio_loopback_one[16] + NET gpio_loopback_one[16]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 2394640 4767150 ) N ;
+   - gpio_loopback_one[17] + NET gpio_loopback_one[17]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 2138640 4767150 ) N ;
+   - gpio_loopback_one[18] + NET gpio_loopback_one[18]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 1693640 4767150 ) N ;
+   - gpio_loopback_one[19] + NET gpio_loopback_one[19]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 1171640 4767150 ) N ;
+   - gpio_loopback_one[20] + NET gpio_loopback_one[20]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 915640 4767150 ) N ;
+   - gpio_loopback_one[21] + NET gpio_loopback_one[21]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 659640 4767150 ) N ;
+   - gpio_loopback_one[22] + NET gpio_loopback_one[22]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 403640 4767150 ) N ;
+   - gpio_loopback_one[23] + NET gpio_loopback_one[23]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 147640 4767150 ) N ;
+   - gpio_loopback_one[14] + NET gpio_loopback_one[14]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 4635180 ) N ;
+   - gpio_loopback_one[13] + NET gpio_loopback_one[13]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 4185180 ) N ;
+   - gpio_loopback_one[12] + NET gpio_loopback_one[12]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3740180 ) N ;
+   - gpio_loopback_one[11] + NET gpio_loopback_one[11]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3515180 ) N ;
+   - gpio_loopback_one[10] + NET gpio_loopback_one[10]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3290180 ) N ;
+   - gpio_loopback_one[9] + NET gpio_loopback_one[9]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3065180 ) N ;
+   - gpio_loopback_one[8] + NET gpio_loopback_one[8]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 2840180 ) N ;
+   - gpio_loopback_one[7] + NET gpio_loopback_one[7]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 2615180 ) N ;
+   - gpio_loopback_one[6] + NET gpio_loopback_one[6]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1730180 ) N ;
+   - gpio_loopback_one[5] + NET gpio_loopback_one[5]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1505180 ) N ;
+   - gpio_loopback_one[4] + NET gpio_loopback_one[4]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1280180 ) N ;
+   - gpio_loopback_one[3] + NET gpio_loopback_one[3]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1055180 ) N ;
+   - gpio_loopback_one[2] + NET gpio_loopback_one[2]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 830180 ) N ;
+   - gpio_loopback_one[1] + NET gpio_loopback_one[1]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 605180 ) N ;
+   - gpio_loopback_one[0] + NET gpio_loopback_one[0]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 380180 ) N ;
+   - mask_rev[4] + NET mask_rev[4]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3030020 -510 ) N ;
+   - mask_rev[5] + NET mask_rev[5]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3031140 -510 ) N ;
+   - mask_rev[6] + NET mask_rev[6]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3032260 -510 ) N ;
+   - mask_rev[7] + NET mask_rev[7]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3033380 -510 ) N ;
+   - mask_rev[8] + NET mask_rev[8]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3034500 -510 ) N ;
+   - mask_rev[9] + NET mask_rev[9]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3035620 -510 ) N ;
+   - mask_rev[10] + NET mask_rev[10]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3036740 -510 ) N ;
+   - mask_rev[11] + NET mask_rev[11]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3037860 -510 ) N ;
+   - mask_rev[12] + NET mask_rev[12]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3038980 -510 ) N ;
+   - mask_rev[13] + NET mask_rev[13]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3040100 -510 ) N ;
+   - mask_rev[14] + NET mask_rev[14]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3041220 -510 ) N ;
+   - mask_rev[15] + NET mask_rev[15]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3042340 -510 ) N ;
+   - mask_rev[16] + NET mask_rev[16]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3043460 -510 ) N ;
+   - mask_rev[17] + NET mask_rev[17]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3044580 -510 ) N ;
+   - mask_rev[18] + NET mask_rev[18]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3045700 -510 ) N ;
+   - mask_rev[19] + NET mask_rev[19]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3046820 -510 ) N ;
+   - mask_rev[20] + NET mask_rev[20]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3047940 -510 ) N ;
+   - mask_rev[21] + NET mask_rev[21]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3049060 -510 ) N ;
+   - mask_rev[22] + NET mask_rev[22]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3050180 -510 ) N ;
+   - mask_rev[23] + NET mask_rev[23]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3051300 -510 ) N ;
+   - mask_rev[24] + NET mask_rev[24]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3052420 -510 ) N ;
+   - mask_rev[25] + NET mask_rev[25]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3053540 -510 ) N ;
+   - mask_rev[26] + NET mask_rev[26]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3054660 -510 ) N ;
+   - mask_rev[27] + NET mask_rev[27]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3055780 -510 ) N ;
+   - mask_rev[28] + NET mask_rev[28]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3056900 -510 ) N ;
+   - mask_rev[29] + NET mask_rev[29]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3058020 -510 ) N ;
+   - mask_rev[30] + NET mask_rev[30]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3059140 -510 ) N ;
+   - mask_rev[31] + NET mask_rev[31]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3060260 -510 ) N ;
+   - mask_rev[3] + NET mask_rev[3]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3028900 -510 ) N ;
+   - mask_rev[2] + NET mask_rev[2]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3027780 -510 ) N ;
+   - mask_rev[1] + NET mask_rev[1]
+     + PORT
+        + LAYER met2 ( -130 -790 ) ( 130 790 )        + PLACED ( 3026660 -510 ) N ;
+   - gpio_loopback_zero[0] + NET gpio_loopback_zero[0]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 390190 ) N ;
+   - gpio_loopback_zero[1] + NET gpio_loopback_zero[1]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 615190 ) N ;
+   - gpio_loopback_zero[2] + NET gpio_loopback_zero[2]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 840190 ) N ;
+   - gpio_loopback_zero[3] + NET gpio_loopback_zero[3]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1065190 ) N ;
+   - gpio_loopback_zero[4] + NET gpio_loopback_zero[4]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1290190 ) N ;
+   - gpio_loopback_zero[5] + NET gpio_loopback_zero[5]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1515190 ) N ;
+   - gpio_loopback_zero[6] + NET gpio_loopback_zero[6]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 1740190 ) N ;
+   - gpio_loopback_zero[7] + NET gpio_loopback_zero[7]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 2625190 ) N ;
+   - gpio_loopback_zero[8] + NET gpio_loopback_zero[8]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 2850190 ) N ;
+   - gpio_loopback_zero[9] + NET gpio_loopback_zero[9]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3075190 ) N ;
+   - gpio_loopback_zero[10] + NET gpio_loopback_zero[10]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3300190 ) N ;
+   - gpio_loopback_zero[11] + NET gpio_loopback_zero[11]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3525190 ) N ;
+   - gpio_loopback_zero[12] + NET gpio_loopback_zero[12]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 3750190 ) N ;
+   - gpio_loopback_zero[13] + NET gpio_loopback_zero[13]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 4195190 ) N ;
+   - gpio_loopback_zero[14] + NET gpio_loopback_zero[14]
+     + PORT
+        + LAYER met3 ( -800 -155 ) ( 800 155 )        + PLACED ( 3167150 4645190 ) N ;
+   - gpio_loopback_zero[25] + NET gpio_loopback_zero[25]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3673370 ) N ;
+   - gpio_loopback_zero[27] + NET gpio_loopback_zero[27]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3243370 ) N ;
+   - gpio_loopback_zero[29] + NET gpio_loopback_zero[29]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2813370 ) N ;
+   - gpio_loopback_zero[31] + NET gpio_loopback_zero[31]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2383370 ) N ;
+   - gpio_loopback_zero[33] + NET gpio_loopback_zero[33]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1523370 ) N ;
+   - gpio_loopback_zero[35] + NET gpio_loopback_zero[35]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1093370 ) N ;
+   - gpio_loopback_zero[37] + NET gpio_loopback_zero[37]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 663370 ) N ;
+   - gpio_loopback_zero[24] + NET gpio_loopback_zero[24]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 4523370 ) N ;
+   - gpio_loopback_zero[26] + NET gpio_loopback_zero[26]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3458370 ) N ;
+   - gpio_loopback_zero[28] + NET gpio_loopback_zero[28]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 3028370 ) N ;
+   - gpio_loopback_zero[30] + NET gpio_loopback_zero[30]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 2598370 ) N ;
+   - gpio_loopback_zero[32] + NET gpio_loopback_zero[32]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1738370 ) N ;
+   - gpio_loopback_zero[34] + NET gpio_loopback_zero[34]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 1308370 ) N ;
+   - gpio_loopback_zero[36] + NET gpio_loopback_zero[36]
+     + PORT
+        + LAYER met3 ( -800 -150 ) ( 800 150 )        + PLACED ( -520 878370 ) N ;
+   - gpio_loopback_zero[23] + NET gpio_loopback_zero[23]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 137640 4767150 ) N ;
+   - gpio_loopback_zero[22] + NET gpio_loopback_zero[22]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 393640 4767150 ) N ;
+   - gpio_loopback_zero[21] + NET gpio_loopback_zero[21]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 649640 4767150 ) N ;
+   - gpio_loopback_zero[20] + NET gpio_loopback_zero[20]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 905640 4767150 ) N ;
+   - gpio_loopback_zero[19] + NET gpio_loopback_zero[19]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 1161640 4767150 ) N ;
+   - gpio_loopback_zero[18] + NET gpio_loopback_zero[18]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 1683640 4767150 ) N ;
+   - gpio_loopback_zero[17] + NET gpio_loopback_zero[17]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 2128640 4767150 ) N ;
+   - gpio_loopback_zero[16] + NET gpio_loopback_zero[16]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 2384640 4767150 ) N ;
+   - gpio_loopback_zero[15] + NET gpio_loopback_zero[15]
+     + PORT
+        + LAYER met2 ( -150 -800 ) ( 150 800 )        + PLACED ( 2881640 4767150 ) N ;
 END PINS
 
 END DESIGN
