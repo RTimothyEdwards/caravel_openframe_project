@@ -25,8 +25,8 @@ set_input_delay 0  -clock [get_clocks {clk_hkspi_sck}] [get_ports {gpio_in[4]}]
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 
 ## FALSE PATHS (ASYNCHRONOUS INPUTS)
-set_false_path -from [get_ports {resetb}]
-set_false_path -from [get_ports {porb}]
+set_false_path -from [get_ports {resetb_l}]
+set_false_path -from [get_ports {porb_l}]
 
 # add loads for output ports (pads)
 set min_cap 0.5

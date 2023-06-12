@@ -13,7 +13,8 @@
     "MAGIC_DEF_LABELS": 0,
     "VERILOG_FILES_BLACKBOX": [
         "pdk_dir::libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v",
-        "dir::../../verilog/gl/picosoc.v"
+        "dir::../../verilog/gl/picosoc.v",
+        "dir::../../verilog/gl/digital_locked_loop.v"
     ],
     "EXTRA_LEFS": ["pdk_dir::libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef",
             "dir::../../lef/picosoc.lef"
@@ -24,23 +25,33 @@
     "EXTRA_LIBS": ["pdk_dir::libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib",
             "dir::../../lib/picosoc.lib"
     ],
+    "EXTRA_SPEFS": [
+        "picosoc",
+        "dir::../../signoff/picosoc/openlane-signoff/spef/picosoc.min.spef",
+        "dir::../../signoff/picosoc/openlane-signoff/spef/picosoc.nom.spef",
+        "dir::../../signoff/picosoc/openlane-signoff/spef/picosoc.max.spef",
+        "digital_locked_loop",
+        "dir::../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.min.spef",
+        "dir::../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.nom.spef",
+        "dir::../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.max.spef"
+    ],
+
     "BASE_SDC_FILE": "dir::base.sdc",
     "RCX_SDC_FILE": "dir::signoff.sdc",
-    "IO_SYNC": 0,
-    "STA_MULTICORNER_READ_LIBS": 1,
     "QUIT_ON_SYNTH_CHECKS": 0,
     "FP_PDN_CHECK_NODES": 0,
-    "SYNTH_ELABORATE_ONLY": 0,
     "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
-    "PL_RANDOM_GLB_PLACEMENT": 1,
-    "PL_RESIZER_DESIGN_OPTIMIZATIONS": 0,
-    "PL_RESIZER_TIMING_OPTIMIZATIONS": 0,
-    "GLB_RESIZER_TIMING_OPTIMIZATIONS": 0,
-    "GLB_RESIZER_DESIGN_OPTIMIZATIONS": 0,
-    "PL_RESIZER_BUFFER_INPUT_PORTS": 0,
-    "FP_PDN_ENABLE_RAILS": 0,
-    "GRT_REPAIR_ANTENNAS": 1,
-    "RUN_HEURISTIC_DIODE_INSERTION": 1,
+    "PL_RESIZER_DESIGN_OPTIMIZATIONS": 1,
+    "PL_RESIZER_TIMING_OPTIMIZATIONS": 1,
+    "GLB_RESIZER_TIMING_OPTIMIZATIONS": 1,
+    "GLB_RESIZER_DESIGN_OPTIMIZATIONS": 1,
+    "PL_RESIZER_BUFFER_INPUT_PORTS": 1,
+    "PL_RESIZER_MAX_WIRE_LENGTH": 1000,
+    "CTS_CLK_MAX_WIRE_LENGTH": 1000,
+    "RUN_CTS": 0,
+    "FP_PDN_ENABLE_RAILS": 1,
+    "GRT_REPAIR_ANTENNAS": 0,
+    "RUN_HEURISTIC_DIODE_INSERTION": 0,
     "FP_PDN_VPITCH": 60,
     "FP_PDN_HPITCH": 60,
     "FP_PDN_VOFFSET": 5,
@@ -67,11 +78,14 @@
     ],
     "PL_TARGET_DENSITY": 0.1,
     "DIE_AREA": "0 0 3166.63 4766.630",
-    "RUN_CTS": 1,
+    "CORE_AREA": "40 40 3126.63 4726.630",
     "RUN_IRDROP_REPORT": 0,
     "FP_PDN_MACRO_HOOKS": "openframe_example vccd1 vssd1 VPWR VGND",
     "FP_PDN_CFG": "dir::pdn_cfg.tcl",
     "FP_DEF_TEMPLATE": "dir::fixed_dont_change/openframe_project_wrapper.def",
-    "QUIT_ON_TR_DRC": 0,
-    "RUN_MAGIC_DRC": 0
+    "RUN_MAGIC_DRC": 0,
+    "RUN_KLAYOUT_XOR": 0,
+    "MAGIC_GENERATE_LEF": 0,
+    "RUN_LVS": 0,
+    "QUIT_ON_HOLD_VIOLATIONS": 0
 }
