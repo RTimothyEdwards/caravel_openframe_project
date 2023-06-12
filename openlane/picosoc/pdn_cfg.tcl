@@ -113,13 +113,3 @@ add_pdn_connect \
     -grid macro \
     -layers "$::env(FP_PDN_VERTICAL_LAYER) $::env(FP_PDN_HORIZONTAL_LAYER)"
 
-add_pdn_connect \
-    -grid macro \
-    -layers "met4 met3"
-
-add_pdn_ring \
-    -grid macro \
-    -layers "met4 met3" \
-    -widths "$::env(FP_PDN_CORE_RING_VWIDTH) $::env(FP_PDN_CORE_RING_HWIDTH)" \
-    -spacings "$::env(FP_PDN_CORE_RING_VSPACING) $::env(FP_PDN_CORE_RING_HSPACING)" \
-    -core_offset "1 1"

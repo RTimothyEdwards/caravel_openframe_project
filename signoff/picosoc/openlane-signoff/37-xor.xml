@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <report-database>
- <description>XOR /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna-min-adju/results/signoff/picosoc.gds vs. /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-pll-antenna-min-adju/results/signoff/picosoc.klayout.gds</description>
+ <description>XOR /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-newopenroad/results/signoff/picosoc.gds vs. /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-newopenroad/results/signoff/picosoc.klayout.gds</description>
  <original-file/>
  <generator>drc: script='/home/karim/work/OpenLane/scripts/klayout/xor.drc'</generator>
  <top-cell>picosoc</top-cell>
