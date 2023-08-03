@@ -27,6 +27,7 @@ set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 ## FALSE PATHS (ASYNCHRONOUS INPUTS)
 set_false_path -from [get_ports {resetb}]
 set_false_path -from [get_ports {porb}]
+set_false_path -from [get_ports {gpio_in[38]}] -to [get_pins {openframe_example/_34238_/D}]
 
 # add loads for output ports (pads)
 set min_cap 0.04

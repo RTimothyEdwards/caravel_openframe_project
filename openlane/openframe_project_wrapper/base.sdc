@@ -7,7 +7,7 @@ set_clock_groups \
    -group [get_clocks {clk}]\
    -group [get_clocks {clk_hkspi_sck}]
 
-set_clock_uncertainty 0.4 [all_clocks]
+set_clock_uncertainty 0.8 [all_clocks]
 set_propagated_clock [all_clocks]
 
 ## INPUT/OUTPUT DELAYS
