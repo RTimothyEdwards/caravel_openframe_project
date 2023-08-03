@@ -1,4 +1,6 @@
 create_clock -name clk -period $::env(CLOCK_PERIOD) [get_ports {gpio_in[38]}]
+create_clock -name dll_clk -period 6.666 [get_pins {dll/clockp[1]}]
+create_clock -name dll_clk90 -period 6.666 [get_pins {dll/clockp[0]}]
 create_clock -name clk_hkspi_sck -period $::env(CLOCK_PERIOD) [get_ports {gpio_in[4]}]
 create_generated_clock -name spi_master -source [get_ports {gpio_in[38]}] -divide_by 2 [get_pins -of_objects {simple_spi_master_inst.spi_master.hsck} -filter lib_pin_name==Q]
 
@@ -23,11 +25,12 @@ set_input_delay 0  -clock [get_clocks {clk_hkspi_sck}] [get_ports {gpio_in[4]}]
 # set_output_delay $output_delay_value  -clock [get_clocks {clk}] -add_delay [all_outputs]
 
 ## MAX FANOUT
-set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
+set_max_fanout 20 [current_design]
 
 ## FALSE PATHS (ASYNCHRONOUS INPUTS)
 set_false_path -from [get_ports {resetb}]
 set_false_path -from [get_ports {porb}]
+set_false_path -from [get_ports {gpio_in[38]}] -to [get_pins {_34238_/D}]
 
 # add loads for output ports (pads)
 set min_cap 0.04
@@ -51,6 +54,3 @@ set_timing_derate -late [expr 1+$derate]
 
 ## MAX transition/cap
 set_max_trans 1.5 [current_design]
-# set_max_cap 0.5 [current_design]
-
-# group_path -weight 100 -through [get_pins mprj/la_data_out[0]] -name mprj_floating

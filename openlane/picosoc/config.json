@@ -18,16 +18,19 @@
         "dir::../../verilog/rtl/gpio_vector_wb.v",
         "dir::../../verilog/rtl/debug_regs.v"
     ],
-    "QUIT_ON_VERILATOR_ERRORS": false,
+    "QUIT_ON_LINTER_ERRORS": false,
     "QUIT_ON_SYNTH_CHECKS": false,
     "SYNTH_READ_BLACKBOX_LIB": 1,
-    "ROUTING_CORES": 10,
+    "SYNTH_STRATEGY": "DELAY 0",
+    "MAX_TRANSITION_CONSTRAINT": 0.8,
+    "MAX_FANOUT_CONSTRAINT": 14,
+    "ROUTING_CORES": 16,
     "CLOCK_PERIOD": 25,
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "MAGIC_DEF_LABELS": 0,
     "VERILOG_FILES_BLACKBOX": [
-        "pdk_dir::libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v",
-        "dir::../../verilog/rtl/digital_locked_loop.v"
+        "dir::sky130_sram_2kbyte_1rw1r_32x512_8.v",
+        "dir::../../verilog/gl/digital_locked_loop.v"
     ],
     "EXTRA_LEFS": ["pdk_dir::libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef",
         "dir::../../lef/digital_locked_loop.lef"
@@ -38,7 +41,12 @@
     "EXTRA_LIBS": ["pdk_dir::libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib",
         "dir::../../lib/digital_locked_loop.lib"
     ],
-    "STA_MULTICORNER_READ_LIBS": 1,
+    "EXTRA_SPEFS": [
+        "digital_locked_loop", 
+        "dir::../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.min.spef", 
+        "dir::../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.nom.spef", 
+        "dir::../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.max.spef"
+    ],
     "FP_PDN_CHECK_NODES": 0,
     "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
     "PL_RESIZER_DESIGN_OPTIMIZATIONS": 1,
@@ -48,7 +56,7 @@
     "PL_RESIZER_BUFFER_INPUT_PORTS": 1,
     "PL_RESIZER_MAX_WIRE_LENGTH": 500,
     "FP_PDN_ENABLE_RAILS": 1,
-    "FP_PDN_VPITCH": 30,
+    "FP_PDN_VPITCH": 40,
     "GRT_REPAIR_ANTENNAS": 1,
     "RUN_HEURISTIC_DIODE_INSERTION": 1,
     "GRT_ANT_MARGIN": 20,
@@ -71,10 +79,11 @@
     "FP_PDN_CFG": "dir::pdn_cfg.tcl",
     "FP_PDN_MACRO_HOOKS": "soc_mem\\.mem\\.SRAM_0 VPWR VGND vccd1 vssd1, soc_mem\\.mem\\.SRAM_1 VPWR VGND vccd1 vssd1, dll VPWR VGND vccd1 vssd1",
     "RUN_CTS": 1,
+    "CTS_CLK_MAX_WIRE_LENGTH": 500,
     "CLOCK_PORT": "gpio_in[38]",
-    "PL_TARGET_DENSITY": 0.2,
+    "PL_TARGET_DENSITY": 0.24,
     "DIE_AREA_WRAPPER": "0 0 3168.82 4768.82",
-    "DIE_AREA": "0 0 2200 1400",
+    "DIE_AREA": "0 0 2200 1500",
     "RUN_IRDROP_REPORT": 0,
     "BASE_SDC_FILE": "dir::base.sdc",
     "GRT_ALLOW_CONGESTION": 1,
@@ -84,5 +93,5 @@
     "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
     "SYNTH_DEFINES": "PnR",
     "QUIT_ON_HOLD_VIOLATIONS": 0,
-    "GRT_ADJUSTMENT": 0.08
+    "GRT_ADJUSTMENT": 0.18
 }
