@@ -1,15 +1,49 @@
 Design Name: picosoc
-Run Directory: /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-newopenroad
-Source not found.
+Run Directory: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_08_17_02
+----------------------------------------
+
+Magic DRC Summary:
+Source: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_08_17_02/reports/signoff/drc.rpt
+Violation Message "Local interconnect spacing < 0.17um (li.3) "found 370841 Times.
+Violation Message "P-tap minimum area < 0.07011um^2 (psd.10b) "found 101530 Times.
+Violation Message "Diffusion width < 0.15um (diff/tap.1) "found 732248 Times.
+Violation Message "P-Transistor in SRAM core width < 0.14um (diff/tap.2) "found 133396 Times.
+Violation Message "Local interconnect width < 0.17um (li.1) "found 915716 Times.
+Violation Message "N-Diffusion spacing to N-well < 0.34um (diff/tap.9) "found 1213970 Times.
+Violation Message "This layer can't abut or partially overlap between subcells "found 200976 Times.
+Violation Message "poly contact width        < 0.17um (licon.1) "found 360191 Times.
+Violation Message "P-diffusion contact width < 0.17um (licon.1) "found 167196 Times.
+Violation Message "Diffusion contact to SRAM gate < 0.04um (licon.11) "found 253695 Times.
+Violation Message "Metal1 overlap of local interconnect contact < 0.03um (met1.4) "found 338268 Times.
+Violation Message "P-tap overlap of P-tap contact < 0.12um in one direction (licon.7) "found 270530 Times.
+Violation Message "Local interconnect overlap of diffusion contact < 0.08um in one direction (li.5) "found 133664 Times.
+Violation Message "nFET cannot abut P-diffusion (diff/tap.3) "found 169195 Times.
+Violation Message "poly overhang of SRAM core transistor < 0.11um (poly.8) "found 737408 Times.
+Violation Message "P-diffusion overlap of P-diffusion contact < 0.04um (licon.5a) "found 200224 Times.
+Violation Message "poly contact spacing to diffusion < 0.19um (licon.14) "found 683032 Times.
+Violation Message "poly overlap of poly contact < 0.08um in one direction (licon.8a) "found 273000 Times.
+Violation Message "Via1 width < 0.26um (via.1a + 2 * via.4a) "found 642460 Times.
+Violation Message "poly spacing to Diffusion < 0.075um (poly.4) "found 538736 Times.
+Violation Message "Core local interconnect spacing < 0.14um (li.c2) "found 266272 Times.
+Violation Message "N-tap contact width     < 0.17um (licon.1) "found 99852 Times.
+Violation Message "N-Diffusion overhang of nFET < 0.25um (poly.7) "found 1042 Times.
+Violation Message "N-well overlap of Deep N-well < 0.4um outside, 1.03um inside (nwell.5a, 7) "found 26 Times.
+Violation Message "N-diffusion contact width < 0.17um (licon.1) "found 406265 Times.
+Violation Message "poly spacing < 0.21um (poly.2) "found 118430 Times.
+Violation Message "N-diffusion overlap of N-diffusion contact < 0.04um (licon.5a) "found 708728 Times.
+Violation Message "N-diffusion overlap of N-diffusion contact < 0.06um in one direction (licon.5c) "found 2084 Times.
+Violation Message "poly overlap of poly contact < 0.05um (licon.8) "found 744636 Times.
+Violation Message "N-well overlap of N-tap < 0.18um (diff/tap.10) "found 367020 Times.
+Total Magic DRC violations is 11150631
 ----------------------------------------
 
 LVS Summary:
-Source: /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-newopenroad/logs/signoff/41-picosoc.lef.lvs.log
-Number of nets: 37023                      |Number of nets: 37023                      
+Source: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_08_17_02/logs/signoff/40-picosoc.lef.lvs.log
+Number of nets: 45003                      |Number of nets: 45003                      
 Design is LVS clean.
 ----------------------------------------
 
 Antenna Summary:
-Source: /home/karim/work/caravel_openframe_project/openlane/picosoc/runs/picosoc-newopenroad/logs/signoff/42-antenna.log
-Pin violations: 48
-Net violations: 47
+Source: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_08_17_02/logs/signoff/35-arc.log
+Pin violations: 40
+Net violations: 40

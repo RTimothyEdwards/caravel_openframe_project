@@ -1,0 +1,39 @@
+
+===========================================================================
+report_clock_skew
+============================================================================
+Clock clk
+Latency      CRPR       Skew
+_35216_/CLK ^
+  11.64
+_35256_/CLK ^
+   3.60     -0.34       7.70
+
+Clock clk_hkspi_sck
+Latency      CRPR       Skew
+_35302_/CLK ^
+   2.57
+_35303_/CLK ^
+   1.18     -0.14       1.25
+
+Clock dll_clk
+Latency      CRPR       Skew
+_35276_/CLK ^
+   4.08
+_35289_/CLK ^
+   0.54     -0.04       3.49
+
+Clock dll_clk90
+Latency      CRPR       Skew
+_35157_/CLK ^
+   5.66
+_35158_/CLK ^
+   1.76     -0.16       3.74
+
+Clock spi_master
+Latency      CRPR       Skew
+_35392_/CLK ^
+  14.65
+_33662_/CLK ^
+   8.68     -0.93       5.04
+

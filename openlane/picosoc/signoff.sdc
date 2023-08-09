@@ -8,7 +8,9 @@ set_clock_groups \
    -name clock_group \
    -logically_exclusive \
    -group [get_clocks {clk}]\
-   -group [get_clocks {clk_hkspi_sck}]
+   -group [get_clocks {clk_hkspi_sck}]\
+   -group [get_clocks {dll_clk}]\
+   -group [get_clocks {dll_clk90}]
 
 set_clock_uncertainty 0.1 [all_clocks]
 set_propagated_clock [all_clocks]
