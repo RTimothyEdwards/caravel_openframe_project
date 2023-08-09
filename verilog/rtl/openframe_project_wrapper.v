@@ -130,4 +130,7 @@ module openframe_project_wrapper (
 	assign gpio_analog_sel = gpio_loopback_zero;
 	assign gpio_holdover = gpio_loopback_zero;
 
+    (* keep *) vccd1_connection vccd1_connection ();
+    (* keep *) vssd1_connection vssd1_connection ();
+
 endmodule	// openframe_project_wrapper

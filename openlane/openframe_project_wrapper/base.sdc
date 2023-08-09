@@ -49,7 +49,7 @@ set_timing_derate -early [expr 1-$derate]
 set_timing_derate -late [expr 1+$derate]
 
 ## MAX transition/cap
-set_max_trans 1.1 [current_design]
+set_max_trans 0.5 [current_design]
 # set_max_cap 0.5 [current_design]
 
 # group_path -weight 100 -through [get_pins mprj/la_data_out[0]] -name mprj_floating

@@ -15,16 +15,26 @@
     "VERILOG_FILES_BLACKBOX": [
         "dir::../picosoc/sky130_sram_2kbyte_1rw1r_32x512_8.v",
         "dir::../../verilog/gl/picosoc.v",
+        "dir::../../verilog/gl/vccd1_connection.v",
+        "dir::../../verilog/gl/vssd1_connection.v",
         "dir::../../verilog/gl/digital_locked_loop.v"
     ],
-    "EXTRA_LEFS": ["dir::../../lef/picosoc.lef"],
-    "EXTRA_GDS_FILES": ["dir::../../gds/picosoc.gds"],
+    "EXTRA_LEFS": [
+        "dir::../../lef/picosoc.lef",
+        "dir::../../lef/vccd1_connection.lef",
+        "dir::../../lef/vssd1_connection.lef"
+    ],
+    "EXTRA_GDS_FILES": [
+        "dir::../../gds/picosoc.gds",
+        "dir::../../gds/vccd1_connection.gds",
+        "dir::../../gds/vssd1_connection.gds"
+    ],
     "EXTRA_LIBS": ["dir::../../lib/picosoc.lib"],
     "EXTRA_SPEFS": [
         "picosoc",
-        "dir::../../spef/multicorner/picosoc.min.spef",
-        "dir::../../spef/multicorner/picosoc.nom.spef",
-        "dir::../../spef/multicorner/picosoc.max.spef",
+        "dir::../../signoff/picosoc/openlane-signoff/spef/picosoc.min.spef",
+        "dir::../../signoff/picosoc/openlane-signoff/spef/picosoc.nom.spef",
+        "dir::../../signoff/picosoc/openlane-signoff/spef/picosoc.max.spef",
         "digital_locked_loop",
         "dir::../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.min.spef",
         "dir::../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.nom.spef",
@@ -32,6 +42,7 @@
     ],
     "BASE_SDC_FILE": "dir::base.sdc",
     "RCX_SDC_FILE": "dir::signoff.sdc",
+    "MAX_TRANSITION_CONSTRAINT": 0.5,
     "QUIT_ON_SYNTH_CHECKS": 0,
     "FP_PDN_CHECK_NODES": 0,
     "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
@@ -39,9 +50,10 @@
     "PL_RESIZER_TIMING_OPTIMIZATIONS": 1,
     "GLB_RESIZER_TIMING_OPTIMIZATIONS": 1,
     "GLB_RESIZER_DESIGN_OPTIMIZATIONS": 1,
-    "PL_RESIZER_MAX_WIRE_LENGTH": 800,
-    "CTS_CLK_MAX_WIRE_LENGTH": 800,
-    "RUN_CTS": 0,
+    "PL_RESIZER_MAX_WIRE_LENGTH": 500,
+    "GLB_RESIZER_MAX_WIRE_LENGTH": 500,
+    "CTS_CLK_MAX_WIRE_LENGTH": 500,
+    "RUN_CTS": 1,
     "FP_PDN_ENABLE_RAILS": 1,
     "GRT_REPAIR_ANTENNAS": 1,
     "RUN_HEURISTIC_DIODE_INSERTION": 1,
@@ -76,5 +88,6 @@
     "FP_PDN_MACRO_HOOKS": "openframe_example vccd1 vssd1 VPWR VGND",
     "FP_PDN_CFG": "dir::pdn_cfg.tcl",
     "FP_DEF_TEMPLATE": "dir::fixed_dont_change/openframe_project_wrapper.def",
-    "RUN_MAGIC_DRC": 0
+    "RUN_MAGIC_DRC": 0,
+    "RUN_LVS": 0
 }
