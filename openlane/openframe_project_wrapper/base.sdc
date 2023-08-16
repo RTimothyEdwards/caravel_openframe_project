@@ -11,15 +11,15 @@ set_clock_uncertainty 0.8 [all_clocks]
 set_propagated_clock [all_clocks]
 
 ## INPUT/OUTPUT DELAYS
-set input_delay_value 4
-set output_delay_value 20
+set input_delay_value 0
+set output_delay_value 22
 puts "\[INFO\]: Setting output delay to: $output_delay_value"
 puts "\[INFO\]: Setting input delay to: $input_delay_value"
-# set_input_delay $input_delay_value  -clock [get_clocks {clk}] -add_delay [all_inputs]
+set_input_delay $input_delay_value  -clock [get_clocks {clk}] -add_delay [all_inputs]
 set_input_delay 0  -clock [get_clocks {clk}] [get_ports {gpio_in[38]}]
 set_input_delay 0  -clock [get_clocks {clk_hkspi_sck}] [get_ports {gpio_in[4]}]
 
-# set_output_delay $output_delay_value  -clock [get_clocks {clk}] -add_delay [all_outputs]
+set_output_delay $output_delay_value  -clock [get_clocks {clk}] -add_delay [all_outputs]
 
 ## MAX FANOUT
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]

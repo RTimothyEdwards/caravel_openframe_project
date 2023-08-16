@@ -1,6 +1,6 @@
 create_clock -name clk -period $::env(CLOCK_PERIOD) [get_ports {gpio_in[38]}]
-create_clock -name dll_clk -period 6.666 [get_pins {dll/clockp[1]}]
-create_clock -name dll_clk90 -period 6.666 [get_pins {dll/clockp[0]}]
+create_clock -name dll_clk -period 4.0 [get_pins {dll/clockp[1]}]
+create_clock -name dll_clk90 -period 4.0 [get_pins {dll/clockp[0]}]
 create_clock -name clk_hkspi_sck -period $::env(CLOCK_PERIOD) [get_ports {gpio_in[4]}]
 create_generated_clock -name spi_master -source [get_ports {gpio_in[38]}] -divide_by 2 [get_pins -of_objects {simple_spi_master_inst.spi_master.hsck} -filter lib_pin_name==Q]
 
@@ -21,15 +21,15 @@ set_propagated_clock [all_clocks]
 # remove_propagated_clock [get_pins {_30799_/A1}]
 
 ## INPUT/OUTPUT DELAYS
-set input_delay_value 4
-set output_delay_value 20
+set input_delay_value 0
+set output_delay_value 22
 puts "\[INFO\]: Setting output delay to: $output_delay_value"
 puts "\[INFO\]: Setting input delay to: $input_delay_value"
-# set_input_delay $input_delay_value  -clock [get_clocks {clk}] -add_delay [all_inputs]
+set_input_delay $input_delay_value  -clock [get_clocks {clk}] -add_delay [all_inputs]
 set_input_delay 0  -clock [get_clocks {clk}] [get_ports {gpio_in[38]}]
 set_input_delay 0  -clock [get_clocks {clk_hkspi_sck}] [get_ports {gpio_in[4]}]
 
-# set_output_delay $output_delay_value  -clock [get_clocks {clk}] -add_delay [all_outputs]
+set_output_delay $output_delay_value  -clock [get_clocks {clk}] -add_delay [all_outputs]
 
 ## MAX FANOUT
 set_max_fanout $::env(MAX_FANOUT_CONSTRAINT) [current_design]
