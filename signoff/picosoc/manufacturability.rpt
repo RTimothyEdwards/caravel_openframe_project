@@ -1,9 +1,9 @@
 Design Name: picosoc
-Run Directory: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_08_17_02
+Run Directory: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_16_12_23
 ----------------------------------------
 
 Magic DRC Summary:
-Source: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_08_17_02/reports/signoff/drc.rpt
+Source: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_16_12_23/reports/signoff/drc.rpt
 Violation Message "Local interconnect spacing < 0.17um (li.3) "found 370841 Times.
 Violation Message "P-tap minimum area < 0.07011um^2 (psd.10b) "found 101530 Times.
 Violation Message "Diffusion width < 0.15um (diff/tap.1) "found 732248 Times.
@@ -38,12 +38,12 @@ Total Magic DRC violations is 11150631
 ----------------------------------------
 
 LVS Summary:
-Source: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_08_17_02/logs/signoff/40-picosoc.lef.lvs.log
-Number of nets: 45003                      |Number of nets: 45003                      
+Source: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_16_12_23/logs/signoff/40-picosoc.lef.lvs.log
+Number of nets: 45502                      |Number of nets: 45502                      
 Design is LVS clean.
 ----------------------------------------
 
 Antenna Summary:
-Source: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_08_17_02/logs/signoff/35-arc.log
-Pin violations: 40
-Net violations: 40
+Source: /home/hosni/caravel_openframe_project/openlane/picosoc/runs/23_08_16_12_23/logs/signoff/35-arc.log
+Pin violations: 23
+Net violations: 22
