@@ -181,6 +181,7 @@ module simple_spi_master (
     parameter FINISH = 2'b11; 
 
     reg	  done;
+    reg	  done_delayed;
     reg 	  isdo, hsck, icsb;
     reg [1:0] state;
     reg 	  isck;
@@ -216,7 +217,7 @@ module simple_spi_master (
     assign	  sdoenb = icsb;
     assign	  sdo = isdo;
 
-    assign	  irq_out = irqena & done;
+    assign	  irq_out = irqena & done & ~done_delayed;
     assign	  hk_connect = (enable == 1'b1) ? hkconn : 1'b0;
     assign	  spi_enabled = enable;
 
@@ -225,6 +226,12 @@ module simple_spi_master (
 			 invsck, invcsb, mlb, prescaler};
     assign reg_dat_wait = ~done;
     assign reg_dat_do = done ? rreg : ~0;
+
+    always @(posedge clk or negedge resetn) 
+        if (resetn == 1'b0)
+            done_delayed <= 0; 
+        else 
+            done_delayed <= done;
 
     // Write configuration register
     always @(posedge clk or negedge resetn) begin

@@ -168,10 +168,10 @@ always @(posedge clkin or negedge resetn) begin
     if (resetn == 1'b0) begin
 	value_reset <= 32'd0;
     end else begin
-	if (reg_val_we[3]) value_reset[31:24] <= reg_val_di[31:24];
-	if (reg_val_we[2]) value_reset[23:16] <= reg_val_di[23:16];
-	if (reg_val_we[1]) value_reset[15:8] <= reg_val_di[15:8];
-	if (reg_val_we[0]) value_reset[7:0] <= reg_val_di[7:0];
+	if (reg_dat_we[3]) value_reset[31:24] <= reg_val_di[31:24];
+	if (reg_dat_we[2]) value_reset[23:16] <= reg_val_di[23:16];
+	if (reg_dat_we[1]) value_reset[15:8] <= reg_val_di[15:8];
+	if (reg_dat_we[0]) value_reset[7:0] <= reg_val_di[7:0];
     end
 end
 
@@ -187,6 +187,13 @@ assign value_check_plus = (is_offset) ? value_cur_plus : value_cur;
 assign enable_out = enable;
 assign loc_enable = (chain == 1'b1) ? (enable && enable_in) : enable;
 
+// stop_out delayed signal
+reg stop_out_delayed; 
+always @(posedge clkin or negedge resetn)
+	if (resetn == 1'b0)
+		stop_out_delayed <= 0;
+	else:
+		stop_out_delayed <= stop_out;
 // When acting as the high 32 bit word of a 64-bit chained counter:
 //
 // It counts when the low 32-bit counter strobes (strobe == 1).
@@ -210,7 +217,7 @@ always @(posedge clkin or negedge resetn) begin
 	end else if (loc_enable == 1'b1) begin
 	    /* IRQ signals one cycle after stop, if IRQ is enabled	*/
 	    /* IRQ lasts for one cycle only.				*/
-	    irq_out <= (irq_ena) ? (stop_out & ~irq_out) : 1'b0;
+	    irq_out <= (irq_ena) ? (stop_out & ~stop_out_delayed & ~irq_out) : 1'b0;
 
 	    if (updown == 1'b1) begin
 		if (lastenable == 1'b0) begin
