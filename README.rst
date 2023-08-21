@@ -146,6 +146,18 @@ SPI Master
      - 11
      - Change SPI mode
 
+SPI Modes:
+~~~~~~~~~~~
+
+SPI mode determines the timing of data read and change relative to the SCK (Serial Clock) signal. There are two modes available:
+
+- Mode 0 (Read and Change Data on Opposite SCK Edges)
+  In this mode, data is read and changed on opposite edges of the SCK signal.
+
+- Mode 1 (Read and Change Data on the Same SCK Edge)
+  In this mode, data is read and changed on the same edge of the SCK signal.
+
+
 Interrupt System
 ----------------
 
