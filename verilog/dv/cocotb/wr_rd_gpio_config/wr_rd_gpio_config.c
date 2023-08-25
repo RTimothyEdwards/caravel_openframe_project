@@ -29,7 +29,7 @@ unsigned int xorshift32(unsigned int *state)
 
 int main()
 {
-    unsigned int seed = 17854269; // Initial seed value
+    unsigned int seed = SEED; // Initial seed value
     unsigned int state = seed;
 
     int i;
