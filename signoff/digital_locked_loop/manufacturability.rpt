@@ -1,0 +1,19 @@
+Design Name: digital_locked_loop
+Run Directory: /home/hosni/openframe/caravel_openframe_project/openlane/digital_locked_loop/runs/23_06_04_04_48
+----------------------------------------
+
+Magic DRC Summary:
+Source: /home/hosni/openframe/caravel_openframe_project/openlane/digital_locked_loop/runs/23_06_04_04_48/reports/signoff/drc.rpt
+Total Magic DRC violations is 0
+----------------------------------------
+
+LVS Summary:
+Source: /home/hosni/openframe/caravel_openframe_project/openlane/digital_locked_loop/runs/23_06_04_04_48/logs/signoff/35-digital_locked_loop.lef.lvs.log
+Number of nets: 371                        |Number of nets: 371                        
+Design is LVS clean.
+----------------------------------------
+
+Antenna Summary:
+Source: /home/hosni/openframe/caravel_openframe_project/openlane/digital_locked_loop/runs/23_06_04_04_48/logs/signoff/37-antenna.log
+Pin violations: 0
+Net violations: 0

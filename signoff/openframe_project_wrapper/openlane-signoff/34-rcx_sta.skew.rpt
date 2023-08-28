@@ -1,0 +1,32 @@
+
+===========================================================================
+report_clock_skew
+============================================================================
+Clock clk
+Latency      CRPR       Skew
+openframe_example/_35223_/CLK ^
+   7.01
+openframe_example/_35250_/CLK ^
+   2.95     -0.27       3.79
+
+Clock clk_hkspi_sck
+Latency      CRPR       Skew
+openframe_example/_35302_/CLK ^
+   2.26
+openframe_example/_35303_/CLK ^
+   1.37     -0.18       0.70
+
+Clock dll_clk
+Latency      CRPR       Skew
+openframe_example/_35276_/CLK ^
+   2.37
+openframe_example/_35282_/CLK ^
+   0.63     -0.06       1.67
+
+Clock dll_clk90
+Latency      CRPR       Skew
+openframe_example/_35131_/CLK ^
+   3.41
+openframe_example/_35182_/CLK ^
+   1.14     -0.09       2.18
+

@@ -1,0 +1,14 @@
+Design Name: openframe_project_wrapper
+Run Directory: /home/hosni/caravel_openframe_project/openlane/openframe_project_wrapper/runs/23_08_16_14_15
+Source not found.
+----------------------------------------
+
+LVS Summary:
+Source: /home/hosni/caravel_openframe_project/openlane/openframe_project_wrapper/runs/23_08_16_14_15/logs/signoff/openframe_project_wrapper.lef.lvs.log
+Source not found.
+----------------------------------------
+
+Antenna Summary:
+Source: /home/hosni/caravel_openframe_project/openlane/openframe_project_wrapper/runs/23_08_16_14_15/logs/signoff/38-arc.log
+Pin violations: 0
+Net violations: 0
