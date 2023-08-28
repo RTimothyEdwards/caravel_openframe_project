@@ -200,7 +200,7 @@ reg stop_out_delayed;
 always @(posedge clkin or negedge resetn)
 	if (resetn == 1'b0)
 		stop_out_delayed <= 0;
-	else:
+	else
 		stop_out_delayed <= stop_out;
 // When acting as low 32-bit word of a 64-bit chained counter:
 // It sets the output strobe on the stop condition, one cycle early.
