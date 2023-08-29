@@ -161,3 +161,33 @@ Build notes:
 	Chances are good that this is due to the incorrect floorplan
 	DEF (tracks and sites do not cover the entire die area as
 	they should)?  Need to look at output.
+
+	Result---The placement actually covers the area in spite of
+	the incorrect list of tracks/sites, so that doesn't seem to
+	be the underlying problem.
+
+(23) Continuing 5/9/2023 after break due to travel.  Committed all work
+	so here's a recap:
+	Do:
+	setenv PDK_ROOT /usr/share/pdk
+	setenv PDK sky130A
+	cd openlane/openframe_project_wrapper
+	~/gits/openlane/flow.tcl -ignore_mismatches
+
+	(had updated sky130A PDK and needed to redo the "/// sta-blackbox"
+	comment line in sky130_sram_2kbyte_1rw1r_32x512_8.v)
+
+(24) Continuing 8/11/2023 after the openlane team worked over this.
+	Copied over all openlane configuration files.  The openlane
+	flow has now been divided into multiple blocks (picoRV32 core,
+	clock routing, DLL, and then the top level wrapper) which are
+	hardened hierarchically.  Macros were added which connect to the
+	VCCD1/VSSD1 busses (although preferably there should be additional
+	connections to VCCD/VSSD and VCCD2/VSSD2 for robustness).
+
+	Note that I am attempting to keep the *unbuilt* sources in the
+	original "main" repository branch, while working on a build in
+	a "build" branch.  It should be possible to keep a minimum set of
+	files in the (committed) upstream repository while being able to
+	generate the final layout through a series of known repeatable
+	steps. 
