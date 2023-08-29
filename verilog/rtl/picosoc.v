@@ -147,7 +147,6 @@ module picosoc (
     parameter GPIO_VECTOR_BASE_ADR  = 32'h2500_0000;
     parameter FLASH_CTRL_CFG  = 32'h2D00_0000;
     parameter DEBUG_REGS_CFG  = 32'h4100_0000;
-    
     // Wishbone Interconnect 
     localparam ADR_WIDTH = 32;
     localparam DAT_WIDTH = 32;
@@ -251,7 +250,7 @@ module picosoc (
     wire [31:0] cpu_dat_o;
     wire cpu_ack_i;
     wire mem_instr;
-    
+
     picorv32_wb #(
         .STACKADDR(STACKADDR),
         .PROGADDR_RESET(PROGADDR_RESET),
@@ -268,14 +267,14 @@ module picosoc (
         .trap     (trap),
         .irq      (irq),
         .mem_instr(mem_instr),
-        .wbm_adr_o(cpu_adr_o),     
-        .wbm_dat_i(cpu_dat_i),    
-        .wbm_stb_o(cpu_stb_o),    
-        .wbm_ack_i(cpu_ack_i),    
-        .wbm_cyc_o(cpu_cyc_o),    
-        .wbm_dat_o(cpu_dat_o),    
-        .wbm_we_o(cpu_we_o),      
-        .wbm_sel_o(cpu_sel_o)     
+        .wbm_adr_o(cpu_adr_o),
+        .wbm_dat_i(cpu_dat_i),
+        .wbm_stb_o(cpu_stb_o),
+        .wbm_ack_i(cpu_ack_i),
+        .wbm_cyc_o(cpu_cyc_o),
+        .wbm_dat_o(cpu_dat_o),
+        .wbm_we_o(cpu_we_o),
+        .wbm_sel_o(cpu_sel_o)
     );
 
     // Wishbone SPI flash controller
@@ -292,7 +291,7 @@ module picosoc (
         .wb_clk_i(wb_clk_i),
         .wb_rst_i(wb_rst_i),
 
-        .wb_adr_i(cpu_adr_o), 
+        .wb_adr_i(cpu_adr_o),
         .wb_dat_i(cpu_dat_o),
         .wb_sel_i(cpu_sel_o),
         .wb_we_i(cpu_we_o),
@@ -302,7 +301,7 @@ module picosoc (
         .wb_flash_stb_i(spimemio_flash_stb_i),
         .wb_flash_ack_o(spimemio_flash_ack_o),
         .wb_flash_dat_o(spimemio_flash_dat_o),
-        
+
         // Flash Config Register
         .wb_cfg_stb_i(spimemio_cfg_stb_i),
         .wb_cfg_ack_o(spimemio_cfg_ack_o),
@@ -342,7 +341,7 @@ module picosoc (
         .flash_io3_di (cpu_gpio_in[37])
     );
 
-    // Wishbone Slave uart	
+    // Wishbone Slave uart
     wire uart_stb_i;
     wire uart_ack_o;
     wire [31:0] uart_dat_o;
@@ -355,7 +354,7 @@ module picosoc (
         .wb_clk_i(wb_clk_i),
         .wb_rst_i(wb_rst_i),
 
-        .wb_adr_i(cpu_adr_o),      
+        .wb_adr_i(cpu_adr_o),
         .wb_dat_i(cpu_dat_o),
         .wb_sel_i(cpu_sel_o),
         .wb_we_i(cpu_we_o),
@@ -384,7 +383,7 @@ module picosoc (
         .wb_clk_i(wb_clk_i),
         .wb_rst_i(wb_rst_i),
 
-        .wb_adr_i(cpu_adr_o),      
+        .wb_adr_i(cpu_adr_o),
         .wb_dat_i(cpu_dat_o),
         .wb_sel_i(cpu_sel_o),
         .wb_we_i(cpu_we_o),
@@ -420,7 +419,7 @@ module picosoc (
         .wb_clk_i(wb_clk_i),
         .wb_rst_i(wb_rst_i),
 
-        .wb_adr_i(cpu_adr_o),      
+        .wb_adr_i(cpu_adr_o),
         .wb_dat_i(cpu_dat_o),
         .wb_sel_i(cpu_sel_o),
         .wb_we_i(cpu_we_o),
@@ -451,7 +450,7 @@ module picosoc (
         .wb_clk_i(wb_clk_i),
         .wb_rst_i(wb_rst_i),
 
-        .wb_adr_i(cpu_adr_o),      
+        .wb_adr_i(cpu_adr_o),
         .wb_dat_i(cpu_dat_o),
         .wb_sel_i(cpu_sel_o),
         .wb_we_i(cpu_we_o),
@@ -557,7 +556,7 @@ module picosoc (
 	    ) gpio_wb (
 		.wb_clk_i(wb_clk_i),
 		.wb_rst_i(wb_rst_i),
-		.wb_adr_i(cpu_adr_o), 
+		.wb_adr_i(cpu_adr_o),
 		.wb_dat_i(cpu_dat_o),
 		.wb_sel_i(cpu_sel_o),
 		.wb_we_i(cpu_we_o),
@@ -644,7 +643,7 @@ module picosoc (
 
 	assign cpu_gpio_ieb[39] = gpio_loopback_one[39]; /* Flash CSB */
 	assign cpu_gpio_ieb[40] = gpio_loopback_one[40]; /* Flash clock */
-    
+
     endgenerate
 
     /* gpio_vector_wb ---
@@ -666,14 +665,14 @@ module picosoc (
 	.wb_clk_i(wb_clk_i),
 	.wb_rst_i(wb_rst_i),
 
-	.wb_adr_i(cpu_adr_o), 
+	.wb_adr_i(cpu_adr_o),
 	.wb_dat_i(cpu_dat_o),
 	.wb_sel_i(cpu_sel_o),
 	.wb_we_i(cpu_we_o),
 	.wb_cyc_i(cpu_cyc_o),
 
 	.wb_stb_i(gpio_vector_stb_i),
-	.wb_ack_o(gpio_vector_ack_o), 
+	.wb_ack_o(gpio_vector_ack_o),
 	.wb_dat_o(gpio_vector_dat_o),
 
 	/* For an explanation of the mapping of the upper bits of
@@ -712,14 +711,14 @@ module picosoc (
         .wb_clk_i(wb_clk_i),
         .wb_rst_i(wb_rst_i),
 
-        .wb_adr_i(cpu_adr_o), 
+        .wb_adr_i(cpu_adr_o),
         .wb_dat_i(cpu_dat_o),
         .wb_sel_i(cpu_sel_o),
         .wb_we_i(cpu_we_o),
         .wb_cyc_i(cpu_cyc_o),
 
         .wb_stb_i(mem_stb_i),
-        .wb_ack_o(mem_ack_o), 
+        .wb_ack_o(mem_ack_o),
         .wb_dat_o(mem_dat_o)
     );
     
@@ -760,7 +759,7 @@ module picosoc (
 		gpio_vector_stb_i,
 		uart_stb_i,
 		spimemio_flash_stb_i,
-		mem_stb_i }), 
+		mem_stb_i }),
         .wbs_dat_i({
         debug_dat_o,
 		spimemio_cfg_dat_o,
@@ -798,12 +797,12 @@ module picosoc (
 	`ifdef USE_POWER_PINS
 	    .VPWR(VPWR),
 	    .VGND(VGND),
-	`endif		
+	`endif
 	.ext_clk_sel(ext_clk_sel),
 	.ext_clk(cpu_gpio_in[38]),
 	.dll_clk(dll_clk),
 	.dll_clk90(dll_clk90),
-	.resetb(resetb), 
+	.resetb(resetb),
 	.sel(spi_dll_sel),
 	.sel2(spi_dll90_sel),
 	.primdiv(spi_prim_div),

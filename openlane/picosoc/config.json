@@ -85,7 +85,7 @@
     "CLOCK_PORT": "gpio_in[38]",
     "PL_TARGET_DENSITY": 0.28,
     "DIE_AREA_WRAPPER": "0 0 3168.82 4768.82",
-    "DIE_AREA": "0 0 2200 1500",
+    "DIE_AREA": "0 0 2600 1600",
     "RUN_IRDROP_REPORT": 0,
     "BASE_SDC_FILE": "dir::base.sdc",
     "GRT_ALLOW_CONGESTION": 1,
@@ -95,5 +95,5 @@
     "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
     "SYNTH_DEFINES": "PnR",
     "QUIT_ON_HOLD_VIOLATIONS": 0,
-    "GRT_ADJUSTMENT": 0.18
+    "GRT_ADJUSTMENT": 0.19
 }
