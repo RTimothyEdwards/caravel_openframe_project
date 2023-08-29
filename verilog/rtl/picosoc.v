@@ -44,6 +44,7 @@
 /* macro instances in mem_wb.v.	 1024 words = 4kB (2 2kB SRAM modules)	*/
 `define MEM_WORDS 1024
 `ifndef COCOTB_SIM
+`ifndef PnR
 `include "picorv32.v"
 `include "spimemio.v"
 `include "simpleuart.v"
@@ -61,6 +62,7 @@
 `ifdef SIM
 `include "libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v"
 `endif
+`endif // PnR
 `endif // COCOTB_SIM
 
 /*--------------------------------------------------------------*/

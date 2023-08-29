@@ -21,7 +21,11 @@ set ::env(VERILOG_FILES) "\
 set ::env(CLOCK_PORT) ""
 set ::env(RUN_CTS) 0
 
+# Linting
+set ::env(RUN_VERILATOR) 0
+
 # Synthesis
+set ::env(SYNTH_CAP_LOAD) 52
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 set ::env(SYNTH_MAX_FANOUT) 7
 set ::env(SYNTH_BUFFERING) 0
@@ -67,6 +71,9 @@ set ::env(GRT_REPAIR_ANTENNAS) 1
 set ::env(RUN_HEURISTIC_DIODE_INSERTION) 1
 set ::env(HEURISTIC_ANTENNA_THRESHOLD) 80
 
-set ::env(STA_WRITE_LIB) 0
+set ::env(STA_WRITE_LIB) 1
 set ::env(FP_PDN_SKIPTRIM) 1
+
+# ERC
+set ::env(RUN_CVC) 0
 
