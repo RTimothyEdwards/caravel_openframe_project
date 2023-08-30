@@ -2,3 +2,5 @@
 /precheck_results/
 */tmp
 */*/tmp
+venv/
+__pycache__/

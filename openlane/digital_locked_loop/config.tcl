@@ -22,7 +22,7 @@ set ::env(CLOCK_PORT) ""
 set ::env(RUN_CTS) 0
 
 # Linting
-set ::env(RUN_VERILATOR) 0
+set ::env(RUN_LINTER) 0
 
 # Synthesis
 set ::env(SYNTH_CAP_LOAD) 52
@@ -77,3 +77,5 @@ set ::env(FP_PDN_SKIPTRIM) 1
 # ERC
 set ::env(RUN_CVC) 0
 
+# XOR
+set ::env(RUN_KLAYOUT_XOR) 0

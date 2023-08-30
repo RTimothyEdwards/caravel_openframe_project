@@ -31,7 +31,7 @@ CARAVEL_BEHAVIORAL_MODELS = $(CARAVEL_VERILOG_PATH)/dv/caravel
 OPENFRAME_FIRMWARE_PATH = ../firmware
 OPENFRAME_VERILOG_PATH ?= ../../../verilog
 OPENFRAME_RTL_PATH = $(OPENFRAME_VERILOG_PATH)/rtl
-OPENFRAME_BEHAVIORAL_MODELS = ../
+OPENFRAME_GL_PATH = $(OPENFRAME_VERILOG_PATH)/gl
 
 ## RISCV GCC 
 GCC_PATH ?= /opt/riscv32imc/bin
@@ -52,19 +52,16 @@ hex:  ${PATTERN:=.hex}
 %.vvp: %_tb.v %.hex
 ifeq ($(SIM),RTL)
 	iverilog $(SIM_DEFINES) -I $(PDK_PATH) \
-	-I $(OPENFRAME_BEHAVIORAL_MODELS) \
 	-I $(OPENFRAME_RTL_PATH) \
-	-I $(CARAVEL_BEHAVIORAL_MODELS) \
 	-I $(CARAVEL_RTL_PATH) \
+	-I $(CARAVEL_BEHAVIORAL_MODELS) \
 	$< -o $@ 
 else  
 	iverilog $(SIM_DEFINES) -DGL -I $(PDK_PATH) \
-	-I $(OPENFRAME_BEHAVIORAL_MODELS) \
-	-I $(OPENFRAME_RTL_PATH) \
-	-I $(OPENFRAME_VERILOG_PATH) \
-	-I $(CARAVEL_BEHAVIORAL_MODELS) \
+	-I $(OPENFRAME_GL_PATH) \
 	-I $(CARAVEL_RTL_PATH) \
 	-I $(CARAVEL_VERILOG_PATH) \
+	-I $(CARAVEL_BEHAVIORAL_MODELS) \
 	$< -o $@ 
 endif
 
@@ -73,7 +70,7 @@ endif
 
 %.elf: %.c $(OPENFRAME_FIRMWARE_PATH)/sections.lds \
 		$(OPENFRAME_FIRMWARE_PATH)/start.s check-env
-	${GCC_PATH}/${GCC_PREFIX}-gcc -I $(CARAVEL_PATH) -march=rv32imc -mabi=ilp32 \
+	${GCC_PATH}/${GCC_PREFIX}-gcc -march=rv32imc -mabi=ilp32 \
 		-Wl,-Bstatic,-T,$(OPENFRAME_FIRMWARE_PATH)/sections.lds,--strip-debug \
 		-ffreestanding -nostdlib -o $@ $(OPENFRAME_FIRMWARE_PATH)/start.s $<
 

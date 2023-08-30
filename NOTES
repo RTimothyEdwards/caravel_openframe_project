@@ -1,0 +1,351 @@
+Notes on building the caravel_openframe_project:
+=================================================
+Tim Edwards
+May 1, 2023 to August 29, 2023
+
+This is an example project of a picoRV32 processor and SoC that
+roughly matches the management core used on first Efabless SkyWater
+OpenMPW.  However, this project is intended to synthesize into the
+project area of the Caravel Openframe.
+
+The "NOTES" file is a collection of notes I made while trying
+to get the openlane build to work cleanly from end to end.
+See the README file for the final set of step-by-step instructions
+for the build.
+
+=======================================
+
+Build notes:
+
+(1) Building using local (not containerized) OpenROAD and Openlane.
+    OpenROAD was pulled from git and compiled.
+    Required libboost to be compiled and installed from source,
+	because cmake insisted on a boost library newer than that
+	supported by my OS.
+    Openlane was pulled from git and built.
+
+(2) cd to openlane/openframe_project_wrapper
+
+(3) Quick experimental build:	~/gits/openlane/flow.tcl
+    Determined that switch "-ignore_mismatches" is required to
+	bypass the error and exit caused by my tool versions.
+
+(4) Do:  ~/gits/openlane/flow.tcl -ignore_mismatches
+    Needed to fix one syntax issue;  now it complains I need PDK_ROOT set
+
+(5) Do:
+	setenv PDK_ROOT /usr/share/pdk
+	setenv PDK sky130A
+	~/gits/openlane/flow.tcl -ignore_mismatches
+
+(6) Removed CLOCK_TREE_SYNTH from config.json because it is apparently
+	deprecated.
+
+(7) "click" module needed for python3.  But it exists.  Why does the
+	odbpy/lefutil.py script fail, then?
+    Hacked my way around this by adding
+	import sys
+	sys.path.append('/usr/lib/python3.10/site-packages')
+	import click
+    to the lefutil.py script.  But there must be a proper way to configure
+    the python path correctly for openroad.
+
+(8) This actually ran. . . verilator (synthesis step 1) found errors, so
+    need to fix those.  Except. . .  failed to generate report due to
+    failure to load module "report", which is another path issue
+	('/usr/lib64/python3.10/site-packages')
+    Except this time, it still doesn't work.  Can import "report", can
+    do "from report import report" but cannot do "from report.report import
+    Report"---no such thing.  Need to pip install "reports" ???
+    (in /home/tim/gits/openlane/scripts/generate_reports.py)
+    Ahh. . . It is not a standard python package but local to openlane.
+    Also:  The underlying problem is that there is a python package "report"
+    installed on my system, and this one is being preferred.
+    Hack solution:  "pip uninstall" didn't work, so I just renamed "report"
+    in the offending library directory so it won't be found.
+
+    Back to the original issue:  see runs/<run>/logs/synthesis/verilator.log
+    Problem---No defines.v, no OPENFRAME_IO_PADS defined.
+
+    Wrong set of files in config.json.  defines.v appears twice and needs
+    to be removed.
+
+    Now verilator complains about all sorts of non-issues.  How to disable
+    verilator?  Set RUN_VERILATOR to 0 in the config file.
+
+(9) Synthesis fails on call to standard cell "sky130_fd_sc_hd__einvn_8".
+    How to solve this?  Tried "STD_CELL_LIBRARY_OPT" but that didn't work.
+    Setting "SYNTH_READ_BLACKBOX_LIB" worked.
+
+(10) Now fails on the SRAM, which is not surprising.
+    ---Added openframe_example.soc_mem.SRAM_0 and
+    openframe_example.soc_mem.SRAM_1 to macro.cfg but presumably need more.
+    ---Added filenames for the SRAM block to VERILOG_FILES_BLACKBOX, EXTRA_LEFS,
+    and EXTRA_GDS_FILES (probably need EXTRA_LIBS, too).
+
+(11) "$::env(PDK_ROOT)" doesn't work in the config.json file.
+	"::env(PDK_ROOT)" doesn't work, either.  Punting for now and
+	inserting full path.
+
+(12) Now it complains there is no port "vssd1" on
+	sky130_sram_2kbyte_1rw1r_32x512_8 of SRAM_1 in mem_wb.v.  What gives?
+	Testing. . . it will also complain about vccd1 and about SRAM_0, just
+	generates errors from the bottom of the file up for some reason.
+	But is USE_POWER_PINS being changed between reading the library and
+	reading the design?  But "SYNTH_USE_PG_PINS_DEFINES" is set to
+	"USE_POWER_PINS".  Try not setting that?
+	Okay, no good, so try *not* defining it in the netlists file (or
+	rather, defining it only if SIM is defined). . . and bingo.
+
+(13) "Out of bounds on some signals" error, need to check log file.
+	Seems not happy about the OR'd bits in the array assignment
+	assign gpio_all_dat_o[i] = |(gpio_dat_o[i][`OPENFRAME_IO_PADS-1:0]);
+	??
+	Disabled the out-of-bound check in openlane tcl_commands/checkers.tcl
+	Next set of checks appears to be more relevant.
+	Fixed all of them but there are "multiple driver" errors on tri-state
+	buffers, so disabling the "check_synth_misc" check, too.
+
+(14) Failed on "proc_rom"---This is a command in yosys/synth.tcl, and it seems
+	that yosys fails to understand it.  Maybe by default yosys is being run
+	from my original installed version which is a bit out of date?
+	Commented "proc_rom" out of the synth script and continued.
+
+(15) Failed because config file was set with SYNTH_ELABORATE_ONLY.  Fixed.
+
+(16) Tried to read verilog of the SRAM;  failed to black-box it.  Maybe put back
+	the original brackets in the blackbox definition in config.json?
+	(Did not make a difference)
+	Following suggestion and adding "/// sta-blackbox" to the verilog file,
+	but that's in the PDK, so not a preferred solution.
+	(Might also be because the "extra liberty files" setting was not in
+	the config file?)
+
+(17) Next error:  invalid command name "report_parasitic_annoation" in
+	multi_corner.tcl.  Commenting the line
+	(openlane/scripts/openroad/sta/multi_corner.tcl)
+	Now is running STA, maybe successfully. . .
+	Seems to have hung up on something.  Produced an output almost
+	immediately, after which it is just grinding away.
+	Ran 10 hours and is still going in the morning, so something is
+	wrong.
+	NOTE:  This happened on "report_clock_skew", and tracking that
+	down to openroad/sta/multi_corner.tcl, there's a comment that
+	says OpenROAD hangs if the "report_clock_skew" command is run
+	on a clockless design.  Presumably there's something similar
+	going on, like the clock isn't specified correctly.  Disabling
+	the report for now.
+
+(18) Floorplan---same issue with python paths for importing "click" as
+	above (see (7)).  Needed in defutil.py, apply_def_template.py,
+	manual_macro_place.py
+
+(19) Floorplan---complains that some pins are not on the manufacturing
+	grid, specifically por_l/porb_h/porb_l.  This comes from the
+	DEF file at fixed_dont_change/openframe_project_wrapper.def.
+	Magic shouldn't be putting things at off-grid positions!
+	In fact, it shouldn't even be possible. . .  Except that
+	distance units have been set at 1000, not 200.  But magic did,
+	and generated non-integer entries in the DEF file to boot, so
+	this will need to be investigated.  Actually, there were rather
+	a lot of such entries in the file at 1/2 grid points.  I think
+	that this is due to centerlines, and the DEF writer is not
+	paying attention to the grid limit settings in "cifoutput"
+	although it is assumed to be producing equivalent output.
+
+(20) Macro placement:  Macros not found.  Used names
+	"openframe_example.soc_mem.SRAM_0" (and "1") in macro.cfg.
+	What should this be instead?
+	Missing a hiearchy layer;  should be
+	"openframe_example.soc_mem.mem.SRAM_0"
+	After that. . . got all the way to step 7!
+
+(21) Global placement:  "click" again. . .
+
+(22) Detail placement failed during/after clock tree synthesis.
+	Chances are good that this is due to the incorrect floorplan
+	DEF (tracks and sites do not cover the entire die area as
+	they should)?  Need to look at output.
+
+	Result---The placement actually covers the area in spite of
+	the incorrect list of tracks/sites, so that doesn't seem to
+	be the underlying problem.
+
+(23) Continuing 5/9/2023 after break due to travel.  Committed all work
+	so here's a recap:
+	Do:
+	setenv PDK_ROOT /usr/share/pdk
+	setenv PDK sky130A
+	cd openlane/openframe_project_wrapper
+	~/gits/openlane/flow.tcl -ignore_mismatches
+
+	(had updated sky130A PDK and needed to redo the "/// sta-blackbox"
+	comment line in sky130_sram_2kbyte_1rw1r_32x512_8.v)
+
+(24) Continuing 8/11/2023 after the openlane team worked over this.
+	Copied over all openlane configuration files.  The openlane
+	flow has now been divided into multiple blocks (picoRV32 core,
+	clock routing, DLL, and then the top level wrapper) which are
+	hardened hierarchically.  Macros were added which connect to the
+	VCCD1/VSSD1 busses (although preferably there should be additional
+	connections to VCCD/VSSD and VCCD2/VSSD2 for robustness).
+
+	Note that I am attempting to keep the *unbuilt* sources in the
+	original "main" repository branch, while working on a build in
+	a "build" branch.  It should be possible to keep a minimum set of
+	files in the (committed) upstream repository while being able to
+	generate the final layout through a series of known repeatable
+	steps. 
+
+(25) NOTE:  The issue with having to rewrite the openlane scripts for
+	the "click" package is probably best resolved by running
+	in a python virtual environment, even though I consider that
+	solution akin to docker and dislike it immensely.
+
+(26) Continuing 8/28/2023 after another hiatus.
+	Testing with the following steps:
+	(1) Setup
+		setenv PDK_ROOT /usr/share/pdk
+		setenv PDK sky130A
+	(2) Synthesize the digital_locked_loop macro.
+		cd openlane/digital_locked_loop
+		~/gits/openlane/flow.tcl -ignore_mismatches
+
+	    --> There is an immediate issue that verilator pulls all .v
+		files from the PDK, and is catching the newly-added
+		black-box files.  Temporarily renaming them to avoid
+		a conflict.
+	    --> Another issue is that  fakediode_2 is calling a base
+		cell sky130_fd_sc_hd__diode that does not exist.
+		Changing name to from diode to diode_2 (need to fix in
+		the PDK install).
+	    --> Same thing with fill_12 calling base cell fill that
+		does not exist;  this one just needs to be deleted.
+	    --> And verilator just seems to be overly eager to find
+		errors where they don't exist.  Any way to turn it
+		off??? (Yes---set env variable "RUN_VERILATOR" to 0)
+	    --> Failed due to no SYNTH_CAP_LOAD defined?
+		Defined it and set to 52 based on an entry in caravel.
+		No idea what the units are. . .  Or why it needs to
+		be defined (might need an openlane update).
+	    --> Now stuck again with the "click" module issue, in
+		io_place.py (fixed) and diodes.py (fixed) and
+		wire_lengths.py (fixed) and power_utils.py (fixed)
+	    --> Started step 30 (stream-out with klayout) but klayout
+		isn't running in batch.  Why would you stream out with
+		both klayout and magic?  Just exiting from klayout
+		manually (but how to fix. . .  and is this step even
+		needed?).
+		Back-annotated note:  (1) No, the klayout step is not
+		needed and exiting klayout continues without issue.
+		(2) Failure to run klayout in batch mode is a self-
+		inflicted problem caused by using a script to launch
+		klayout but failing to handle arguments.  Reworked by
+		adding the directory for klayout's shared object
+		libraries to ld.so.conf.d and running ldconfig, and
+		replacing the script with a symbolic link to the
+		executable.
+	    --> Step 37, cvc_rv does not exist.  I have the source, but
+		it is not installed---and I cannot install it due to
+		inscrutable errors.  (set env variable RUN_CVC = 0
+		to disable)
+	    --> Finally, the flow completed (although is it correct?)
+		(there are max fanout violations reported.)
+
+	(3) Synthesize the picosoc macro.
+		cd openlane/picosoc
+		~/gits/openlane/flow.tcl -ignore_mismatches
+
+	    --> Cannot find LEF of digital_locked_loop.
+		Copied the LEF file manually (but why isn't this done
+		automatically?)
+	    --> Cannot find GDS of digital_locked_loop.
+		Copied the GDS file manually (but why isn't this done
+		automatically?)
+	    --> Need to disable verilator
+	    --> Cannot find .lib of digital_locked_loop.
+		None was created, so had to copy from the working files
+		Back-annotated comment:  This can be corrected simply
+		by changing STA_WRITE_LIB to 1.
+	    --> Cannot find gl/.v file of digital_locked_loop
+		Copied the .v file manually (but why isn't this done
+		automatically?)
+	    --> Needs SYNTH_CAP_LOAD defined (see above)
+	    --> Yosys error: picorv32 redefined ??
+		Added "ifndef PnR"..."endif" around file includes
+	    --> Needs digital_locked_loop.min.spef in
+		signoff/digital_locked_loop/openlane-signoff/spef/	
+		(added nom and max for good measure)
+	    --> Now running and spending extensive time in step 16
+		(global routing resizer design optimizations)
+		Letting it run. (Started 5:18pm)
+	    --> And then it died on a totally obscure syntax error of
+		a line in picosoc.nl.v "wire [38:0] \% Xz ;".  Seems
+	  	to have been derived from the pnl.v line which has
+		"wire [38:0] \J\xfd6\x88 ;".  Not clear where this
+		comes from but tool updates (OpenROAD in particular)
+		are probably in order (wanders off for several hours
+		on a quest to rebuild OpenROAD. . .)
+	    --> (Returns after finally coercing OpenROAD to compile
+		again) Now I get a different obscure error earlier
+		in the sequence:
+
+		File "/home/tim/gits/openlane/scripts/odbpy/reader.py",
+			line 37, in __init__
+			odb.read_def(self.db, def_in)
+		File "odb_py.py", line 9553, in read_def
+		TypeError: in method 'read_def', argument 1 of type 'odb::dbTech *'
+
+		Something has gone very wrong here and it is not clear
+		to me what, other than that it was caused by recompiling
+		OpenROAD.
+
+(27) Continuing 8/29/2023 after updating OpenROAD *and* openlane.
+
+	(1) Create python virtual environment this time to avoid issue
+			with the "click" package.
+		python3 -m venv ./venv
+		./venv/bin/python3 -m pip install --upgrade --no-cache-dir -r \
+			/home/tim/gits/openlane/requrements.txt
+		source ./venv/bin/activate.csh
+		--> This works!
+
+	(2) Run ~/gits/openlane/flow.tcl -ignore_mismatches
+		--> RUN_VERILATOR superceded by RUN_LINTER (fixed)
+		--> yosys fails on command "proc_rom". . .
+		    Need yosys update now. . . (Goes off and rebuilds yosys)
+
+	(3) (Hey, I'm back) Trying again with yosys updated.
+	    Run ~/gits/openlane/flow.tcl -ignore_mismatches
+		--> Noted that SYNTH_CAP_LOAD is deprecated.  Not sure
+		    why that didn't show up before. . . ?  Changed to
+		    OUTPUT_CAP_LOAD as requested, for subsequent runs.
+		--> Now running and at step 15 and going well so far.
+		--> Now running and at step 26 and going well so far.
+		--> Now running and at step 35 and going well so far.
+		--> Success!		
+
+(28) Now run the project wrapper:
+	(Will presumably need to copy files from the picosoc synthesis
+	 to the top level before this will work.)
+
+	Copy picosoc LEF, GDS, .lib, and GL verilog;
+
+		cd openlane/openframe_project_wrapper
+		~/gits/openlane/flow.tcl -ignore_mismatches
+
+		--> Need to also copy the GDS of vccd1_connection
+		    and vssd1_connection from the "_work" branch.
+		--> Apparently these files can't be compressed,
+		    either.
+		--> Also need gate-level .v files for vccd1 and
+		    vssd1 connection.
+		--> Forgot the picosoc SPEF files. (min, max, nom)
+		--> Now running without problems.
+		--> Observation:  "Generating lef with Magic" seems
+		    to be taking a rather long time.  (But not
+		    ridiculously long, so probably okay.)
+
+	Final solution generated but there are hold violations at the
+	typical corner.  (Single violation clk on gpio_in[38] to
+	openframe_example/_34243_)

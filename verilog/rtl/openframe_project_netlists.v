@@ -32,13 +32,8 @@
 `define OPENFRAME_IO_PADS 44
 
 `ifndef PnR
-`ifdef GL
-    `default_nettype wire
-    // Use behavorial model with gate-level simulation
-    `include "rtl/openframe_project_wrapper.v"
-    `include "gl/picosoc.v"
-`else
     `include "openframe_project_wrapper.v"
     `include "picosoc.v"
-`endif
+    `include "vccd1_connection.v"
+    `include "vssd1_connection.v"
 `endif

@@ -58,6 +58,7 @@
 `include "mem_wb.v"
 `include "gpio_wb.v"
 `include "gpio_vector_wb.v"
+`include "debug_regs.v"
 /* From the Sky130 PDK */
 `ifdef SIM
 `include "libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v"

@@ -69,7 +69,7 @@ git checkout 411d134
 git submodule update --init --recursive
 
 mkdir build; cd build
-../configure --with-arch=rv32i --prefix=$GCC_PATH
+../configure --with-arch=rv32imc --prefix=$GCC_PATH
 make -j$(nproc)
 ```
 
