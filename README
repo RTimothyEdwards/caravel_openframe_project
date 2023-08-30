@@ -50,7 +50,7 @@ Steps to build:
 	Go to this repository.  I have it put in ~/gits/ along with
 	everything else I clone from git repositories:
 
-		cd ~/gits/caravel_openframe_example
+		cd ~/gits/caravel_openframe_project
 
 	Set up the technology.  The PDK is installed locally with
 	open_pdks using --prefix=/usr, so that the PDK is rooted
