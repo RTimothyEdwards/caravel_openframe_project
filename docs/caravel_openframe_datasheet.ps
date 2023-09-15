@@ -1,7 +1,7 @@
 %!PS-Adobe-3.0
 %%Title: caravel_openframe_datasheet.ps
-%%Creator: XCircuit v0.0 rev633937557
-%%CreationDate: Thu Sep 14 18:03:47 2023
+%%Creator: XCircuit v0.0 rev-1170510187
+%%CreationDate: Thu Sep 14 21:55:48 2023
 %%Pages: 33
 %%BoundingBox: 0 0 612 792
 %%DocumentNeededResources: font Helvetica Helvetica-Bold Helvetica-Oblique 
@@ -3185,7 +3185,7 @@ HR!O#k^fqM#JTUTp2tlb=5G)jq%jOkT0o/6ar`!NH\ie'VL'F?muHYk9AFoh#80u1X6"o+qK&V,?gY$E
 H6CT;M&o4[5b\Jr4cnlYs1]R8('"=7!#Xd84cLJ9O9#Ff$lC[+^jlFf"q2>&@).9n!sT/N0OV\H!<WN7
 (bf@5J,o`V$lC[+^jlFf"q2>&@).9n!sT/N0OV\H!<WN7(bf@5J,o`V$lC[+^jlFf"q2>&@).9n!sT/N
 0OV\H!<WN7(bf@5J,o`V$lC[+^jlFf"q2>&@).9n!sT/N0OV\H!<WN7(bf@5J,o`V$lC[+^jlFf"q2>&
-@).9n!sT/N0OV\H!<WN7(bf@5J,o`V$lC[+^jlFf"q2>&@).9n!sT/N0OV\H!<_M9!5Roe";~>
+@).9n!sT/N0OV\H!<WN7(bf@5J,o`V$lC[+^jlFf"q2>&@).9n!sT/N0OV\H!<_M9!5Roe"R~>
 /riscv_logo2.ppmdata exch def
 /riscv_logo2.ppm <<
   /ImageType 1 /Width 737 /Height 609 /BitsPerComponent 8
@@ -51441,6 +51441,21 @@ sce
 (The PicoRV32 CPU defines an additional 32-bit counter that can be enabled using the special CPU) 
 {/Helvetica cf} 8 28 0.000 0.700 -896 1120 label
 (IRQ 1 external pin \(pin 41\)) {/Helvetica cf} 2 16 0.000 0.700 -512 576 label
+(Debug Registers) {/Helvetica-Bold cf} 2 16 0.000 0.700 -896 -144 label
+(\).) {/Helvetica cf} (reg_debug_second) {/Courier-Bold cf} ( \(name ) 
+{/Helvetica cf} (0x41000004) {/Courier-Bold cf} (\) and ) {/Helvetica cf} 
+(reg_debug_first) {/Courier-Bold cf} (\(name ) {/Helvetica cf} (0x41000000 ) 
+{/Courier-Bold cf} {CR} 
+(memory.  These registers are two general-purpose 32-bit read/write registers located at) 
+{CR} 
+(and on the bench, and \(3\) because you never know when you might need an extra 64 bits of) 
+{CR} 
+(manufactured design,  \(2\) to make sure that verification testbenches can be used in both simulation) 
+{CR} 
+(design \(1\) to make sure that there are no changes between the simulated design and the) 
+{CR} 
+(The debug registers exist for use in simulation verification.  However, they are left in the physical) 
+{/Helvetica cf} 27 28 0.000 0.700 -896 -176 label
 pgsave restore showpage
 
 %%Page: block 23
@@ -51943,7 +51958,7 @@ sce
 (Write data to send to low byte or read received data from low byte.) 
 {/Helvetica cf} 2 16 0.000 0.700 -528 656 label
 (0x41 00 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -864 48 label
-(Debug registers) {/Helvetica cf} 2 16 0.000 0.700 -608 48 label
+(Debug register 1) {/Helvetica cf} 2 16 0.000 0.700 -608 48 label
 (0x25 00 00 00) {/Courier-Bold cf} 2 16 360.000 0.700 -864 576 label
 (GPIO vector data in/out \(32 bits\)) {/Helvetica cf} 2 16 0.000 0.700 -608 576 
 label
@@ -51956,7 +51971,12 @@ label
 (0 = low  1 = high) {/Helvetica cf} 2 16 0.000 0.700 -96 576 label
 (0 = enabled  1 = disabled) {/Helvetica cf} 2 16 0.000 0.700 -96 528 label
 (0 = enabled  1 = disabled) {/Helvetica cf} 2 16 0.000 0.700 -96 480 label
-(\(reserved space, unused\)) {/Helvetica cf} 2 16 0.000 0.700 -368 48 label
+(General-purpose register space \(32 bits\)) {/Helvetica cf} 2 16 0.000 0.700 
+-368 48 label
+(0x41 00 00 04) {/Courier-Bold cf} 2 16 0.000 0.700 -864 0 label
+(Debug register 2) {/Helvetica cf} 2 16 0.000 0.700 -608 0 label
+(General-purpose register space \(32 bits\)) {/Helvetica cf} 2 16 0.000 0.700 
+-368 0 label
 pgsave restore showpage
 
 %%Page: domains 28

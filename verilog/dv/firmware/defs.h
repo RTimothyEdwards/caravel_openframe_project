@@ -133,6 +133,10 @@ extern uint32_t flashio_worker_end;
 #define SPI_MASTER_IRQ_ENABLE	0x4000
 #define SPI_HOUSEKEEPING_CONN	0x8000
 
+// Debug registers (general-purpose read/write space)
+#define reg_debug_first (*(volatile uint32_t*)0x41000000)
+#define reg_debug_second (*(volatile uint32_t*)0x41000004)
+
 // Individual bit fields for the GPIO pad control
 #define OUTPUT_VALUE	  0x800
 #define OEB_VALUE	  0x400

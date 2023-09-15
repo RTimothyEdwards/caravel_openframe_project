@@ -35,7 +35,7 @@
 /*----------------------------------------------------------------------*/
 
 `ifdef PICORV32_V
-`error "picosoc.v must be read before picorv32.v!"
+    `error "picosoc.v must be read before picorv32.v!"
 `endif
 
 `define PICORV32_REGS picosoc_regs
@@ -44,26 +44,26 @@
 /* macro instances in mem_wb.v.	 1024 words = 4kB (2 2kB SRAM modules)	*/
 `define MEM_WORDS 1024
 `ifndef COCOTB_SIM
-`ifndef PnR
-`include "picorv32.v"
-`include "spimemio.v"
-`include "simpleuart.v"
-`include "clock_routing.v"
-`include "housekeeping.v"
-`include "digital_locked_loop.v"
-`include "simple_spi_master.v"
-`include "counter_timer_high.v"
-`include "counter_timer_low.v"
-`include "intercon_wb.v"
-`include "mem_wb.v"
-`include "gpio_wb.v"
-`include "gpio_vector_wb.v"
-`include "debug_regs.v"
-/* From the Sky130 PDK */
-`ifdef SIM
-`include "libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v"
-`endif
-`endif // PnR
+    `ifndef PnR
+	`include "picorv32.v"
+	`include "spimemio.v"
+	`include "simpleuart.v"
+	`include "clock_routing.v"
+	`include "housekeeping.v"
+	`include "digital_locked_loop.v"
+	`include "simple_spi_master.v"
+	`include "counter_timer_high.v"
+	`include "counter_timer_low.v"
+	`include "intercon_wb.v"
+	`include "mem_wb.v"
+	`include "gpio_wb.v"
+	`include "gpio_vector_wb.v"
+	`include "debug_regs.v"
+	/* From the Sky130 PDK */
+	`ifdef SIM
+	    `include "libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v"
+	`endif
+    `endif // PnR
 `endif // COCOTB_SIM
 
 /*--------------------------------------------------------------*/
@@ -590,64 +590,64 @@ module picosoc (
 	 */
 	integer k, j;
 
-    always @(*) begin
-        for (k = 0; k < 32; k = k + 1) begin
-            gpio_all_dat_o[k] = 1'b0;
-            for (j = 0; j < `OPENFRAME_IO_PADS; j = j + 1) begin
-                gpio_all_dat_o[k] = gpio_all_dat_o[k] | gpio_dat_o[j][k];
-            end
-        end
-    end
-	assign gpio_all_ack_o = |(gpio_ack_o[`OPENFRAME_IO_PADS-1:0]);
-
-	/* GPIOs with dedicated functions that have no output
-	 * should have OEB should be tied high and IEB tied low.
-	 * The output is connected to the GPIO vector but due to
-	 * the OEB setting, can only be used by forcing OEB override.
-	 */
-
-	assign cpu_gpio_oeb[2] = gpio_loopback_one[2];   /* SDI */
-	assign cpu_gpio_oeb[3] = gpio_loopback_one[3];   /* CSB */
-	assign cpu_gpio_oeb[4] = gpio_loopback_one[4];	  /* SCK */
-	assign cpu_gpio_oeb[5] = gpio_loopback_one[5];   /* Rx */
-	assign cpu_gpio_oeb[7] = gpio_loopback_one[7];   /* IRQ1 */
-	assign cpu_gpio_oeb[8] = gpio_loopback_one[8];   /* mCSB */
-	assign cpu_gpio_oeb[9] = gpio_loopback_one[9];   /* mSCK */
-	assign cpu_gpio_oeb[10] = gpio_loopback_one[10]; /* mSDI */
-	assign cpu_gpio_oeb[12] = gpio_loopback_one[12]; /* IRQ2 */
-	assign cpu_gpio_oeb[38] = gpio_loopback_one[38]; /* clock */
-
-	assign cpu_gpio_ieb[1] = gpio_loopback_one[1];    /* SDO */
-	assign cpu_gpio_ieb[2] = gpio_loopback_zero[2];   /* SDI */
-	assign cpu_gpio_ieb[3] = gpio_loopback_zero[3];   /* CSB */
-	assign cpu_gpio_ieb[4] = gpio_loopback_zero[4];	  /* SCK */
-	assign cpu_gpio_ieb[5] = gpio_loopback_zero[5];   /* Rx */
-	assign cpu_gpio_ieb[7] = gpio_loopback_zero[7];   /* IRQ1 */
-	assign cpu_gpio_ieb[8] = gpio_loopback_zero[8];   /* mCSB */
-	assign cpu_gpio_ieb[9] = gpio_loopback_zero[9];   /* mSCK */
-	assign cpu_gpio_ieb[10] = gpio_loopback_zero[10]; /* mSDI */
-	assign cpu_gpio_ieb[11] = gpio_loopback_one[11];  /* mSDO */
-	assign cpu_gpio_ieb[12] = gpio_loopback_zero[12]; /* IRQ2 */
-	assign cpu_gpio_ieb[38] = gpio_loopback_zero[38]; /* clock */
-
-	/* GPIOs with dedicated functions that are output only
-	 * should have OEB set to zero and IEB set to one.
-	 */
-	assign cpu_gpio_oeb[6] = gpio_loopback_zero[6];   /* Tx */
-	assign cpu_gpio_oeb[13] = gpio_loopback_zero[13]; /* Trap monitor */
-	assign cpu_gpio_oeb[14] = gpio_loopback_zero[14]; /* Clock1 monitor */
-	assign cpu_gpio_oeb[15] = gpio_loopback_zero[15]; /* Clock2 monitor */
-
-	assign cpu_gpio_ieb[6] = gpio_loopback_one[6];   /* Tx */
-	assign cpu_gpio_ieb[13] = gpio_loopback_one[13]; /* Trap monitor */
-	assign cpu_gpio_ieb[14] = gpio_loopback_one[14]; /* Clock1 monitor */
-	assign cpu_gpio_ieb[15] = gpio_loopback_one[15]; /* Clock2 monitor */
-
-	assign cpu_gpio_ieb[39] = gpio_loopback_one[39]; /* Flash CSB */
-	assign cpu_gpio_ieb[40] = gpio_loopback_one[40]; /* Flash clock */
-    
+	always @(*) begin
+	    for (k = 0; k < 32; k = k + 1) begin
+		gpio_all_dat_o[k] = 1'b0;
+		for (j = 0; j < `OPENFRAME_IO_PADS; j = j + 1) begin
+		    gpio_all_dat_o[k] = gpio_all_dat_o[k] | gpio_dat_o[j][k];
+		end
+	    end
+	end
     endgenerate
 
+    assign gpio_all_ack_o = |(gpio_ack_o[`OPENFRAME_IO_PADS-1:0]);
+
+    /* GPIOs with dedicated functions that have no output
+     * should have OEB should be tied high and IEB tied low.
+     * The output is connected to the GPIO vector but due to
+     * the OEB setting, can only be used by forcing OEB override.
+     */
+
+    assign cpu_gpio_oeb[2] = gpio_loopback_one[2];   /* SDI */
+    assign cpu_gpio_oeb[3] = gpio_loopback_one[3];   /* CSB */
+    assign cpu_gpio_oeb[4] = gpio_loopback_one[4];   /* SCK */
+    assign cpu_gpio_oeb[5] = gpio_loopback_one[5];   /* Rx */
+    assign cpu_gpio_oeb[7] = gpio_loopback_one[7];   /* IRQ1 */
+    assign cpu_gpio_oeb[8] = gpio_loopback_one[8];   /* mCSB */
+    assign cpu_gpio_oeb[9] = gpio_loopback_one[9];   /* mSCK */
+    assign cpu_gpio_oeb[10] = gpio_loopback_one[10]; /* mSDI */
+    assign cpu_gpio_oeb[12] = gpio_loopback_one[12]; /* IRQ2 */
+    assign cpu_gpio_oeb[38] = gpio_loopback_one[38]; /* clock */
+
+    assign cpu_gpio_ieb[1] = gpio_loopback_one[1];    /* SDO */
+    assign cpu_gpio_ieb[2] = gpio_loopback_zero[2];   /* SDI */
+    assign cpu_gpio_ieb[3] = gpio_loopback_zero[3];   /* CSB */
+    assign cpu_gpio_ieb[4] = gpio_loopback_zero[4];   /* SCK */
+    assign cpu_gpio_ieb[5] = gpio_loopback_zero[5];   /* Rx */
+    assign cpu_gpio_ieb[7] = gpio_loopback_zero[7];   /* IRQ1 */
+    assign cpu_gpio_ieb[8] = gpio_loopback_zero[8];   /* mCSB */
+    assign cpu_gpio_ieb[9] = gpio_loopback_zero[9];   /* mSCK */
+    assign cpu_gpio_ieb[10] = gpio_loopback_zero[10]; /* mSDI */
+    assign cpu_gpio_ieb[11] = gpio_loopback_one[11];  /* mSDO */
+    assign cpu_gpio_ieb[12] = gpio_loopback_zero[12]; /* IRQ2 */
+    assign cpu_gpio_ieb[38] = gpio_loopback_zero[38]; /* clock */
+
+    /* GPIOs with dedicated functions that are output only
+     * should have OEB set to zero and IEB set to one.
+     */
+    assign cpu_gpio_oeb[6] = gpio_loopback_zero[6];   /* Tx */
+    assign cpu_gpio_oeb[13] = gpio_loopback_zero[13]; /* Trap monitor */
+    assign cpu_gpio_oeb[14] = gpio_loopback_zero[14]; /* Clock1 monitor */
+    assign cpu_gpio_oeb[15] = gpio_loopback_zero[15]; /* Clock2 monitor */
+
+    assign cpu_gpio_ieb[6] = gpio_loopback_one[6];   /* Tx */
+    assign cpu_gpio_ieb[13] = gpio_loopback_one[13]; /* Trap monitor */
+    assign cpu_gpio_ieb[14] = gpio_loopback_one[14]; /* Clock1 monitor */
+    assign cpu_gpio_ieb[15] = gpio_loopback_one[15]; /* Clock2 monitor */
+
+    assign cpu_gpio_ieb[39] = gpio_loopback_one[39]; /* Flash CSB */
+    assign cpu_gpio_ieb[40] = gpio_loopback_one[40]; /* Flash clock */
+    
     /* gpio_vector_wb ---
      * Wishbone interface for applying vector data to all GPIO not
      * being used for any other special function.
@@ -727,6 +727,7 @@ module picosoc (
     wire debug_stb_i;
     wire debug_ack_o;
     wire [31:0] debug_dat_o;
+
     debug_regs debug_regs (
         .wb_clk_i(wb_clk_i),
         .wb_rst_i(wb_rst_i),
@@ -737,7 +738,9 @@ module picosoc (
         .wbs_dat_i(cpu_dat_o),
         .wbs_adr_i(cpu_adr_o),
         .wbs_ack_o(debug_ack_o), 
-        .wbs_dat_o(debug_dat_o));
+        .wbs_dat_o(debug_dat_o)
+    );
+
     // Wishbone interconnection logic
     intercon_wb #(
         .AW(ADR_WIDTH),
@@ -752,7 +755,7 @@ module picosoc (
         .wbm_ack_o(cpu_ack_i),
 
         .wbs_stb_o({
-        debug_stb_i, 
+		debug_stb_i, 
 		spimemio_cfg_stb_i,
 		spi_master_stb_i,
 		counter_timer1_stb_i,
@@ -761,9 +764,9 @@ module picosoc (
 		gpio_vector_stb_i,
 		uart_stb_i,
 		spimemio_flash_stb_i,
-		mem_stb_i }), 
+		mem_stb_i}), 
         .wbs_dat_i({
-        debug_dat_o,
+		debug_dat_o,
 		spimemio_cfg_dat_o,
 		spi_master_dat_o,
 		counter_timer1_dat_o,
@@ -772,9 +775,9 @@ module picosoc (
 		gpio_vector_dat_o,
 		uart_dat_o,
 		spimemio_flash_dat_o,
-		mem_dat_o }),
+		mem_dat_o}),
         .wbs_ack_i({
-        debug_ack_o,
+		debug_ack_o,
 		spimemio_cfg_ack_o,
 		spi_master_ack_o,
 		counter_timer1_ack_o,
@@ -783,7 +786,7 @@ module picosoc (
 		gpio_vector_ack_o,
 		uart_ack_o,
 		spimemio_flash_ack_o,
-		mem_ack_o })
+		mem_ack_o})
     );
 
     /* Clock routing module */
@@ -832,7 +835,7 @@ module picosoc (
 	.ext_trim(spi_dll_trim)
     );
 
-    // Housekeeping module (SPI interface)
+    /* Housekeeping module (SPI interface) */
 
     housekeeping hkspi (
 	`ifdef USE_POWER_PINS
@@ -888,5 +891,6 @@ module picosoc_regs (
 
     assign rdata1 = regs[raddr1[4:0]];
     assign rdata2 = regs[raddr2[4:0]];
+
 endmodule
 `default_nettype wire
