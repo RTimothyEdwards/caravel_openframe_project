@@ -401,10 +401,10 @@ PINS 913 ;
    - gpio_slow_sel[38] + NET gpio_slow_sel[38]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 735290 -920 ) N ;
-   - gpio_dm0[38] + NET gpio_dm0[38]
+   - gpio_dm1[38] + NET gpio_dm1[38]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 744490 -920 ) N ;
-   - gpio_dm1[38] + NET gpio_dm1[38]
+   - gpio_dm0[38] + NET gpio_dm0[38]
      + PORT
         + LAYER met2 ( -140 -1200 ) ( 140 1200 )        + PLACED ( 753690 -920 ) N ;
    - gpio_analog_pol[38] + NET gpio_analog_pol[38]
@@ -4293,14 +4293,14 @@ NETS 887 ;
       + ROUTED met2 TAPERRULE met2_width_280  ( 759670 -2120 ) ( * 280 ) ;
    - gpio_analog_pol[38] ( PIN gpio_analog_pol[38] )
       + ROUTED met2 TAPERRULE met2_width_280  ( 756910 -2120 ) ( * 280 ) ;
-   - gpio_dm1[38] ( PIN gpio_dm1[38] )
+   - gpio_dm0[38] ( PIN gpio_dm0[38] )
       + ROUTED met2 TAPERRULE met2_width_280  ( 753690 -2120 ) ( * 280 ) ;
    - gpio_analog_en[38] ( PIN gpio_analog_en[38] )
       + ROUTED met2 TAPERRULE met2_width_280  ( 750470 -2120 ) ( * -1370 )
       NEW met2 TAPERRULE met2_width_285  ( 750475 -1370 ) ( * 280 ) ;
    - analog_noesd_io[38] ( PIN analog_noesd_io[38] )
       + ROUTED met2 TAPERRULE met2_width_280  ( 747710 -2120 ) ( * 280 ) ;
-   - gpio_dm0[38] ( PIN gpio_dm0[38] )
+   - gpio_dm1[38] ( PIN gpio_dm1[38] )
       + ROUTED met2 TAPERRULE met2_width_280  ( 744490 -2120 ) ( * 280 ) ;
    - analog_io[38] ( PIN analog_io[38] )
       + ROUTED met2 TAPERRULE met2_width_280  ( 738510 -2120 ) ( * 280 ) ;
