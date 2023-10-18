@@ -43,6 +43,8 @@ module openframe_project_wrapper (
     inout vssd,		// Common digital ground
     inout vssd1,	// User area 1 digital ground
     inout vssd2,	// User area 2 digital ground
+    inout vddio,	// Common 3.3V ESD supply
+    inout vssio,	// Common ESD ground
 `endif
 
     /* Signals exported from the frame area to the user project */
