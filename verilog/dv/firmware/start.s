@@ -95,7 +95,7 @@ flashio_worker_begin:
 # a2 ... optional WREN cmd (0 = disable)
 
 # address of SPI ctrl reg
-li   t0, 0x28000000
+li   t0, 0x2d000000
 
 # Set CS high, IO0 is output
 li   t1, 0x120
