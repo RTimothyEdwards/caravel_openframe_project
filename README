@@ -1,163 +1,184 @@
-Notes on the caravel_openframe_project:
-=======================================
+Building the caravel_openframe_project:
+==================================================================
 Tim Edwards
-May 1, 2023
+August 29, 2023
 
 This is an example project of a picoRV32 processor and SoC that
 roughly matches the management core used on first Efabless SkyWater
 OpenMPW.  However, this project is intended to synthesize into the
-project area of the Caravel Openframe.
+project area of the Caravel Openframe, which is a version of
+Caravel maintaining the padframe and pinout but containing no
+other resources except for a power-on-reset circuit and a user
+ID via-programmed ROM.  This repository is independent of the
+Caravel Openframe but depends on the Caravel Openframe verilog
+code for testbench simulation/verification.  The Openframe
+wrapper layout exists as a DEF file
 
-=======================================
+	openframe_project_wrapper.def
 
-Build notes:
+in the path
 
-(1) Building using local (not containerized) OpenROAD and Openlane.
-    OpenROAD was pulled from git and compiled.
-    Required libboost to be compiled and installed from source,
-	because cmake insisted on a boost library newer than that
-	supported by my OS.
-    Openlane was pulled from git and built.
+	openlane/openframe_project_wrapper/fixed_dont_change/.
 
-(2) cd to openlane/openframe_project_wrapper
+The only other files needed for any Openframe project are the
+power connection cells vccd1_connection and vssd1_connection.
+(GDS, LEF, gate-level verilog, etc.)
 
-(3) Quick experimental build:	~/gits/openlane/flow.tcl
-    Determined that switch "-ignore_mismatches" is required to
-	bypass the error and exit caused by my tool versions.
+==================================================================
+These instructions are for building the openframe example project
+using a standalone set of EDA tools.  The set of tools needed for
+the build is:
 
-(4) Do:  ~/gits/openlane/flow.tcl -ignore_mismatches
-    Needed to fix one syntax issue;  now it complains I need PDK_ROOT set
+	OpenROAD	https://github.com/The-OpenROAD-Project/OpenROAD
+	openlane	https://github.com/The-OpenROAD-Project/openlane
+	yosys		https://github.com/YosysHQ/yosys
+	klayout		https://github.com/KLayout/klayout
+	magic		https://github.com/RTimothyEdwards/magic
 
-(5) Do:
-	setenv PDK_ROOT /usr/share/pdk
-	setenv PDK sky130A
-	~/gits/openlane/flow.tcl -ignore_mismatches
+Note that the above tools have numerous dependencies, some of which
+require compiling additional tools from git sources.  This set of
+instructions does not include how to compile everything from source.
+All the tools above were git pulled and current as of Aug. 29, 2023.
 
-(6) Removed CLOCK_TREE_SYNTH from config.json because it is apparently
-	deprecated.
+All files in the repository constitute the minimum set needed to
+rebuild the GDS layout of the caravel openframe project example.
 
-(7) "click" module needed for python3.  But it exists.  Why does the
-	odbpy/lefutil.py script fail, then?
-    Hacked my way around this by adding
-	import sys
-	sys.path.append('/usr/lib/python3.10/site-packages')
-	import click
-    to the lefutil.py script.  But there must be a proper way to configure
-    the python path correctly for openroad.
+==================================================================
+Steps to build:
+(0) Preparation:
 
-(8) This actually ran. . . verilator (synthesis step 1) found errors, so
-    need to fix those.  Except. . .  failed to generate report due to
-    failure to load module "report", which is another path issue
-	('/usr/lib64/python3.10/site-packages')
-    Except this time, it still doesn't work.  Can import "report", can
-    do "from report import report" but cannot do "from report.report import
-    Report"---no such thing.  Need to pip install "reports" ???
-    (in /home/tim/gits/openlane/scripts/generate_reports.py)
-    Ahh. . . It is not a standard python package but local to openlane.
-    Also:  The underlying problem is that there is a python package "report"
-    installed on my system, and this one is being preferred.
-    Hack solution:  "pip uninstall" didn't work, so I just renamed "report"
-    in the offending library directory so it won't be found.
+	Go to this repository.  I have it put in ~/gits/ along with
+	everything else I clone from git repositories:
 
-    Back to the original issue:  see runs/<run>/logs/synthesis/verilator.log
-    Problem---No defines.v, no OPENFRAME_IO_PADS defined.
+		cd ~/gits/caravel_openframe_project
 
-    Wrong set of files in config.json.  defines.v appears twice and needs
-    to be removed.
+	Set up the technology.  The PDK is installed locally with
+	open_pdks using --prefix=/usr, so that the PDK is rooted
+	at /usr/share/pdk:
 
-    Now verilator complains about all sorts of non-issues.  How to disable
-    verilator?  Set RUN_VERILATOR to 0 in the config file.
+		setenv PDK_ROOT /usr/share/pdk
+		setenv PDK sky130A
 
-(9) Synthesis fails on call to standard cell "sky130_fd_sc_hd__einvn_8".
-    How to solve this?  Tried "STD_CELL_LIBRARY_OPT" but that didn't work.
-    Setting "SYNTH_READ_BLACKBOX_LIB" worked.
+	Check out a new branch for building so as not to sully the
+	upstream repository with build files:
 
-(10) Now fails on the SRAM, which is not surprising.
-    ---Added openframe_example.soc_mem.SRAM_0 and
-    openframe_example.soc_mem.SRAM_1 to macro.cfg but presumably need more.
-    ---Added filenames for the SRAM block to VERILOG_FILES_BLACKBOX, EXTRA_LEFS,
-    and EXTRA_GDS_FILES (probably need EXTRA_LIBS, too).
+		git branch build
+		git checkout build
 
-(11) "$::env(PDK_ROOT)" doesn't work in the config.json file.
-	"::env(PDK_ROOT)" doesn't work, either.  Punting for now and
-	inserting full path.
+	Create python virtual environment.  I have openlane cloned
+	into the ~/gits/ directory.  Openlane is just a set of
+	scripts and does not install like normal software, so it
+	is referenced from the source directory.  I run a local
+	tcsh environment, which is why I use activate.csh.
 
-(12) Now it complains there is no port "vssd1" on
-	sky130_sram_2kbyte_1rw1r_32x512_8 of SRAM_1 in mem_wb.v.  What gives?
-	Testing. . . it will also complain about vccd1 and about SRAM_0, just
-	generates errors from the bottom of the file up for some reason.
-	But is USE_POWER_PINS being changed between reading the library and
-	reading the design?  But "SYNTH_USE_PG_PINS_DEFINES" is set to
-	"USE_POWER_PINS".  Try not setting that?
-	Okay, no good, so try *not* defining it in the netlists file (or
-	rather, defining it only if SIM is defined). . . and bingo.
+		python3 -m venv ./venv
+		./venv/bin/python3 -m pip install --upgrade --no-cache-dir \
+			-r ~/gits/openlane/requirements.txt
+		source ./venv/bin/activate.csh
+		
+(1) Build digital_locked_loop circuit:
+	This subcomponent contains a ring oscillator and needs to
+	be self-contained.
 
-(13) "Out of bounds on some signals" error, need to check log file.
-	Seems not happy about the OR'd bits in the array assignment
-	assign gpio_all_dat_o[i] = |(gpio_dat_o[i][`OPENFRAME_IO_PADS-1:0]);
-	??
-	Disabled the out-of-bound check in openlane tcl_commands/checkers.tcl
-	Next set of checks appears to be more relevant.
-	Fixed all of them but there are "multiple driver" errors on tri-state
-	buffers, so disabling the "check_synth_misc" check, too.
+		cd openlane/digital_locked_loop
+		~/gits/openlane/flow.tcl -ignore_mismatches
 
-(14) Failed on "proc_rom"---This is a command in yosys/synth.tcl, and it seems
-	that yosys fails to understand it.  Maybe by default yosys is being run
-	from my original installed version which is a bit out of date?
-	Commented "proc_rom" out of the synth script and continued.
+	Copy the built files to the top level (name of run directory is
+	time-dependent, change accordingly) (again, this is in a tcsh
+	environment;  use export instead of setenv in a bash environment):
 
-(15) Failed because config file was set with SYNTH_ELABORATE_ONLY.  Fixed.
+		setenv RUNDIR RUN_2023.08.29_14.59.39
+		cp runs/$RUNDIR/results/final/gds/digital_locked_loop.gds \
+			../../gds/
+		cp runs/$RUNDIR/results/final/lib/digital_locked_loop.lib \
+			../../lib/
+		cp runs/$RUNDIR/results/final/lef/digital_locked_loop.lef \
+			../../lef/
+		mkdir -p ../../verilog/gl
+		cp runs/$RUNDIR/results/final/verilog/gl/digital_locked_loop.v \
+			../../verilog/gl/
+		mkdir -p ../../signoff/digital_locked_loop/openlane-signoff/spef
+		cp runs/$RUNDIR/results/final/spef/multicorner/digital_locked_loop.* \
+			../../signoff/digital_locked_loop/openlane-signoff/spef/
 
-(16) Tried to read verilog of the SRAM;  failed to black-box it.  Maybe put back
-	the original brackets in the blackbox definition in config.json?
-	(Did not make a difference)
-	Following suggestion and adding "/// sta-blackbox" to the verilog file,
-	but that's in the PDK, so not a preferred solution.
-	(Might also be because the "extra liberty files" setting was not in
-	the config file?)
+(2) Build the picosoc processor:
+	Contains the bulk of the project example, including SRAM
+	macros, and the digital_locked_loop macro.  This is the
+	bulk of the example, and takes the longest to run through
+	synthesis, place, and route.
 
-(17) Next error:  invalid command name "report_parasitic_annoation" in
-	multi_corner.tcl.  Commenting the line
-	(openlane/scripts/openroad/sta/multi_corner.tcl)
-	Now is running STA, maybe successfully. . .
-	Seems to have hung up on something.  Produced an output almost
-	immediately, after which it is just grinding away.
-	Ran 10 hours and is still going in the morning, so something is
-	wrong.
-	NOTE:  This happened on "report_clock_skew", and tracking that
-	down to openroad/sta/multi_corner.tcl, there's a comment that
-	says OpenROAD hangs if the "report_clock_skew" command is run
-	on a clockless design.  Presumably there's something similar
-	going on, like the clock isn't specified correctly.  Disabling
-	the report for now.
+		cd ../picosoc
+		~/gits/openlane/flow.tcl -ignore_mismatches
 
-(18) Floorplan---same issue with python paths for importing "click" as
-	above (see (7)).  Needed in defutil.py, apply_def_template.py,
-	manual_macro_place.py
+	Copy the built files to the top level (see above):
 
-(19) Floorplan---complains that some pins are not on the manufacturing
-	grid, specifically por_l/porb_h/porb_l.  This comes from the
-	DEF file at fixed_dont_change/openframe_project_wrapper.def.
-	Magic shouldn't be putting things at off-grid positions!
-	In fact, it shouldn't even be possible. . .  Except that
-	distance units have been set at 1000, not 200.  But magic did,
-	and generated non-integer entries in the DEF file to boot, so
-	this will need to be investigated.  Actually, there were rather
-	a lot of such entries in the file at 1/2 grid points.  I think
-	that this is due to centerlines, and the DEF writer is not
-	paying attention to the grid limit settings in "cifoutput"
-	although it is assumed to be producing equivalent output.
+		setenv RUNDIR RUN_2023.08.29_15.08.17
+		cp runs/$RUNDIR/results/final/gds/picosoc.gds ../../gds/
+		cp runs/$RUNDIR/results/final/lib/picosoc.lib ../../lib/
+		cp runs/$RUNDIR/results/final/lef/picosoc.lef ../../lef/
+		cp runs/$RUNDIR/results/final/verilog/gl/picosoc.v ../../verilog/gl/
+		mkdir -p ../../signoff/picosoc/openlane-signoff/spef
+		cp runs/$RUNDIR/results/final/spef/multicorner/picosoc.* \
+			../../signoff/picosoc/openlane-signoff/spef/
 
-(20) Macro placement:  Macros not found.  Used names
-	"openframe_example.soc_mem.SRAM_0" (and "1") in macro.cfg.
-	What should this be instead?
-	Missing a hiearchy layer;  should be
-	"openframe_example.soc_mem.mem.SRAM_0"
-	After that. . . got all the way to step 7!
+(3) Build the openframe_project_wrapper:
+	Placement of the picosoc macro and wiring out to the
+	wrapper pins.
 
-(21) Global placement:  "click" again. . .
+		cd ../openframe_project_wrapper
+		~/gits/openlane/flow.tcl -ignore_mismatches
 
-(22) Detail placement failed during/after clock tree synthesis.
-	Chances are good that this is due to the incorrect floorplan
-	DEF (tracks and sites do not cover the entire die area as
-	they should)?  Need to look at output.
+	Copy final files to the top level:
+
+		setenv RUNDIR RUN_2023.08.29_15.52.52
+		cp runs/$RUNDIR/results/final/gds/openframe_project_wrapper.gds \
+			../../gds/
+		cp runs/$RUNDIR/results/final/verilog/gl/openframe_project_wrapper.v \
+			../../verilog/gl/
+
+	Additional work needed to get GL simulation running:
+	caravel_openframe_project/verilog/gl/openframe_project_wrapper.v does
+	not have all of the power supplies listed, only the vccd1 and vssd1 that
+	are used by the module.  The remaining power supply pins need to be added
+	to the list of module I/Os (matching the I/O list in the RTL module for
+	openframe_project_wrapper.v).
+
+	Currently, the GL simulaton also fails because the caravel repository
+	has entries in verilog/rtl/openframe_netlists.v in the GL case of
+	gl/user_id_programming.v, gl/chip_io_openframe.v, and gl/caravel_openframe.v.
+	All three of these are already structural verilog, exist in rtl/ and do
+	not have corresponding entries in gl/.  The "gl/" prefix needs to be
+	removed.  This may get fixed by separate pull request.
+
+(4) Run verilog verification on RTL and gate-level netlists:
+	Needed: (1) RISC-V toolchain with RV32IMC architecture support
+		(2) iverilog
+		(3) The caravel repository from
+			https://github.com/efabless/caravel
+		    (This contains the openframe definition in verilog)
+
+	Do the following:
+
+		cd ~/gits/caravel_openframe_wrapper/verilog/dv/gpio_vector
+		
+	(Set environment variables PDK_ROOT, GCC_PATH, GCC_PREFIX,
+	and CARAVEL_ROOT as needed if they don't match what's in
+	the Makefile.)
+
+		make
+
+	for the RTL simulation, and
+
+		make SIM=GL
+
+	for the gate-level simulation.  Both should end with the output
+	"Monitor: gpio_vector test Passed".
+
+(5) Remove unneeded files and compress the final GDS:
+	The resulting compressed project wrapper GDS is about 115MB.
+
+		cd ~/gits/caravel_openframe_wrapper/gds
+		rm digital_locked_loop.gds
+		rm picosoc.gds
+		gzip -n --best openframe_project_wrapper.gds
+		cd ..
